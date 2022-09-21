@@ -57,6 +57,7 @@ Player.prototype = {
           // Stop the wave animation.
           wave.container.style.display = 'none';
           bar.style.display = 'block';
+          self.playlist[self.index].howl.unload()
           self.skip('next');
         },
         onpause: function() {
@@ -66,6 +67,7 @@ Player.prototype = {
           // Stop the wave animation.
           wave.container.style.display = 'none';
           bar.style.display = 'block';
+          self.playlist[self.index].howl.unload()
         },
         onstop: function() {
           // Revert the fancy titles.
@@ -74,6 +76,7 @@ Player.prototype = {
           // Stop the wave animation.
           wave.container.style.display = 'none';
           bar.style.display = 'block';
+          self.playlist[self.index].howl.unload()
         },
         onseek: function() {
           // Start updating the progress of the track.
