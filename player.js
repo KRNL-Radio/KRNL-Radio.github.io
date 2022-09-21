@@ -1,5 +1,5 @@
 // Cache references to DOM elements.
-var elms = ['track', 'timer', 'duration', 'playBtn', 'pauseBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+var elms = ['station', 'collaborator', 'current_song', 'playBtn', 'pauseBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -14,7 +14,7 @@ var Player = function(playlist) {
   this.index = 0;
 
   // Display the title of the first track.
-  track.innerHTML = playlist[0].title;
+  station.innerHTML = playlist[0].title;
 };
 Player.prototype = {
   /**
@@ -37,11 +37,7 @@ Player.prototype = {
         src: [data.file],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         onplay: function() {
-          // Display the duration.
-          duration.innerHTML = self.formatTime(Math.round(sound.duration()));
-
-          // Start updating the progress of the track.
-          requestAnimationFrame(self.step.bind(self));
+          requestAnimationFrame(self.stationStatusUpdate.bind(self));
 
           // Start the wave animation if we have already loaded
           wave.container.style.display = 'block';
@@ -55,24 +51,33 @@ Player.prototype = {
           loading.style.display = 'none';
         },
         onend: function() {
+          // Revert the fancy titles.
+          collaborator.innerHTML = '(Not connected!)'
+          current_song.innerHTML = 'Waiting for something to happen?'
           // Stop the wave animation.
           wave.container.style.display = 'none';
           bar.style.display = 'block';
           self.skip('next');
         },
         onpause: function() {
+          // Revert the fancy titles.
+          collaborator.innerHTML = '(Not connected!)'
+          current_song.innerHTML = 'Waiting for something to happen?'
           // Stop the wave animation.
           wave.container.style.display = 'none';
           bar.style.display = 'block';
         },
         onstop: function() {
+          // Revert the fancy titles.
+          collaborator.innerHTML = '(Not connected!)'
+          current_song.innerHTML = 'Waiting for something to happen?'
           // Stop the wave animation.
           wave.container.style.display = 'none';
           bar.style.display = 'block';
         },
         onseek: function() {
           // Start updating the progress of the track.
-          requestAnimationFrame(self.step.bind(self));
+          requestAnimationFrame(self.stationStatusUpdate.bind(self));
         }
       });
     }
@@ -81,7 +86,7 @@ Player.prototype = {
     sound.play();
 
     // Update the track display.
-    track.innerHTML = (index + 1) + '. ' + data.title;
+    station.innerHTML = data.title;
 
     // Show the pause button.
     if (sound.state() === 'loaded') {
@@ -189,23 +194,22 @@ Player.prototype = {
     }
   },
 
-  /**
-   * The step called within requestAnimationFrame to update the playback position.
-   */
-  step: function() {
+  stationStatusUpdate: async function() {
     var self = this;
 
     // Get the Howl we want to manipulate.
     var sound = self.playlist[self.index].howl;
 
-    // Determine our current seek position.
-    var seek = sound.seek() || 0;
-    timer.innerHTML = self.formatTime(Math.round(seek));
-    progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
+    var resp = await fetch('https://public.radio.co/stations/s209f09ff1/status');
+    var data = await resp.json();
+
+
+    collaborator.innerHTML = data['source']['collaborator']['name'];
+    current_song.innerHTML = data['current_track']['title'];
 
     // If the sound is still playing, continue stepping.
     if (sound.playing()) {
-      requestAnimationFrame(self.step.bind(self));
+      setTimeout(self.stationStatusUpdate.bind(self), 5000);
     }
   },
 
@@ -250,9 +254,6 @@ playBtn.addEventListener('click', function() {
 });
 pauseBtn.addEventListener('click', function() {
   player.pause();
-});
-waveform.addEventListener('click', function(event) {
-  player.seek(event.clientX / window.innerWidth);
 });
 volumeBtn.addEventListener('click', function() {
   player.toggleVolume();
