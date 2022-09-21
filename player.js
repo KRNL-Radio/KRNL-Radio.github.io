@@ -14,7 +14,7 @@ var Player = function(playlist) {
   this.index = 0;
 
   // Display the title of the first track.
-  station.innerHTML = playlist[0].title;
+  track.innerHTML = playlist[0].title;
 };
 Player.prototype = {
   /**
@@ -86,7 +86,7 @@ Player.prototype = {
     sound.play();
 
     // Update the track display.
-    station.innerHTML = data.title;
+    track.innerHTML = data.title;
 
     // Show the pause button.
     if (sound.state() === 'loaded') {
