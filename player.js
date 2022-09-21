@@ -203,10 +203,25 @@ Player.prototype = {
     var resp = await fetch('https://public.radio.co/stations/s209f09ff1/status');
     var data = await resp.json();
 
+    if (data.source.type == 'live') {
+      collaborator.innerHTML = data['source']['collaborator']['name'];
+    }
 
-    collaborator.innerHTML = data['source']['collaborator']['name'];
+    switch (data.source.type) {
+      case "live":
+        collaborator.innerHTML = data['source']['collaborator']['name'];
+        break;
+      case "automated":
+        collaborator.innerHTML = "Nelly the Robot";
+        break;
+      default:
+        collaborator.innerHTML = "A Ghost";
+        console.warn("Unknown source type: " + data.source.type);
+        break;
+    }
+
     current_song.innerHTML = data['current_track']['title'];
-
+    
     // If the sound is still playing, continue stepping.
     if (sound.playing()) {
       setTimeout(self.stationStatusUpdate.bind(self), 5000);
