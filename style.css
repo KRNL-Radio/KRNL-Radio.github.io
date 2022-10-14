@@ -57,7 +57,7 @@ body {
     right: 3%;
     text-align: right;
     font-size: 26px;
-    opacity: 0.5;
+    opacity: 0.9;
     font-weight: 300;
     color: #fff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
@@ -321,40 +321,51 @@ body {
     cursor: pointer;
 }
 
+/* Secrets~ */
+rain-txt {
+    animation: rainbow 7.5s infinite alternate;
+}
+
+@keyframes rainbow {
+    0% {
+        color: #ff0000;
+    }
+
+    16% {
+        color: #ff7f00;
+    }
+
+    32% {
+        color: #ffff00;
+    }
+
+    48% {
+        color: #00ff00;
+    }
+
+    64% {
+        color: #0000ff;
+    }
+
+    80% {
+        color: #4b0082;
+    }
+
+    100% {
+        color: #ee82ee;
+    }
+}
+
 /* Fade-In */
 .fadeout {
-    webkit-animation: fadeout 0.5s;
-    -ms-animation: fadeout 0.5s;
     animation: fadeout 0.5s;
 }
 
 .fadein {
-    webkit-animation: fadein 0.5s;
-    -ms-animation: fadein 0.5s;
     animation: fadein 0.5s;
 }
 
 @keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@-ms-keyframes fadein {
     from {
         opacity: 0;
     }
@@ -374,22 +385,22 @@ body {
     }
 }
 
-@-webkit-keyframes fadeout {
-    from {
-        opacity: 1;
+/* Mobile "Fixes" */
+@media (max-width : 425px) {
+    #collaborator {
+        position:absolute;
+        width: 100%;
+        top: auto;
+        right: 0%;
+        left: 0%;
+        text-align: center;
     }
-
-    to {
-        opacity: 0;
-    }
-}
-
-@-ms-keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
+    #current_song {
+        position:absolute;
+        width: 100%;
+        top: 200%;
+        right: 0%;
+        left: 0%;
+        text-align: center;
     }
 }

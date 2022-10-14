@@ -12,6 +12,7 @@ elms.forEach(function(elm) {
 var Player = function(playlist) {
   this.playlist = playlist;
   this.index = 0;
+  this._cachedDST = ""
 
   // Display the title of the first track.
   station.innerHTML = playlist[0].title;
@@ -206,22 +207,30 @@ Player.prototype = {
     var resp = await fetch('https://public.radio.co/stations/s209f09ff1/status');
     var data = await resp.json();
 
-    if (data.source.type == 'live') {
-      collaborator.innerHTML = data['source']['collaborator']['name'];
-    }
+    if (self._cachedDST !== data.source.type) {
 
-    switch (data.source.type) {
-      case "live":
+      if (data.source.type == 'live') {
         collaborator.innerHTML = data['source']['collaborator']['name'];
-        break;
-      case "automated":
-        collaborator.innerHTML = "Nelly the Robot";
-        break;
-      default:
-        collaborator.innerHTML = "A Ghost";
-        console.warn("Unknown source type: " + data.source.type);
-        break;
+      }
+
+      switch (data.source.type) {
+        case "live":
+          if (data.source.collaborator.name === "Mark") {
+            current_song.innerHTML = "<rain-txt>Mark</rain-txt>";
+          } else {
+            collaborator.innerHTML = data['source']['collaborator']['name'];
+          }
+          break;
+        case "automated":
+          collaborator.innerHTML = "<i>Automated</i>";
+          break;
+        default:
+          collaborator.innerHTML = "A Ghost";
+          console.warn("Unknown source type: " + data.source.type);
+          break;
+      }
     }
+    self._cachedDST = data.source.type;
 
     current_song.innerHTML = data['current_track']['title'];
     
