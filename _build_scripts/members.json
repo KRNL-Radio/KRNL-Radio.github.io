@@ -1,0 +1,222 @@
+{
+    "current_members": [
+        {
+            "name": "Matt",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "Guardian of the Keys, Distributer of Books",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/500",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        },
+        {
+            "name": "Aaron",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "The Myth, The Legend",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/501",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        },
+        {
+            "name": "Grayson",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "Local Legend",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/502",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        },
+        {
+            "name": "Mark",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "Technowizard Extraordinaire",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/503",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        },
+        {
+            "name": "Adrien",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "Hollywood Material",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/504",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        },
+        {
+            "name": "Brock",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "Apartment Deweller",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/505",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        },
+        {
+            "name": "Sophie",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "The Myth, The Legend",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/506",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        }
+    ],
+    "alumni": [
+        {
+            "name": "Test Alumni, Please Ignore",
+            "pronouns": [
+                "they",
+                "them"
+            ],
+            "splash_text": "Old as Dirt",
+            "bio": "Hello, these are words that I spoke! Yes, yes indeed.",
+            "image": "https://placekitten.com/507",
+            "socials": {
+                "twitter": "https://twitter.com/thisisatest",
+                "instagram": "https://instagram.com/thisisatest",
+                "facebook": "https://facebook.com/thisisatest",
+                "linkedin": "https://linkedin.com/thisisatest",
+                "youtube": "",
+                "spotify": "",
+                "soundcloud": "",
+                "apple_music": "",
+                "github": ""
+            },
+            "badges": [
+                "faculty",
+                "station-manager",
+                "website",
+                "alumni"
+            ]
+        }
+    ]
+}
