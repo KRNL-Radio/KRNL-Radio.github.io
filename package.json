@@ -1,0 +1,75 @@
+{
+  "name": "krnl-website",
+  "version": "0.1.0",
+  "private": true,
+  // "homepage": "https://totallynotmark6.github.io/KRNL-New-Website",
+  "homepage": "https://krnl-radio.github.io",
+  "__comment": "DO NOT FOR THE LOVE OF ANY AND ALL THINGS HOLY TOUCH THAT LINE. (for now)",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/luxon": "^3.1.0",
+    "@types/node": "^16.18.3",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/stats.js": "^0.17.0",
+    "babel-plugin-macros": "^3.1.0",
+    "cron-parser": "^4.7.0",
+    "daisyui": "^2.39.1",
+    "is-mobile": "^3.1.1",
+    "luxon": "^3.1.1",
+    "mailto-link": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.3",
+    "react-particles": "^2.7.0",
+    "react-router-dom": "^6.6.1",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.1",
+    "react-transition-group": "^4.4.5",
+    "remark-gfm": "^3.0.1",
+    "stats.js": "^0.17.0",
+    "tsparticles": "^2.7.0",
+    "tsparticles-engine": "^2.7.0",
+    "typescript": "^4.8.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "postdeploy": "echo 'Deploy complete! This may take a few minutes to fully propagate...'",
+    "predeploy": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.8",
+    "@types/react-transition-group": "^4.4.5",
+    "autoprefixer": "^10.4.13",
+    "gh-pages": "^4.0.0",
+    "postcss": "^8.4.20",
+    "source-map-explorer": "^2.5.3",
+    "tailwindcss": "^3.2.2"
+  }
+}
