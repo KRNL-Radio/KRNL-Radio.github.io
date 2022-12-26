@@ -57,10 +57,10 @@ function HomePage() {
           {/* What we Do */}
           <h1 className="text-4xl font-bold pt-4">What We Do</h1>
           <p className="text-xl">
-            In no particular order, we broadcast a variety of music, host live events (including the Big Event), and provide a platform for students to learn about radio, and to be themselves!
+            In no particular order, we broadcast a variety of music, host live events (including sponsoring the Big Event), and provide a platform for students to learn about radio, and to be themselves!
           </p>
 
-          <p>We have meetings every Thursday from 3:30 - 4:30 in our studio, come say hi!</p>
+          <p>We have meetings every Thursday from 4:30 - 5:30 in our studio, come say hi!</p>
 
         </div>
       <KRNLSocialButtons />
