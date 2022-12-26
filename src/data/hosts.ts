@@ -245,6 +245,10 @@ export const KRNL_HOST: Host = {
       platform: "Twitter",
       url: "https://twitter.com/KRNL89_7",
     },
+    {
+      platform: "Email",
+      url: "mailto:krnl@cornellcollege.edu",
+    }
     // {
     //   platform: "Tumblr",
     //   url: "https://krnl.tumblr.com",
