@@ -1,11 +1,6 @@
-import { getAllHosts, Host, KRNL_HOST, Social } from "../data/hosts";
+import { Host, Social } from "../data/hosts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  solid,
-  regular,
-  brands,
-  icon,
-} from "@fortawesome/fontawesome-svg-core/import.macro";
+import { solid, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 function getBadge(social: Social) {
   switch (social.platform) {
