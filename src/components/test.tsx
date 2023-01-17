@@ -1,6 +1,6 @@
-import { toast } from 'react-toastify';
-import Header from './Header';
-import { KRNLSocialButtons } from './SocialButtons';
+import { toast } from "react-toastify";
+import Header from "./Header";
+import { KRNLSocialButtons } from "./SocialButtons";
 
 async function onClick() {
   // let res = await Notification.requestPermission();
@@ -15,9 +15,9 @@ async function onClick() {
   //     s.play();
   //   }, 2000);
   // }
-  toast('Hello, world!', {
+  toast("Hello, world!", {
     // theme: 'dark',
-  })
+  });
 }
 
 function Test() {

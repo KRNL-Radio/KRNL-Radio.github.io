@@ -1,10 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import {
-  createHashRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import MemberPage from "./pages/members";
 import HomePage from "./pages/home";
 import IndividualMemberPage from "./pages/member";
@@ -75,7 +72,7 @@ const router = createHashRouter(
     {
       path: "/secret/schedule/generator",
       element: <ScheduleGeneratorPage />,
-    }
+    },
   ],
   {
     // basename: '/',
