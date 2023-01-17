@@ -8,7 +8,7 @@ type Event = {
     effect?: EffectEffect;
     schedule?: ScheduleEffect;
   };
-  schedule: ScheduleItem
+  schedule: ScheduleItem;
 };
 
 export const events: Event[] = [
@@ -17,10 +17,13 @@ export const events: Event[] = [
     effects: {
       schedule: {
         is_hard_suppression: false,
-        message: "We're on break for the holidays! We'll be back soon!"
-      }
+        message: "We're on break for the holidays! We'll be back soon!",
+      },
     },
-    schedule: new ScheduleItem(new Date(2022, 11, 22, 9, 0), new Date(2023, 0, 15, 9, 0))
+    schedule: new ScheduleItem(
+      new Date(2022, 11, 22, 9, 0),
+      new Date(2023, 0, 15, 9, 0)
+    ),
   },
 ];
 
@@ -34,34 +37,61 @@ export function getAllEvents() {
 
 export function isScheduleSuppressed() {
   // is it suppressed (either hard or soft?)
-  return getCurrentEvents().some((event) => event.effects.schedule !== undefined);
+  return getCurrentEvents().some(
+    (event) => event.effects.schedule !== undefined
+  );
 }
 
 export function scheduleSuppressedBy() {
-  return getCurrentEvents().filter((event) => event.effects.schedule !== undefined);
+  return getCurrentEvents().filter(
+    (event) => event.effects.schedule !== undefined
+  );
 }
 
 export function isScheduleHardSuppressed() {
   // is it suppressed hard?
-  return getCurrentEvents().some((event) => event.effects.schedule !== undefined && event.effects.schedule.is_hard_suppression === true);
+  return getCurrentEvents().some(
+    (event) =>
+      event.effects.schedule !== undefined &&
+      event.effects.schedule.is_hard_suppression === true
+  );
 }
 
 export function hasSiteBanner() {
-  return getCurrentEvents().some((event) => event.effects.banner !== undefined && event.effects.banner.site_banner_text !== undefined);
+  return getCurrentEvents().some(
+    (event) =>
+      event.effects.banner !== undefined &&
+      event.effects.banner.site_banner_text !== undefined
+  );
 }
 
 export function getSiteBanner() {
-  return getCurrentEvents().find((event) => event.effects.banner !== undefined && event.effects.banner.site_banner_text !== undefined);
+  return getCurrentEvents().find(
+    (event) =>
+      event.effects.banner !== undefined &&
+      event.effects.banner.site_banner_text !== undefined
+  );
 }
 
 export function hasHomeBanner() {
-  return getCurrentEvents().some((event) => event.effects.banner !== undefined && event.effects.banner.home_banner_text !== undefined);
+  return getCurrentEvents().some(
+    (event) =>
+      event.effects.banner !== undefined &&
+      event.effects.banner.home_banner_text !== undefined
+  );
 }
 
 export function getHomeBanner() {
-  return getCurrentEvents().find((event) => event.effects.banner !== undefined && event.effects.banner.home_banner_text !== undefined);
+  return getCurrentEvents().find(
+    (event) =>
+      event.effects.banner !== undefined &&
+      event.effects.banner.home_banner_text !== undefined
+  );
 }
 
 export function getEffect() {
-  return getCurrentEvents().find((event) => event.effects.effect !== undefined) || "seasonal";
+  return (
+    getCurrentEvents().find((event) => event.effects.effect !== undefined) ||
+    "seasonal"
+  );
 }

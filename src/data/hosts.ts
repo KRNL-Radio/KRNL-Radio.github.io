@@ -5,7 +5,7 @@ import AdrienImg from "../assets/adrien.jpg";
 import MarkImg from "../assets/mark.jpg";
 import ZoeImg from "../assets/zoe.jpg";
 import TreyImg from "../assets/trey.jpg";
-import CadenImg from "../assets/caden.jpg"
+import CadenImg from "../assets/caden.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -39,12 +39,24 @@ export enum HostBadge {
 //   // Let me know if you want more!
 // }
 
-export type Platform = "Instagram" | "Twitter" | "Facebook" | "LinkedIn" | "YouTube" | "Twitch" | "Spotify" | "SoundCloud" | "Apple Music" | "GitHub" | "Tumblr" | "Email";
+export type Platform =
+  | "Instagram"
+  | "Twitter"
+  | "Facebook"
+  | "LinkedIn"
+  | "YouTube"
+  | "Twitch"
+  | "Spotify"
+  | "SoundCloud"
+  | "Apple Music"
+  | "GitHub"
+  | "Tumblr"
+  | "Email";
 
 export type Social = {
   platform: Platform;
   url: string;
-}
+};
 
 export type Host = {
   name: string;
@@ -69,12 +81,12 @@ export const hosts: Host[] = [
     socials: [
       {
         platform: "Instagram",
-        url: "https://www.instagram.com/jellybeanz_3/"
+        url: "https://www.instagram.com/jellybeanz_3/",
       },
       {
         platform: "Spotify",
-        url: "https://open.spotify.com/user/akaplan1488"
-      }
+        url: "https://open.spotify.com/user/akaplan1488",
+      },
     ],
     badges: [HostBadge.DJ, HostBadge["Station Manager"]],
   },
@@ -110,8 +122,8 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
       // },
       {
         platform: "GitHub",
-        url: "https://github.com/totallynotmark6"
-      }
+        url: "https://github.com/totallynotmark6",
+      },
     ],
     badges: [HostBadge.DJ, HostBadge["Website Designer"]],
   },
@@ -124,7 +136,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     socials: [
       {
         platform: "Instagram",
-        url: "https://www.instagram.com/son_ofgray/"
+        url: "https://www.instagram.com/son_ofgray/",
       },
     ],
     badges: [HostBadge.DJ],
@@ -138,12 +150,12 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     socials: [
       {
         platform: "Instagram",
-        url: "https://www.instagram.com/s_brown_6/"
+        url: "https://www.instagram.com/s_brown_6/",
       },
       {
         platform: "Spotify",
-        url: "https://open.spotify.com/user/caucasian_nugget"
-      }
+        url: "https://open.spotify.com/user/caucasian_nugget",
+      },
     ],
     badges: [HostBadge.DJ, HostBadge["Record Keeper"]],
   },
@@ -156,8 +168,8 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     socials: [
       {
         platform: "Instagram",
-        url: "https://www.instagram.com/zothevirg.o/"
-      }
+        url: "https://www.instagram.com/zothevirg.o/",
+      },
     ],
     badges: [HostBadge.DJ],
   },
@@ -170,8 +182,8 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     socials: [
       {
         platform: "Instagram",
-        url: "https://www.instagram.com/ssvfw/"
-      }
+        url: "https://www.instagram.com/ssvfw/",
+      },
     ],
     badges: [HostBadge.DJ],
   },
@@ -179,12 +191,11 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     name: "Caden",
     pronouns: ["they", "them"],
     splash_text: "Arch-Bishop of the Church of the Bards",
-    bio: 'words',
+    bio: "words",
     image: CadenImg,
-    socials: [
-    ],
+    socials: [],
     badges: [HostBadge.DJ],
-  }
+  },
   // {
   //   name: "Matt",
   //   pronouns: ["he", "him"],
@@ -248,7 +259,7 @@ export const KRNL_HOST: Host = {
     {
       platform: "Email",
       url: "mailto:krnl@cornellcollege.edu",
-    }
+    },
     // {
     //   platform: "Tumblr",
     //   url: "https://krnl.tumblr.com",

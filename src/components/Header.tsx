@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
   const [title, setTitle] = React.useState("");
@@ -10,23 +10,23 @@ function Header() {
 
   useEffect(() => {
     let trackCb = (data: any) => {
-      setTitle(data.title)
-    }
-    window.player.on('current_track', trackCb)
+      setTitle(data.title);
+    };
+    window.player.on("current_track", trackCb);
     let metadataCb = (data: any) => {
-        setHost(data.host_string)
-    }
-    window.player.on('metadata', metadataCb)
-    window.player.start_slow_refresh()
+      setHost(data.host_string);
+    };
+    window.player.on("metadata", metadataCb);
+    window.player.start_slow_refresh();
     return function cleanup() {
-      window.player.stop_refreshing()
-      window.player.unbind('current_track', trackCb)
-      window.player.unbind('metadata', metadataCb)
-    }
+      window.player.stop_refreshing();
+      window.player.unbind("current_track", trackCb);
+      window.player.unbind("metadata", metadataCb);
+    };
   });
 
   useEffect(() => {
-    window.player.refresh()
+    window.player.refresh();
   }, []);
 
   return (
@@ -56,7 +56,7 @@ function Header() {
         <p className="text-sm">{title}</p>
         <p className="text-sm">{host}</p>
       </div>
-      <ToastContainer theme='dark' />
+      <ToastContainer theme="dark" />
     </div>
   );
 }

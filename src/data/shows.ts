@@ -10,7 +10,7 @@ export type Show = {
   background: string;
   guests?: string; // any guests on the show. they don't get their own page, but they get a mention on the show page.
   scheduleString: string;
-  schedule: ScheduleItem
+  schedule: ScheduleItem;
   hidden?: boolean;
   hiddenAfter?: Date;
 };
@@ -23,7 +23,7 @@ export const shows: Show[] = [
     background: "#fc73e3",
     hosts: [getHostByName("Adrien")],
     scheduleString: "Every Tuesday from 10pm to 11pm",
-    schedule: new ScheduleItem('0 22 * * 2', 60)
+    schedule: new ScheduleItem("0 22 * * 2", 60),
   },
   {
     name: "Stochastic Shuffle",
@@ -33,7 +33,7 @@ export const shows: Show[] = [
     background: "#0f3cec",
     hosts: [getHostByName("Mark")],
     scheduleString: "Every Monday from 9 pm to 10 pm",
-    schedule: new ScheduleItem('0 21 * * 1', 60)
+    schedule: new ScheduleItem("0 21 * * 1", 60),
   },
   {
     name: "The Vibe",
@@ -43,16 +43,17 @@ export const shows: Show[] = [
     background: "#1c2dae",
     hosts: [getHostByName("Grayson")],
     scheduleString: "Every Saturday from 9pm to 10pm",
-    schedule: new ScheduleItem('0 21 * * 6', 60)
+    schedule: new ScheduleItem("0 21 * * 6", 60),
   },
   {
     name: "The After School Special",
     splash_text: "Because no one else streams earlier!",
-    description: "I play music, different vibes every week, and do some rambling (usually too much rambling)",
+    description:
+      "I play music, different vibes every week, and do some rambling (usually too much rambling)",
     background: "#6f69dd",
     hosts: [getHostByName("Sophie")],
     scheduleString: "Every Thursday from 3:30pm to 4:30pm",
-    schedule: new ScheduleItem('30 15 * * 4', 60)
+    schedule: new ScheduleItem("30 15 * * 4", 60),
   },
   {
     name: "Latino Hour",
@@ -61,16 +62,17 @@ export const shows: Show[] = [
     background: "#ddfe60",
     hosts: [getHostByName("Zoe")],
     scheduleString: "Every Friday from 4pm to 5pm",
-    schedule: new ScheduleItem('0 16 * * 5', 60)
+    schedule: new ScheduleItem("0 16 * * 5", 60),
   },
   {
     name: "Timezones",
     splash_text: "International Music and Good Vibes",
-    description: "Come and listen to music from all over the world! There's no jet lag here, only Timezones.",
+    description:
+      "Come and listen to music from all over the world! There's no jet lag here, only Timezones.",
     background: "#232323",
     hosts: [getHostByName("Trey"), getHostByName("Zoe")],
     scheduleString: "Every Wednesday from 3:30pm to 4:30pm",
-    schedule: new ScheduleItem('30 15 * * 3', 60)
+    schedule: new ScheduleItem("30 15 * * 3", 60),
   },
   {
     name: "The Bard's Tale",
@@ -79,18 +81,19 @@ export const shows: Show[] = [
     background: "#ddfe60",
     hosts: [getHostByName("Caden")],
     scheduleString: "Every Sunday from 1pm to 3pm",
-    schedule: new ScheduleItem('0 13 * * 0', 120)
+    schedule: new ScheduleItem("0 13 * * 0", 120),
   },
   {
     name: "KRNL Tabling!",
     splash_text: "Come say hi!",
-    description: "We'll be on the third floor of Thomas Commons during lunch! Come say hi! Mark will also be live throughout the entirety of lunch!",
+    description:
+      "We'll be on the third floor of Thomas Commons during lunch! Come say hi! Mark will also be live throughout the entirety of lunch!",
     background: "#ddfe60",
     hosts: [KRNL_HOST],
     scheduleString: "Soon!",
-    schedule: new ScheduleItem('0 11 18,19 1 *', 120, new Date(2023, 2, 2)),
-    hiddenAfter: new Date(2023, 1, 22)
-  }
+    schedule: new ScheduleItem("0 11 18,19 1 *", 120, new Date(2023, 2, 2)),
+    hiddenAfter: new Date(2023, 1, 22),
+  },
 ];
 
 export function getShowByName(name: string): Show | undefined {
@@ -114,7 +117,7 @@ export function getAllShows(): Show[] {
       }
     }
     return true;
-  })
+  });
 }
 
 export function findShowByName(name: string, slug?: boolean): Show | undefined {

@@ -20,7 +20,8 @@ function Card({
   // }
 
   if (background === undefined) {
-    background = "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%)";
+    background =
+      "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%)";
   } else {
     if (background.startsWith("http") || background.startsWith("/")) {
       background = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), url(${background})`;

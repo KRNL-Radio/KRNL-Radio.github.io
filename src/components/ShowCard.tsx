@@ -9,7 +9,12 @@ function ShowCard({ show }: { show: Show }) {
     nav(`/schedule/shows/${slugify(show.name)}`);
   };
   return (
-    <Card title={show.name} subtitle={show.scheduleString} background={show.background} onClick={clickHandler} />
+    <Card
+      title={show.name}
+      subtitle={show.scheduleString}
+      background={show.background}
+      onClick={clickHandler}
+    />
   );
 }
 

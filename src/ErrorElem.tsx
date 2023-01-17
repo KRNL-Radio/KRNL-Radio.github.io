@@ -8,7 +8,7 @@ export function ErrorElem() {
   if (isRouteErrorResponse(error)) {
     switch (error.status) {
       case 404:
-        console.error("Page not found!")
+        console.error("Page not found!");
         // window.location.hash
         break;
 
@@ -26,7 +26,6 @@ export function ErrorElem() {
 
         <h2 className="text-2xl font-bold text-center">Page not found</h2>
       </div>
-
     </div>
   );
 }
