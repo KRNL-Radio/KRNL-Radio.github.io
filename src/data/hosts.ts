@@ -205,15 +205,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   //   socials: [],
   //   badges: [HostBadge.DJ],
   // },
-  // {
-  //   name: "Zoe",
-  //   pronouns: ["she", "her"],
-  //   splash_text: "The The",
-  //   bio: `Markdown render demo`,
-  //   image: "https://picsum.photos/516",
-  //   socials: [],
-  //   badges: [HostBadge["Faculty Advisor"]],
-  // }
 ];
 
 export function findHostByName(name: string, slug?: boolean): Host | undefined {

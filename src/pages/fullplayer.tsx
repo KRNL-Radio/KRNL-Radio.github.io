@@ -5,9 +5,11 @@ import type { Container, Engine } from "tsparticles-engine";
 import Header from "../components/Header";
 import React from "react";
 import { FIRE_THEME } from "../player/themes";
-import { LargeLoading } from "../components/LoadingScreens";
+import { LargeLoading, SmallLoading } from "../components/LoadingScreens";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { RequestTrack } from "../requests/core";
+import Countdown from "../components/Countdown";
 // import Stats from "stats.js";
 
 const Particles = React.lazy(() => import("react-particles"));
@@ -160,53 +162,163 @@ function FullPlayer() {
               <FontAwesomeIcon icon={solid("pause")} className="swap-on" />
               <FontAwesomeIcon icon={solid("play")} className="swap-off" />
             </label>
-            <label htmlFor="volume-modal" className="text-4xl">
-              <FontAwesomeIcon
-                icon={solid("volume-up")}
-                className="text-white"
-              />
-            </label>
-            <input
-              type="checkbox"
-              id="volume-modal"
-              className="modal-toggle"
-              data-theme="luxury"
-            />
-            <div
-              className="modal modal-bottom sm:modal-middle"
-              data-theme="luxury"
-            >
-              <div className="modal-box">
-                <div className="flex flex-row items-center">
-                  <FontAwesomeIcon
-                    icon={solid("volume-down")}
-                    className="text-white"
-                  />
-                  <input
-                    className="range p-2"
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    defaultValue={window.player.get_volume}
-                    onChange={(e) => {
-                      window.player.volume(parseFloat(e.target.value));
-                    }}
-                  />
-                  <FontAwesomeIcon
-                    icon={solid("volume-up")}
-                    className="text-white"
-                  />
-                </div>
-                <div className="modal-action">
-                  <label htmlFor="volume-modal" className="btn">
-                    Close
-                  </label>
-                </div>
-              </div>
+            <div>
+              <label
+                htmlFor="requests-modal"
+                className="text-4xl p-2 cursor-pointer"
+                id="requests-modal-icon"
+              >
+                <FontAwesomeIcon icon={solid("list")} className="text-white" />
+              </label>
+              <label
+                htmlFor="volume-modal"
+                className="text-4xl p-2 cursor-pointer"
+                id="volume-modal-icon"
+              >
+                <FontAwesomeIcon
+                  icon={solid("volume-up")}
+                  className="text-white"
+                />
+              </label>
             </div>
           </div>
         </Suspense>
+      </div>
+      <div>
+        {/* modals */}
+        <input
+          type="checkbox"
+          id="volume-modal"
+          className="modal-toggle"
+          data-theme="luxury"
+        />
+        <div className="modal modal-middle" data-theme="luxury">
+          <div className="modal-box">
+            <div className="flex flex-row items-center">
+              <FontAwesomeIcon
+                icon={solid("volume-down")}
+                className="text-white p-2"
+              />
+              <input
+                className="range p-2"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                defaultValue={window.player.get_volume}
+                onChange={(e) => {
+                  window.player.volume(parseFloat(e.target.value));
+                }}
+              />
+              <FontAwesomeIcon
+                icon={solid("volume-up")}
+                className="text-white p-2"
+              />
+            </div>
+            <div className="modal-action">
+              <label htmlFor="volume-modal" className="btn">
+                Close
+              </label>
+            </div>
+          </div>
+        </div>
+        <input
+          type="checkbox"
+          id="requests-modal"
+          className="modal-toggle"
+          data-theme="luxury"
+        />
+        <div className="modal modal-middle" data-theme="luxury">
+          <div className="modal-box">
+            <div className="flex flex-row items-center">
+              <RequestsModal />
+            </div>
+            <div className="modal-action">
+              <label htmlFor="requests-modal" className="btn">
+                Close
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RequestsModal() {
+  const [tracks, setTracks] = React.useState<RequestTrack[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [status, setStatus] = React.useState(
+    window.player.requests_core.status
+  );
+  const [pnr, setPnr] = React.useState(
+    window.player.requests_core.probable_next_request
+  );
+  useEffect(() => {
+    window.player.requests_core.get_tracks().then((res_tracks) => {
+      setTracks(res_tracks);
+      setLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    let interv = setInterval(() => {
+      window.player.requests_core.update_throttle_status();
+      setStatus(window.player.requests_core.status);
+      setPnr(window.player.requests_core.probable_next_request);
+    }, 1000);
+    return function cleanup() {
+      clearInterval(interv);
+    };
+  }, []);
+
+  return (
+    <div className="flex flex-col">
+      <div className="text-2xl text-white">Request a Song</div>
+      {status === "temporary_throttled" || status === "daily_throttled" ? (
+        <div className="text-xl text-white">
+          You've been throttled! Try again in about{" "}
+          <Countdown to={pnr} hideDays={true}></Countdown>
+        </div>
+      ) : (
+        <></>
+      )}
+      <div className="overscroll-contain overflow-scroll h-96">
+        {loading
+          ? SmallLoading()
+          : tracks.map((track) => {
+              return (
+                <div
+                  className="flex flex-row items-center border-t p-2"
+                  key={track.id}
+                >
+                  <img
+                    loading="lazy"
+                    src={track.artwork.url ?? "https://placekitten.com/128"}
+                    className="w-16 h-16 rounded-lg"
+                  />
+                  <div className="flex flex-col px-4">
+                    <div className="text-white">{track.title}</div>
+                    <div className="text-white">{track.artist}</div>
+                  </div>
+                  <div className="flex flex-row items-center justify-end flex-grow">
+                    <FontAwesomeIcon
+                      onClick={async () => {
+                        try {
+                          await window.player.requests_core.request(track.id);
+                        } catch (_) {}
+                        setStatus(window.player.requests_core.status);
+                        setPnr(
+                          window.player.requests_core.probable_next_request
+                        );
+                      }}
+                      icon={solid("add")}
+                      className="text-white text-xl p-2 cursor-pointer"
+                    />
+                  </div>
+                </div>
+              );
+            })}
       </div>
     </div>
   );

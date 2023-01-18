@@ -22,15 +22,16 @@
 // {}
 
 import parser from "cron-parser";
+import { toast } from "react-toastify";
 import { Emitter } from "../player/Emitter";
 
-type RequestStatus =
+export type RequestStatus =
   | "available"
   | "temporary_throttled"
   | "daily_throttled"
   | "unavailable";
 
-type RequestTrack = {
+export type RequestTrack = {
   id: number;
   title: string;
   artist: string;
@@ -44,6 +45,7 @@ export default class RequestsCore extends Emitter {
   station_id: string;
   status: RequestStatus = "unavailable";
   last_request: Date = new Date(0);
+  probable_next_request: Date = new Date(0);
   requests_today: number = 0;
   requests_this_period: number = 0;
   total_requests: number = 0;
@@ -94,11 +96,18 @@ export default class RequestsCore extends Emitter {
     if (this.requests_this_period >= this.max_requests_per_period) {
       console.log("hit temporary throttled");
       this.status = "temporary_throttled";
+      this.probable_next_request = next_temporary;
     }
 
     if (this.requests_today >= this.max_requests_per_day) {
       console.log("hit daily throttled");
       this.status = "daily_throttled";
+      this.probable_next_request = next_daily;
+    }
+
+    if (this.status === "unavailable") {
+      // we're going to assume we're good, don't have any data!
+      this.status = "available";
     }
 
     this._save_to_storage();
@@ -176,10 +185,16 @@ export default class RequestsCore extends Emitter {
       } else {
         this.hit_period_throttle();
       }
+      toast("Throttled!", { type: "error" });
       this.emit("throttled", this.status);
     } else if (response.status === 201) {
       this.hit_request();
+      toast("Request sent!", { type: "success" });
       this.emit("success");
+    } else {
+      // how did we get here???
+      console.log("unknown error", response);
+      toast("Unknown error", { type: "error" });
     }
   }
 
