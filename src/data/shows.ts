@@ -83,17 +83,17 @@ export const shows: Show[] = [
     scheduleString: "Every Sunday from 1pm to 3pm",
     schedule: new ScheduleItem("0 13 * * 0", 120),
   },
-  {
-    name: "KRNL Tabling!",
-    splash_text: "Come say hi!",
-    description:
-      "We'll be on the third floor of Thomas Commons during lunch! Come say hi! Mark will also be live throughout the entirety of lunch!",
-    background: "#ddfe60",
-    hosts: [KRNL_HOST],
-    scheduleString: "Soon!",
-    schedule: new ScheduleItem("0 11 18,19 1 *", 120, new Date(2023, 2, 2)),
-    hiddenAfter: new Date(2023, 1, 22),
-  },
+  // {
+  //   name: "KRNL Tabling!",
+  //   splash_text: "Come say hi!",
+  //   description:
+  //     "We'll be on the third floor of Thomas Commons during lunch! Come say hi! Mark will also be live throughout the entirety of lunch!",
+  //   background: "#ddfe60",
+  //   hosts: [KRNL_HOST],
+  //   scheduleString: "Soon!",
+  //   schedule: new ScheduleItem("0 11 18,19 1 *", 120, new Date(2023, 2, 2)),
+  //   hiddenAfter: new Date(2023, 1, 22),
+  // },
 ];
 
 export function getShowByName(name: string): Show | undefined {
