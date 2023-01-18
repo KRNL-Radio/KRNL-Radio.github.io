@@ -32,6 +32,19 @@ export function SmallLoading() {
   );
 }
 
+export function IconLoading() {
+  return (
+    <div className="text-white">
+      <div className="flex flex-col items-center justify-center p-4">
+        <FontAwesomeIcon
+          icon={ICON}
+          className="text-6xl animate-spin select-none pointer-events-none"
+        />
+      </div>
+    </div>
+  );
+}
+
 export function TinyLoading() {
   return (
     <div className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500">

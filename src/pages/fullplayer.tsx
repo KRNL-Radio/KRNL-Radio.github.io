@@ -1,11 +1,20 @@
 import { Suspense, useCallback, useEffect } from "react";
+import {
+  LazyLoadComponent,
+  LazyLoadImage,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 // import Particles from "react-particles";
 import type { Container, Engine } from "tsparticles-engine";
 // import {MoveDirection} from "tsparticles-engine/types/Enums/Directions/MoveDirection";
 import Header from "../components/Header";
 import React from "react";
 import { FIRE_THEME } from "../player/themes";
-import { LargeLoading, SmallLoading } from "../components/LoadingScreens";
+import {
+  IconLoading,
+  LargeLoading,
+  SmallLoading,
+} from "../components/LoadingScreens";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { RequestTrack } from "../requests/core";
@@ -231,7 +240,9 @@ function FullPlayer() {
         <div className="modal modal-middle" data-theme="luxury">
           <div className="modal-box">
             <div className="flex flex-row items-center">
-              <RequestsModal />
+              <LazyLoadComponent>
+                <RequestsModal />
+              </LazyLoadComponent>
             </div>
             <div className="modal-action">
               <label htmlFor="requests-modal" className="btn">
@@ -292,11 +303,19 @@ function RequestsModal() {
                   className="flex flex-row items-center border-t p-2"
                   key={track.id}
                 >
-                  <img
+                  <LazyLoadImage
+                    src={track.artwork.url ?? "https://placekitten.com/128"}
+                    className="w-16 h-16 rounded-lg"
+                    alt=""
+                    effect="opacity"
+                    placeholder={<IconLoading />}
+                  />
+                  {/* <img
                     loading="lazy"
                     src={track.artwork.url ?? "https://placekitten.com/128"}
                     className="w-16 h-16 rounded-lg"
-                  />
+                    alt=""
+                  /> */}
                   <div className="flex flex-col px-4">
                     <div className="text-white">{track.title}</div>
                     <div className="text-white">{track.artist}</div>
