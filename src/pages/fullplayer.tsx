@@ -259,6 +259,8 @@ function FullPlayer() {
 function RequestsModal() {
   const [tracks, setTracks] = React.useState<RequestTrack[]>([]);
   const [loading, setLoading] = React.useState(true);
+  const [searchText, setSearchText] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState<RequestTrack[]>([]);
   const [status, setStatus] = React.useState(
     window.player.requests_core.status
   );
@@ -268,9 +270,24 @@ function RequestsModal() {
   useEffect(() => {
     window.player.requests_core.get_tracks().then((res_tracks) => {
       setTracks(res_tracks);
+      setSearchResults(res_tracks);
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (searchText === "") {
+      setSearchResults(tracks);
+    } else {
+      setSearchResults(
+        tracks.filter(
+          (track) =>
+            track.title.toLowerCase().includes(searchText.toLowerCase()) ||
+            track.artist.toLowerCase().includes(searchText.toLowerCase())
+        )
+      );
+    }
+  }, [searchText, tracks]);
 
   useEffect(() => {
     let interv = setInterval(() => {
@@ -286,6 +303,12 @@ function RequestsModal() {
   return (
     <div className="flex flex-col">
       <div className="text-2xl text-white">Request a Song</div>
+      <input
+        type="text"
+        placeholder="Search..."
+        className="input input-bordered w-full"
+        onChange={(e) => setSearchText(e.target.value)}
+      />
       {status === "temporary_throttled" || status === "daily_throttled" ? (
         <div className="text-xl text-white">
           You've been throttled! Try again in about{" "}
@@ -297,10 +320,10 @@ function RequestsModal() {
       <div className="overscroll-contain overflow-scroll h-96">
         {loading
           ? SmallLoading()
-          : tracks.map((track) => {
+          : searchResults.map((track) => {
               return (
                 <div
-                  className="flex flex-row items-center border-t p-2"
+                  className="flex flex-row items-center border-t p-2 w-full"
                   key={track.id}
                 >
                   <LazyLoadImage
@@ -338,6 +361,16 @@ function RequestsModal() {
                 </div>
               );
             })}
+        {searchResults.length === 0 && tracks.length !== 0 ? (
+          <div className="text-white text-xl">No results found</div>
+        ) : (
+          <></>
+        )}
+        {tracks.length === 0 ? (
+          <div className="text-white text-xl">Requests disabled!</div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
