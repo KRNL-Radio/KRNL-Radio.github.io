@@ -67,7 +67,7 @@
     "@tailwindcss/typography": "^0.5.8",
     "@types/react-transition-group": "^4.4.5",
     "autoprefixer": "^10.4.13",
-    "gh-pages": "^4.0.0",
+    "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.20",
