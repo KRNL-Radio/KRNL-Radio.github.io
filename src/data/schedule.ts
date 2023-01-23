@@ -50,7 +50,12 @@ export class ScheduleItem {
           start = nextDate;
         }
       }
+    } else if (start instanceof Date) {
+      if (typeof end === "number") {
+        end = new Date(start.getTime() + end * 60000);
+      }
     }
+
     return now >= start && now <= end;
   }
 
@@ -68,6 +73,31 @@ export class ScheduleItem {
       return start;
     }
     return undefined;
+  }
+
+  endToDate() {
+    let now = new Date();
+    let end = this.end;
+    if (typeof end === "number") {
+      let start = this.start;
+      if (typeof start === "string") {
+        let startExp = parser.parseExpression(start, PARSER_OPTIONS);
+        let prevDate = startExp.prev().toDate();
+        let nextDate = startExp.next().toDate();
+        // which one is closer?
+        if (
+          Math.abs(prevDate.getTime() - now.getTime()) <
+          Math.abs(nextDate.getTime() - now.getTime())
+        ) {
+          end = new Date(prevDate.getTime() + end * 60000);
+        } else {
+          end = new Date(nextDate.getTime() + end * 60000);
+        }
+      } else {
+        end = new Date(start.getTime() + end * 60000);
+      }
+    }
+    return end;
   }
 
   static getParser() {

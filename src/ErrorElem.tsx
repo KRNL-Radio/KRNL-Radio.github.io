@@ -11,16 +11,19 @@ export function ErrorElem() {
         console.error("Page not found!");
         // window.location.hash
         break;
+      // can we get other errors??
 
       default:
+        console.error("Other route error", error);
+        // FLAGS
         break;
     }
+  } else {
+    console.error("Other error (not a route one though!!)", error);
   }
   return (
     <div>
       <Header />
-      {/* 404 page */}
-      {/* center text */}
       <div>
         <h1 className="text-5xl font-bold text-center">404</h1>
 

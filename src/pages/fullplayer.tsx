@@ -1,13 +1,25 @@
 import { Suspense, useCallback, useEffect } from "react";
+import {
+  LazyLoadComponent,
+  LazyLoadImage,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 // import Particles from "react-particles";
 import type { Container, Engine } from "tsparticles-engine";
 // import {MoveDirection} from "tsparticles-engine/types/Enums/Directions/MoveDirection";
 import Header from "../components/Header";
 import React from "react";
 import { FIRE_THEME } from "../player/themes";
-import { LargeLoading } from "../components/LoadingScreens";
+import PlaceholderImage from "../assets/placeholder.jpg";
+import {
+  IconLoading,
+  LargeLoading,
+  SmallLoading,
+} from "../components/LoadingScreens";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { RequestTrack } from "../requests/core";
+import Countdown from "../components/Countdown";
 // import Stats from "stats.js";
 
 const Particles = React.lazy(() => import("react-particles"));
@@ -30,9 +42,7 @@ function FullPlayer() {
 
   const [title, setTitle] = React.useState("Loading...");
   const [host, setHost] = React.useState("Loading...");
-  const [albumArt, setAlbumArt] = React.useState(
-    "https://placekitten.com/512/512"
-  );
+  const [albumArt, setAlbumArt] = React.useState(PlaceholderImage);
   // const [fpsCounter, setFpsCounter] = React.useState(false);
 
   // useEffect(() => {
@@ -160,53 +170,206 @@ function FullPlayer() {
               <FontAwesomeIcon icon={solid("pause")} className="swap-on" />
               <FontAwesomeIcon icon={solid("play")} className="swap-off" />
             </label>
-            <label htmlFor="volume-modal" className="text-4xl">
-              <FontAwesomeIcon
-                icon={solid("volume-up")}
-                className="text-white"
-              />
-            </label>
-            <input
-              type="checkbox"
-              id="volume-modal"
-              className="modal-toggle"
-              data-theme="luxury"
-            />
-            <div
-              className="modal modal-bottom sm:modal-middle"
-              data-theme="luxury"
-            >
-              <div className="modal-box">
-                <div className="flex flex-row items-center">
-                  <FontAwesomeIcon
-                    icon={solid("volume-down")}
-                    className="text-white"
-                  />
-                  <input
-                    className="range p-2"
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    defaultValue={window.player.get_volume}
-                    onChange={(e) => {
-                      window.player.volume(parseFloat(e.target.value));
-                    }}
-                  />
-                  <FontAwesomeIcon
-                    icon={solid("volume-up")}
-                    className="text-white"
-                  />
-                </div>
-                <div className="modal-action">
-                  <label htmlFor="volume-modal" className="btn">
-                    Close
-                  </label>
-                </div>
-              </div>
+            <div>
+              <label
+                htmlFor="requests-modal"
+                className="text-4xl p-2 cursor-pointer"
+                id="requests-modal-icon"
+              >
+                <FontAwesomeIcon icon={solid("list")} className="text-white" />
+              </label>
+              <label
+                htmlFor="volume-modal"
+                className="text-4xl p-2 cursor-pointer"
+                id="volume-modal-icon"
+              >
+                <FontAwesomeIcon
+                  icon={solid("volume-up")}
+                  className="text-white"
+                />
+              </label>
             </div>
           </div>
         </Suspense>
+      </div>
+      <div>
+        {/* modals */}
+        <input
+          type="checkbox"
+          id="volume-modal"
+          className="modal-toggle"
+          data-theme="luxury"
+        />
+        <div className="modal modal-middle" data-theme="luxury">
+          <div className="modal-box">
+            <div className="flex flex-row items-center">
+              <FontAwesomeIcon
+                icon={solid("volume-down")}
+                className="text-white p-2"
+              />
+              <input
+                className="range p-2"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                defaultValue={window.player.get_volume}
+                onChange={(e) => {
+                  window.player.volume(parseFloat(e.target.value));
+                }}
+              />
+              <FontAwesomeIcon
+                icon={solid("volume-up")}
+                className="text-white p-2"
+              />
+            </div>
+            <div className="modal-action">
+              <label htmlFor="volume-modal" className="btn">
+                Close
+              </label>
+            </div>
+          </div>
+        </div>
+        <input
+          type="checkbox"
+          id="requests-modal"
+          className="modal-toggle"
+          data-theme="luxury"
+        />
+        <div className="modal modal-middle" data-theme="luxury">
+          <div className="modal-box">
+            <div className="flex flex-row items-center">
+              <LazyLoadComponent>
+                <RequestsModal />
+              </LazyLoadComponent>
+            </div>
+            <div className="modal-action">
+              <label htmlFor="requests-modal" className="btn">
+                Close
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RequestsModal() {
+  const [tracks, setTracks] = React.useState<RequestTrack[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [searchText, setSearchText] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState<RequestTrack[]>([]);
+  const [status, setStatus] = React.useState(
+    window.player.requests_core.status
+  );
+  const [pnr, setPnr] = React.useState(
+    window.player.requests_core.probable_next_request
+  );
+  useEffect(() => {
+    window.player.requests_core.get_tracks().then((res_tracks) => {
+      setTracks(res_tracks);
+      setSearchResults(res_tracks);
+      setLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (searchText === "") {
+      setSearchResults(tracks);
+    } else {
+      setSearchResults(
+        tracks.filter(
+          (track) =>
+            track.title.toLowerCase().includes(searchText.toLowerCase()) ||
+            track.artist.toLowerCase().includes(searchText.toLowerCase())
+        )
+      );
+    }
+  }, [searchText, tracks]);
+
+  useEffect(() => {
+    let interv = setInterval(() => {
+      window.player.requests_core.update_throttle_status();
+      setStatus(window.player.requests_core.status);
+      setPnr(window.player.requests_core.probable_next_request);
+    }, 1000);
+    return function cleanup() {
+      clearInterval(interv);
+    };
+  }, []);
+
+  return (
+    <div className="flex flex-col w-full">
+      <div className="text-2xl text-white">Request a Song</div>
+      <input
+        type="text"
+        placeholder="Search..."
+        className="input input-bordered w-full"
+        onChange={(e) => setSearchText(e.target.value)}
+      />
+      {status === "temporary_throttled" || status === "daily_throttled" ? (
+        <div className="text-xl text-white">
+          You've been throttled! Try again in about{" "}
+          <Countdown to={pnr} hideDays={true}></Countdown>
+        </div>
+      ) : (
+        <></>
+      )}
+      <div className="overscroll-contain overflow-auto h-96">
+        {loading
+          ? SmallLoading()
+          : searchResults.map((track) => {
+              return (
+                <div
+                  className="flex flex-row items-center border-t p-2 w-full"
+                  key={track.id}
+                >
+                  <LazyLoadImage
+                    src={track.artwork.url ?? PlaceholderImage}
+                    className="w-16 h-16 rounded-lg"
+                    alt=""
+                    effect="opacity"
+                    placeholder={<IconLoading />}
+                  />
+                  {/* <img
+                    loading="lazy"
+                    src={track.artwork.url ?? "https://placekitten.com/128"}
+                    className="w-16 h-16 rounded-lg"
+                    alt=""
+                  /> */}
+                  <div className="flex flex-col px-4">
+                    <div className="text-white">{track.title}</div>
+                    <div className="text-white">{track.artist}</div>
+                  </div>
+                  <div className="flex flex-row items-center justify-end flex-grow">
+                    <FontAwesomeIcon
+                      onClick={async () => {
+                        try {
+                          await window.player.requests_core.request(track.id);
+                        } catch (_) {}
+                        setStatus(window.player.requests_core.status);
+                        setPnr(
+                          window.player.requests_core.probable_next_request
+                        );
+                      }}
+                      icon={solid("add")}
+                      className="text-white text-xl p-2 cursor-pointer"
+                    />
+                  </div>
+                </div>
+              );
+            })}
+        {searchResults.length === 0 && tracks.length !== 0 ? (
+          <div className="text-white text-xl">No results found</div>
+        ) : (
+          <></>
+        )}
+        {tracks.length === 0 ? (
+          <div className="text-white text-xl">Requests disabled!</div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
