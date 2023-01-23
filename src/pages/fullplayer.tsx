@@ -10,6 +10,7 @@ import type { Container, Engine } from "tsparticles-engine";
 import Header from "../components/Header";
 import React from "react";
 import { FIRE_THEME } from "../player/themes";
+import PlaceholderImage from "../assets/placeholder.jpg";
 import {
   IconLoading,
   LargeLoading,
@@ -41,9 +42,7 @@ function FullPlayer() {
 
   const [title, setTitle] = React.useState("Loading...");
   const [host, setHost] = React.useState("Loading...");
-  const [albumArt, setAlbumArt] = React.useState(
-    "https://placekitten.com/512/512"
-  );
+  const [albumArt, setAlbumArt] = React.useState(PlaceholderImage);
   // const [fpsCounter, setFpsCounter] = React.useState(false);
 
   // useEffect(() => {
@@ -301,7 +300,7 @@ function RequestsModal() {
   }, []);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="text-2xl text-white">Request a Song</div>
       <input
         type="text"
@@ -317,7 +316,7 @@ function RequestsModal() {
       ) : (
         <></>
       )}
-      <div className="overscroll-contain overflow-scroll h-96">
+      <div className="overscroll-contain overflow-auto h-96">
         {loading
           ? SmallLoading()
           : searchResults.map((track) => {
@@ -327,7 +326,7 @@ function RequestsModal() {
                   key={track.id}
                 >
                   <LazyLoadImage
-                    src={track.artwork.url ?? "https://placekitten.com/128"}
+                    src={track.artwork.url ?? PlaceholderImage}
                     className="w-16 h-16 rounded-lg"
                     alt=""
                     effect="opacity"
