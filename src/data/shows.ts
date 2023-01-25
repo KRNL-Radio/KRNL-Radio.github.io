@@ -40,10 +40,10 @@ export const shows: Show[] = [
     name: "The Vibe",
     splash_text: "vibes~",
     description:
-      "Somehow even *more* random than Mark's show, but at least 10x more chill! Ice not required.",
+      "Somehow even *more* random than Mark's show, but at least 10x more chill! Ice not required.\n\n*when he feels like it",
     background: "#1c2dae",
     hosts: [getHostByName("Grayson")],
-    scheduleString: "Every Saturday from 9pm to 10pm",
+    scheduleString: "Every Saturday from 9pm to 10pm*",
     schedule: new ScheduleItem("0 21 * * 6", 60),
   },
   {
