@@ -19,7 +19,8 @@ export const shows: Show[] = [
   {
     name: "The Graveyard Shift",
     splash_text: "",
-    description: "",
+    description:
+      "Alt is such a broad genre. What does any of it even mean? All I know is you love listening to me every week.",
     background: "#fc73e3",
     hosts: [getHostByName("Adrien")],
     scheduleString: "Every Tuesday from 10pm to 11pm",
