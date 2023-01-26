@@ -24,6 +24,8 @@ function getImage(social: Social) {
       return brands("apple");
     case "GitHub":
       return brands("github");
+    case "TikTok":
+      return brands("tiktok");
     case "Email":
       return solid("envelope");
     default:

@@ -95,6 +95,15 @@ export const shows: Show[] = [
     schedule: new ScheduleItem("0 11 24,25 1 *", 120, new Date(2023, 2, 2)),
     hiddenAfter: new Date(2023, 2, 1),
   },
+  {
+    name: "CCPR",
+    splash_text: "",
+    description: "Because we can do anything in 18 ~~days~~ minutes!",
+    background: "#ddfe60",
+    hosts: [getHostByName("Adrien"), getHostByName("Sophie")],
+    scheduleString: "Every Monday from 8am to 8:18am",
+    schedule: new ScheduleItem("0 8 * * 1", 18),
+  },
 ];
 
 export function getShowByName(name: string): Show | undefined {

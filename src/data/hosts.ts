@@ -51,7 +51,8 @@ export type Platform =
   | "Apple Music"
   | "GitHub"
   | "Tumblr"
-  | "Email";
+  | "Email"
+  | "TikTok";
 
 export type Social = {
   platform: Platform;
@@ -248,13 +249,13 @@ export const KRNL_HOST: Host = {
       url: "https://twitter.com/KRNL89_7",
     },
     {
+      platform: "TikTok",
+      url: "https://www.tiktok.com/@krnl_cornell",
+    },
+    {
       platform: "Email",
       url: "mailto:krnl@cornellcollege.edu",
     },
-    // {
-    //   platform: "Tumblr",
-    //   url: "https://krnl.tumblr.com",
-    // }
   ],
   badges: [HostBadge.Hidden],
 };
@@ -270,10 +271,10 @@ export const NOT_FOUND_HOST: Host = {
 };
 
 export const AUTOMATED_HOST: Host = {
-  name: "Automated",
+  name: "Max Jr.",
   pronouns: ["they", "them"],
   splash_text: "The Machine",
-  bio: "Automated is a machine that plays music. They are not a person, but they are a member of the team.",
+  bio: "Max Jr. is a machine that plays music. They are not a person, but they are a member of the team.",
   image: "",
   socials: [],
   badges: [HostBadge.Hidden],
