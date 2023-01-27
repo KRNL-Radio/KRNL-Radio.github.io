@@ -89,7 +89,7 @@ export const hosts: Host[] = [
         url: "https://open.spotify.com/user/akaplan1488",
       },
     ],
-    badges: [HostBadge.DJ, HostBadge["Station Manager"]],
+    badges: ["DJ", "Station Manager"],
   },
   {
     name: "Mark",
