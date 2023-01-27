@@ -1,6 +1,6 @@
-import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Markdown from "../components/Markdown";
 import ShowCard from "../components/ShowCard";
 import SocialButtons from "../components/SocialButtons";
 import { findHostByName } from "../data/hosts";
@@ -28,9 +28,9 @@ function IndividualMemberPage() {
             <h1 className="text-2xl">{member.name}</h1>
             <h2 className="text-l">({member.pronouns.join(" / ")})</h2>
             <h2 className="text-xl">{member.splash_text}</h2>
-            <ReactMarkdown className="p-4 bg-violet-700 rounded-xl my-8 text-center">
+            <Markdown className="p-4 bg-violet-700 rounded-xl my-8 text-center">
               {member.bio}
-            </ReactMarkdown>
+            </Markdown>
             {/* add a list of the shows that they made */}
             <div className="w-full">
               <h2 className="text-xl text-center">Hosts</h2>

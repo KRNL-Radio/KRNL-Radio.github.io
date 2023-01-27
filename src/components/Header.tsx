@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -31,7 +31,7 @@ function Header() {
 
   return (
     <div>
-      {/* <ScrollRestoration /> */}
+      <ScrollRestoration />
       <nav className="border-white border-solid border-b text-xl m-0 p-3 text-center text-white bg-slate-900">
         <ul className="m-0 p-0">
           <Link to="/" className="inline-block my-0 mx-4">
@@ -52,7 +52,7 @@ function Header() {
         </ul>
       </nav>
       {/* text to the very right of the screen */}
-      <div className="absolute top-0 right-0 m-2 text-white text-right hidden md:block">
+      <div className="absolute top-0 right-0 m-2 text-white text-right hidden lg:block truncate">
         <p className="text-sm">{title}</p>
         <p className="text-sm">{host}</p>
       </div>

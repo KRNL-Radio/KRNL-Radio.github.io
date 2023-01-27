@@ -1,4 +1,5 @@
 import React from "react";
+import Countdown from "../components/Countdown";
 import Header from "../components/Header";
 import ShowCard from "../components/ShowCard";
 import { KRNLSocialButtons } from "../components/SocialButtons";
@@ -11,7 +12,6 @@ function HomePage() {
       <Header />
       <div className="flex flex-col items-center justify-center p-4">
         <h1 className="text-4xl font-bold">Home</h1>
-
         {isScheduleSuppressed() ? (
           <div className="bg-gradient-to-b to-blue-900 from-blue-700 flex justify-center p-4 w-4/5 mx-auto rounded-lg m-4">
             <div className="flex flex-col items-center w-full">

@@ -1,7 +1,7 @@
-import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
 import Countdown from "../components/Countdown";
 import Header from "../components/Header";
+import Markdown from "../components/Markdown";
 import MemberCard from "../components/MemberCard";
 import { findShowByName } from "../data/shows";
 
@@ -19,9 +19,9 @@ function IndividualShowPage() {
           <div className="flex flex-col items-center w-full">
             <h1 className="text-2xl">{show.name}</h1>
             <h2 className="text-xl">{show.splash_text}</h2>
-            <ReactMarkdown className="p-4 bg-violet-700 rounded-xl my-8 text-center">
+            <Markdown className="p-4 bg-violet-700 rounded-xl my-8 text-center">
               {show.description || "*No description!*"}
-            </ReactMarkdown>
+            </Markdown>
             <div className="w-full">
               <h2 className="text-xl text-center">Hosts</h2>
               <div className="flex flex-wrap justify-center p-4 w-full">

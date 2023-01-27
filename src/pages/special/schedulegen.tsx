@@ -63,13 +63,17 @@ function ScheduleGeneratorPage() {
         minutes: durationDT.minute,
       });
       setOutput(
-        exp.stringify() +
-          "\n" +
-          totalDuration +
-          "\n" +
-          nextDateDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY) +
-          "\n" +
-          endDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)
+        // exp.stringify() +
+        //   "\n" +
+        //   totalDuration +
+        //   "\n" +
+        //   nextDateDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY) +
+        //   "\n" +
+        //   endDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)
+        `Cron: ${exp.stringify()}
+Duration: ${totalDuration}
+Start: ${nextDateDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}
+End: ${endDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}`
       );
     }
   }, [dates, startTime, duration]);
@@ -162,7 +166,7 @@ function ScheduleGeneratorPage() {
           <h2 className="text-2xl font-bold">Weekday</h2>
           <div>
             <label className="label cursor-pointer">
-              <span className="label-text">Sunday</span>
+              <span className="label-text text-white">Sunday</span>
               <input
                 type="checkbox"
                 name="sunday"
@@ -172,7 +176,7 @@ function ScheduleGeneratorPage() {
               />
             </label>
             <label className="label cursor-pointer">
-              <span className="label-text">Monday</span>
+              <span className="label-text text-white">Monday</span>
               <input
                 type="checkbox"
                 name="monday"
@@ -182,7 +186,7 @@ function ScheduleGeneratorPage() {
               />
             </label>
             <label className="label cursor-pointer">
-              <span className="label-text">Tuesday</span>
+              <span className="label-text text-white">Tuesday</span>
               <input
                 type="checkbox"
                 name="tuesday"
@@ -192,7 +196,7 @@ function ScheduleGeneratorPage() {
               />
             </label>
             <label className="label cursor-pointer">
-              <span className="label-text">Wednesday</span>
+              <span className="label-text text-white">Wednesday</span>
               <input
                 type="checkbox"
                 name="wednesday"
@@ -202,7 +206,7 @@ function ScheduleGeneratorPage() {
               />
             </label>
             <label className="label cursor-pointer">
-              <span className="label-text">Thursday</span>
+              <span className="label-text text-white">Thursday</span>
               <input
                 type="checkbox"
                 name="thursday"
@@ -212,7 +216,7 @@ function ScheduleGeneratorPage() {
               />
             </label>
             <label className="label cursor-pointer">
-              <span className="label-text">Friday</span>
+              <span className="label-text text-white">Friday</span>
               <input
                 type="checkbox"
                 name="friday"
@@ -222,7 +226,7 @@ function ScheduleGeneratorPage() {
               />
             </label>
             <label className="label cursor-pointer">
-              <span className="label-text">Saturday</span>
+              <span className="label-text text-white">Saturday</span>
               <input
                 type="checkbox"
                 name="saturday"
@@ -241,7 +245,7 @@ function ScheduleGeneratorPage() {
               name="hour"
               value={startTime.hour}
               onChange={startDateCb}
-              className="range"
+              className="range border-cyan-600 border"
             />
             <input
               type="range"
@@ -251,7 +255,7 @@ function ScheduleGeneratorPage() {
               name="minute"
               value={startTime.minute}
               onChange={startDateCb}
-              className="range"
+              className="range border-cyan-600 border"
             />
             <div>{startTime.string}</div>
           </div>
@@ -264,7 +268,7 @@ function ScheduleGeneratorPage() {
               name="hour"
               value={duration.hour}
               onChange={durationCb}
-              className="range"
+              className="range border-cyan-600 border"
             />
             <input
               type="range"
@@ -274,14 +278,14 @@ function ScheduleGeneratorPage() {
               name="minute"
               value={duration.minute}
               onChange={durationCb}
-              className="range"
+              className="range border-cyan-600 border"
             />
             <div>{duration.string}</div>
           </div>
           <h2 className="text-2xl font-bold">Output</h2>
           <div>
             <textarea
-              className="textarea w-64 h-64 textarea-bordered textarea-primary"
+              className="textarea w-96 h-64 textarea-bordered textarea-primary bg-slate-800"
               value={output}
               readOnly
             ></textarea>

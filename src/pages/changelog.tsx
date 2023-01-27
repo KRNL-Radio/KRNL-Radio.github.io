@@ -1,8 +1,7 @@
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Header from "../components/Header";
 import Changelog from "../assets/CHANGELOG.md";
 import { useEffect, useState } from "react";
-import remarkGfm from "remark-gfm";
+import Markdown from "../components/Markdown";
 
 function ChangelogPage() {
   let [changelogMarkdown, setChangelogMarkdown] = useState("Loading...");
@@ -20,12 +19,9 @@ function ChangelogPage() {
       <div className="flex flex-col items-center">
         <div className="bg-gray-900">
           {/* todo: change to markdown */}
-          <ReactMarkdown
-            className="prose !prose-invert"
-            remarkPlugins={[remarkGfm]}
-          >
+          <Markdown className="prose !prose-invert">
             {changelogMarkdown}
-          </ReactMarkdown>
+          </Markdown>
         </div>
       </div>
     </div>
