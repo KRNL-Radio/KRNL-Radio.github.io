@@ -20,6 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { RequestTrack } from "../requests/core";
 import Countdown from "../components/Countdown";
+import type { StreamFormat } from "../player/core";
 // import Stats from "stats.js";
 
 const Particles = React.lazy(() => import("react-particles"));
@@ -188,6 +189,13 @@ function FullPlayer() {
                   className="text-white"
                 />
               </label>
+              <label
+                htmlFor="settings-modal"
+                className="text-4xl p-2 cursor-pointer"
+                id="settings-modal-icon"
+              >
+                <FontAwesomeIcon icon={solid("gear")} className="text-white" />
+              </label>
             </div>
           </div>
         </Suspense>
@@ -250,6 +258,64 @@ function FullPlayer() {
             </div>
           </div>
         </div>
+        <input
+          type="checkbox"
+          id="settings-modal"
+          className="modal-toggle"
+          data-theme="luxury"
+        />
+        <div className="modal modal-middle" data-theme="luxury">
+          <div className="modal-box">
+            <div className="flex flex-row items-center">
+              <LazyLoadComponent>
+                <SettingsModal />
+              </LazyLoadComponent>
+            </div>
+            <div className="modal-action">
+              <label htmlFor="settings-modal" className="btn">
+                Close
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SettingsModal() {
+  const [theme, setTheme] = React.useState();
+  const [themeOptions, setThemeOptions] = React.useState();
+  const [streamFormat, setStreamFormat] = React.useState(
+    window.player.get_preferred_format
+  );
+  return (
+    <div>
+      <div className="text-xl text-white">Theme</div>
+      {/* <select className="text-xl text-white" value={theme} onChange={(e) => {
+      setTheme(e.target.value)
+      window.player.set_theme(e.target.value)
+    }}>
+      {themeOptions.map((theme) => {
+        return <option value={theme}>{theme}</option>
+      })}
+    </select> */}
+      <div className="form-control">
+        <label className="label">
+          <span className="label-text">Stream Format</span>
+        </label>
+        <select
+          className="select select-bordered text-white"
+          value={streamFormat}
+          onChange={(e) => {
+            setStreamFormat(e.target.value as StreamFormat);
+            window.player.setFormat(e.target.value as StreamFormat);
+          }}
+        >
+          <option value="auto">Automatic</option>
+          <option value="desktop">Desktop</option>
+          <option value="mobile">Mobile</option>
+        </select>
       </div>
     </div>
   );

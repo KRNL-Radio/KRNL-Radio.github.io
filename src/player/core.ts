@@ -1,4 +1,5 @@
 import { isMobile } from "is-mobile";
+import { toast } from "react-toastify";
 import { AUTOMATED_HOST } from "../data/hosts";
 import RequestsCore from "../requests/core";
 import { Emitter } from "./Emitter";
@@ -13,9 +14,11 @@ type PlayerData = {
   previous_tracks: Track[];
 };
 
+export type StreamFormat = "mobile" | "desktop" | "auto";
+
 type PlayerOptions = {
   // format is either "desktop", "mobile", or "auto"
-  format: "desktop" | "mobile" | "auto";
+  format: StreamFormat;
   // volume is a number between 0 and 1
   volume: number;
   skip_autoplay: boolean;
@@ -310,6 +313,26 @@ export class PlayerCore extends Emitter {
     }
   }
 
+  setFormat(format: StreamFormat) {
+    this.player_options.format = format;
+    if (this._audio) {
+      toast.promise(
+        new Promise<void>((resolve, reject) => {
+          this.unload();
+          setTimeout(async () => {
+            await this.play();
+            resolve();
+          }, 500);
+        }),
+        {
+          pending: "Changing format...",
+          success: "Format changed!",
+          error: "Failed to change format!",
+        }
+      );
+    }
+  }
+
   get is_playing() {
     if (!this._audio) {
       return false;
@@ -319,5 +342,9 @@ export class PlayerCore extends Emitter {
 
   get get_volume() {
     return this.player_options.volume;
+  }
+
+  get get_preferred_format() {
+    return this.player_options.format;
   }
 }
