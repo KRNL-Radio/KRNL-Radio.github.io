@@ -8,11 +8,12 @@ function ShowCard({ show }: { show: Show }) {
   let clickHandler = () => {
     nav(`/schedule/shows/${slugify(show.name)}`);
   };
+  let bg = show.logo?.opaque || show.background;
   return (
     <Card
       title={show.name}
       subtitle={show.scheduleString}
-      background={show.background}
+      background={bg}
       onClick={clickHandler}
     />
   );

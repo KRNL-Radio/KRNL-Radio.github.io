@@ -1,13 +1,18 @@
 import { slugify } from "../util/slug";
 import { getHostByName, Host, KRNL_HOST } from "./hosts";
 import { ScheduleItem } from "./schedule";
+export type ShowLogo = {
+  transparent: string;
+  opaque: string;
+};
 
 export type Show = {
   name: string;
   splash_text: string;
   description: string;
   hosts: Host[];
-  background: string;
+  logo?: ShowLogo;
+  background?: string;
   guests?: string; // any guests on the show. they don't get their own page, but they get a mention on the show page.
   scheduleString: string;
   schedule: ScheduleItem;

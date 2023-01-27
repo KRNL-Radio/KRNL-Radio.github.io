@@ -1,11 +1,11 @@
 import { slugify } from "../util/slug";
-import GraysonImg from "../assets/grayson.jpg";
-import SophieImg from "../assets/sophie.jpg";
-import AdrienImg from "../assets/adrien.jpg";
-import MarkImg from "../assets/mark.jpg";
-import ZoeImg from "../assets/zoe.jpg";
-import TreyImg from "../assets/trey.jpg";
-import CadenImg from "../assets/caden.jpg";
+import GraysonImg from "../assets/members/grayson.jpg";
+import SophieImg from "../assets/members/sophie.jpg";
+import AdrienImg from "../assets/members/adrien.jpg";
+import MarkImg from "../assets/members/mark.jpg";
+import ZoeImg from "../assets/members/zoe.jpg";
+import TreyImg from "../assets/members/trey.jpg";
+import CadenImg from "../assets/members/caden.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -13,17 +13,17 @@ import getRandomSplash from "../egg/splash";
 // Past: silver
 // Alumni: purple
 
-export enum HostBadge {
-  "DJ",
-  "Website Designer",
-  "Social Media Manager",
-  "Station Manager",
-  "Faculty Advisor",
-  "Record Keeper",
-  "Alumni",
-  "Past", // Not yet alumni, but no longer on the team.
-  "Hidden", // Hidden from the website. Not *really* a badge, but it's easier to handle it here.
-}
+export type HostBadge =
+  | "DJ"
+  | "Station Manager"
+  | "Public Relations"
+  | "Technical Director"
+  | "Sports Director"
+  | "Record Keeper"
+  | "Faculty Advisor"
+  | "Alumni"
+  | "Past" // Not yet alumni, but no longer on the team.
+  | "Hidden"; // Hidden from the website. Not *really* a badge, but it's easier to handle it here.
 
 // export enum Social {
 //   "Twitter",
@@ -126,7 +126,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://github.com/totallynotmark6",
       },
     ],
-    badges: [HostBadge.DJ, HostBadge["Website Designer"]],
+    badges: ["DJ", "Technical Director"],
   },
   {
     name: "Grayson",
@@ -140,7 +140,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://www.instagram.com/son_ofgray/",
       },
     ],
-    badges: [HostBadge.DJ],
+    badges: ["DJ", "Public Relations"],
   },
   {
     name: "Sophie",
@@ -158,7 +158,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://open.spotify.com/user/caucasian_nugget",
       },
     ],
-    badges: [HostBadge.DJ, HostBadge["Record Keeper"]],
+    badges: ["DJ", "Record Keeper"],
   },
   {
     name: "Zoe",
@@ -172,7 +172,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://www.instagram.com/zothevirg.o/",
       },
     ],
-    badges: [HostBadge.DJ],
+    badges: ["DJ"],
   },
   {
     name: "Trey",
@@ -186,7 +186,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://www.instagram.com/ssvfw/",
       },
     ],
-    badges: [HostBadge.DJ],
+    badges: ["DJ"],
   },
   {
     name: "Caden",
@@ -195,7 +195,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     bio: "words",
     image: CadenImg,
     socials: [],
-    badges: [HostBadge.DJ],
+    badges: ["DJ"],
   },
   // {
   //   name: "Matt",
@@ -204,7 +204,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   //   bio: `Markdown render demo`,
   //   image: "https://picsum.photos/516",
   //   socials: [],
-  //   badges: [HostBadge.DJ],
+  //   badges: ["Faculty Advisor"],
   // },
 ];
 
@@ -221,7 +221,7 @@ export function getHostByName(name: string): Host {
 
 export function getAllHosts(): Host[] {
   // return all of the hosts that aren't hidden
-  return hosts.filter((host) => !host.badges?.includes(HostBadge.Hidden));
+  return hosts.filter((host) => !host.badges?.includes("Hidden"));
 }
 
 // So the following three "hosts" are just for internal stuff.
@@ -257,7 +257,7 @@ export const KRNL_HOST: Host = {
       url: "mailto:krnl@cornellcollege.edu",
     },
   ],
-  badges: [HostBadge.Hidden],
+  badges: ["Hidden"],
 };
 
 export const NOT_FOUND_HOST: Host = {
@@ -267,7 +267,7 @@ export const NOT_FOUND_HOST: Host = {
   bio: "The member you are searching for isn't here. They may be hiding, or they may not exist at all.",
   image: "",
   socials: [],
-  badges: [HostBadge.Hidden],
+  badges: ["Hidden"],
 };
 
 export const AUTOMATED_HOST: Host = {
@@ -277,5 +277,5 @@ export const AUTOMATED_HOST: Host = {
   bio: "Max Jr. is a machine that plays music. They are not a person, but they are a member of the team.",
   image: "",
   socials: [],
-  badges: [HostBadge.Hidden],
+  badges: ["Hidden"],
 };
