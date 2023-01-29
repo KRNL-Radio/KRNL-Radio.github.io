@@ -109,6 +109,16 @@ export const shows: Show[] = [
     scheduleString: "Every Monday from 8am to 8:18am",
     schedule: new ScheduleItem("0 8 * * 1", 18),
   },
+  {
+    name: "The Box",
+    splash_text: "",
+    description: "Vibe with music and the occasional conversation",
+    background: "#ddfe60",
+    hosts: [getHostByName("Brock")],
+    guests: "Garnett Strack",
+    scheduleString: "Every Friday from 8pm to 9pm",
+    schedule: new ScheduleItem("0 20 * * 5", 60),
+  },
 ];
 
 export function getShowByName(name: string): Show | undefined {

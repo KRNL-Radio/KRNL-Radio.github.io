@@ -6,6 +6,7 @@ import MarkImg from "../assets/members/mark.jpg";
 import ZoeImg from "../assets/members/zoe.jpg";
 import TreyImg from "../assets/members/trey.jpg";
 import CadenImg from "../assets/members/caden.jpg";
+import BrockImg from "../assets/members/brock.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -141,6 +142,15 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
       },
     ],
     badges: ["DJ", "Public Relations"],
+  },
+  {
+    name: "Brock",
+    pronouns: ["he", "him"],
+    splash_text: "The Elusive One",
+    bio: `Hello! I'm Brock, the one that is impossible to get a hold of. I don't know what I'm doing either :)`,
+    image: BrockImg,
+    socials: [],
+    badges: ["DJ", "Sports Director"],
   },
   {
     name: "Sophie",
