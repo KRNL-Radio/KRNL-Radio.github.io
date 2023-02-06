@@ -9,7 +9,6 @@ import type { Container, Engine } from "tsparticles-engine";
 // import {MoveDirection} from "tsparticles-engine/types/Enums/Directions/MoveDirection";
 import Header from "../components/Header";
 import React from "react";
-import { FIRE_THEME } from "../player/themes";
 import PlaceholderImage from "../assets/placeholder.jpg";
 import {
   IconLoading,
@@ -21,6 +20,8 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { RequestTrack } from "../requests/core";
 import Countdown from "../components/Countdown";
 import type { StreamFormat } from "../player/core";
+import { getAllThemes } from "../player/themes/core";
+import { BrowserThemeWrapper } from "../player/themes/wrapper";
 // import Stats from "stats.js";
 
 const Particles = React.lazy(() => import("react-particles"));
@@ -139,16 +140,9 @@ function FullPlayer() {
       </div>
       <div className="flex flex-grow w-full">
         <Suspense fallback={LargeLoading()}>
-          {isSafari ? (
-            <div className="w-full h-full bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></div>
-          ) : (
-            <Particles
-              id="tsparticles"
-              init={particlesInit}
-              loaded={particlesLoaded}
-              options={FIRE_THEME}
-            ></Particles>
-          )}
+          <BrowserThemeWrapper>
+            <div></div>
+          </BrowserThemeWrapper>
           <div className="flex flex-col text-center bg-indigo-800 bg-opacity-40 w-1/2 h-1/2 absolute top-1/4 left-1/4 rounded-lg p-4 backdrop-blur-sm">
             {/* <img src={albumArt} className="rounded-lg object-scale-down" /> */}
             {/* ensure centered image fits in parent div */}
@@ -284,38 +278,80 @@ function FullPlayer() {
 }
 
 function SettingsModal() {
-  const [theme, setTheme] = React.useState();
-  const [themeOptions, setThemeOptions] = React.useState();
+  const [theme, setTheme] = React.useState("word");
   const [streamFormat, setStreamFormat] = React.useState(
     window.player.get_preferred_format
   );
+
+  // React.useEffect(() => {
+  //   window.player.set_preferred_format(streamFormat);
+  // }, [streamFormat]);
+
+  React.useEffect(() => {
+    if (theme === "word") {
+      return;
+    }
+    localStorage.setItem("theme", theme);
+    // emit event to change theme
+    window.dispatchEvent(
+      new CustomEvent("theme-change", { detail: { theme: theme } })
+    );
+  }, [theme]);
+
+  React.useEffect(() => {
+    let theme = localStorage.getItem("theme");
+    if (theme) {
+      setTheme(theme);
+    }
+  }, []);
+
   return (
     <div>
-      <div className="text-xl text-white">Theme</div>
-      {/* <select className="text-xl text-white" value={theme} onChange={(e) => {
-      setTheme(e.target.value)
-      window.player.set_theme(e.target.value)
-    }}>
-      {themeOptions.map((theme) => {
-        return <option value={theme}>{theme}</option>
-      })}
-    </select> */}
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Stream Format</span>
-        </label>
-        <select
-          className="select select-bordered text-white"
-          value={streamFormat}
-          onChange={(e) => {
-            setStreamFormat(e.target.value as StreamFormat);
-            window.player.setFormat(e.target.value as StreamFormat);
-          }}
-        >
-          <option value="auto">Automatic</option>
-          <option value="desktop">Desktop</option>
-          <option value="mobile">Mobile</option>
-        </select>
+      <div className="text-xl text-white">Settings</div>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Theme</span>
+          </label>
+          <select
+            className="select select-bordered text-white"
+            // defaultValue={theme}
+            value={theme}
+            onChange={(e) => {
+              setTheme(e.target.value);
+            }}
+          >
+            {getAllThemes().map((theme) => (
+              <option value={theme.name} key={theme.name}>
+                {theme.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Stream Format</span>
+          </label>
+          <select
+            className="select select-bordered text-white"
+            // defaultValue={streamFormat}
+            value={streamFormat}
+            onChange={(e) => {
+              setStreamFormat(e.target.value as StreamFormat);
+              window.player.setFormat(e.target.value as StreamFormat);
+            }}
+          >
+            <option value="auto">Automatic</option>
+            <option value="desktop">Desktop</option>
+            <option value="mobile">Mobile</option>
+          </select>
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Theme Options</span>
+            <button className="btn btn-sm">Adjust</button>
+          </label>
+        </div>
       </div>
     </div>
   );

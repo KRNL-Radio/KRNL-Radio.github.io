@@ -71,6 +71,8 @@ export class PlayerCore extends Emitter {
   private _refresh_track_data_interval?: timer;
   private _refresh_metadata_interval?: timer;
   private _audio?: HTMLAudioElement;
+  private _audio_context?: AudioContext;
+  private _audio_ctx_node?: MediaElementAudioSourceNode;
 
   player_options: PlayerOptions = get_or_default_player_options();
 
@@ -289,11 +291,13 @@ export class PlayerCore extends Emitter {
     }
     this._audio.volume = this.player_options.volume;
     await this._audio.play();
+    this.emit("play");
   }
 
   pause() {
     if (this._audio) {
       this._audio.pause();
+      this.emit("pause");
     }
   }
 
@@ -302,8 +306,11 @@ export class PlayerCore extends Emitter {
       this._audio.pause();
       this._audio.remove();
       this._audio = undefined;
+      this._audio_context = undefined;
+      this._audio_ctx_node = undefined;
     }
     save_player_options(this.player_options);
+    this.emit("unload");
   }
 
   volume(volume: number) {
@@ -331,6 +338,28 @@ export class PlayerCore extends Emitter {
         }
       );
     }
+  }
+
+  get audio_context() {
+    if (!this._audio) {
+      return undefined;
+    }
+    if (!this._audio_context) {
+      this._audio_context = new AudioContext();
+    }
+    return this._audio_context;
+  }
+
+  get audio_node() {
+    if (!this._audio) {
+      return undefined;
+    }
+    if (!this._audio_ctx_node) {
+      this._audio_ctx_node = this.audio_context!.createMediaElementSource(
+        this._audio
+      );
+    }
+    return this._audio_ctx_node;
   }
 
   get is_playing() {

@@ -42,6 +42,14 @@ const router = createHashRouter(
       element: <FullPlayer />,
     },
     {
+      path: "/player/themes",
+      element: <div>Work In Progress</div>,
+    },
+    {
+      path: "/player/mini",
+      element: <div>Work In Progress</div>,
+    },
+    {
       path: "/schedule",
       element: <SchedulePage />,
     },
@@ -72,6 +80,10 @@ const router = createHashRouter(
     {
       path: "/secret/schedule/generator",
       element: <ScheduleGeneratorPage />,
+    },
+    {
+      path: "/secret/scriptable",
+      element: <div>Work In Progress</div>,
     },
   ],
   {

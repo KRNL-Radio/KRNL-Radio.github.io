@@ -148,3 +148,54 @@ export const FIRE_THEME: ISourceOptions = {
     image: "radial-gradient(#4a0000, #000)",
   },
 };
+
+export const SNOW_THEME: ISourceOptions = {
+  fpsLimit: 120,
+  fullScreen: {
+    enable: true,
+    zIndex: -1,
+  },
+  background: {
+    color: "#0d47a1",
+  },
+  detectRetina: true,
+  interactivity: {
+    detectsOn: "window",
+    events: {
+      onClick: {
+        enable: true,
+        mode: "repulse",
+      },
+      onHover: {
+        enable: true,
+        mode: "bubble",
+      },
+      resize: {
+        enable: true,
+        delay: 0,
+      },
+    },
+  },
+  particles: {
+    move: {
+      direction: "bottom",
+      enable: true,
+      random: false,
+      straight: false,
+    },
+    opacity: {
+      value: { min: 0.1, max: 0.5 },
+    },
+    size: {
+      value: { min: 1, max: 10 },
+    },
+    wobble: {
+      distance: 20,
+      enable: true,
+      speed: {
+        min: -5,
+        max: 5,
+      },
+    },
+  },
+};
