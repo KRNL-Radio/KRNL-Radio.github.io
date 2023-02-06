@@ -1,6 +1,6 @@
 import React, { Suspense, useCallback, useEffect } from "react";
 import { Engine, Container } from "tsparticles-engine";
-import { BLANK_THEME, getTheme, Theme } from "./core";
+import { BLANK_THEME, getDefaultTheme, getTheme, Theme } from "./core";
 // import butterchurn, { ButterchurnVisualizer } from "butterchurn";
 // import butterchurnPresets from "butterchurn-presets";
 const Particles = React.lazy(() => import("react-particles"));
@@ -207,7 +207,8 @@ export function BrowserThemeWrapper({
 
   useEffect(() => {
     // set the theme
-    let themeFromStorage = localStorage.getItem("theme") || "";
+    let themeFromStorage =
+      localStorage.getItem("theme") || getDefaultTheme().name;
     setTheme(getTheme(themeFromStorage));
 
     // add the event listener (for other tabs)

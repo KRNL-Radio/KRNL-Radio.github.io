@@ -1,12 +1,9 @@
-import { Suspense, useCallback, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import {
   LazyLoadComponent,
   LazyLoadImage,
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-// import Particles from "react-particles";
-import type { Container, Engine } from "tsparticles-engine";
-// import {MoveDirection} from "tsparticles-engine/types/Enums/Directions/MoveDirection";
 import Header from "../components/Header";
 import React from "react";
 import PlaceholderImage from "../assets/placeholder.jpg";
@@ -24,24 +21,7 @@ import { getAllThemes } from "../player/themes/core";
 import { BrowserThemeWrapper } from "../player/themes/wrapper";
 // import Stats from "stats.js";
 
-const Particles = React.lazy(() => import("react-particles"));
-
 function FullPlayer() {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-    const tsp = await import("tsparticles");
-    await tsp.loadFull(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {
-      // do something ig
-    },
-    []
-  );
-
   const [title, setTitle] = React.useState("Loading...");
   const [host, setHost] = React.useState("Loading...");
   const [albumArt, setAlbumArt] = React.useState(PlaceholderImage);
@@ -346,12 +326,12 @@ function SettingsModal() {
             <option value="mobile">Mobile</option>
           </select>
         </div>
-        <div className="form-control">
+        {/* <div className="form-control">
           <label className="label">
             <span className="label-text">Theme Options</span>
             <button className="btn btn-sm">Adjust</button>
           </label>
-        </div>
+        </div> */}
       </div>
     </div>
   );

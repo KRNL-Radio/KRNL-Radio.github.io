@@ -15,12 +15,14 @@ import ScheduleGeneratorPage from "./pages/special/schedulegen";
 import SchedulePage from "./pages/schedule";
 import consolePatch from "./consolePatch";
 import ChangelogPage from "./pages/changelog";
+import APIPage from "./api/api";
 
 consolePatch();
 
 declare global {
   interface Window {
     player: PlayerCore;
+    api: any;
   }
 }
 // init player
@@ -76,6 +78,10 @@ const router = createHashRouter(
     {
       path: "/changelog",
       element: <ChangelogPage />,
+    },
+    {
+      path: "/api",
+      element: <APIPage />,
     },
     {
       path: "/secret/schedule/generator",

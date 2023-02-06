@@ -126,15 +126,5 @@ export function getAllThemes() {
 }
 
 export function getDefaultTheme() {
-  let isSafari =
-    navigator.vendor &&
-    navigator.vendor.indexOf("Apple") > -1 &&
-    navigator.userAgent &&
-    navigator.userAgent.indexOf("CriOS") === -1 &&
-    navigator.userAgent.indexOf("FxiOS") === -1;
-  if (isSafari) {
-    return getTheme("");
-  } else {
-    return getTheme("Seasonal");
-  }
+  return getTheme("Seasonal");
 }
