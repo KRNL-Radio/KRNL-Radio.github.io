@@ -15,8 +15,8 @@ function info(
 Name: ${name}
 Preferred Email: ${email}
 Category: ${category}
-Website Version: 1.0.0
-Player Version: 1.0.0
+Website Version: 2.2.0
+Player Version: 1.1.0
 User Agent: ${navigator.userAgent}
 ${
   debug
