@@ -1,26 +1,30 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createHashRouter, RouterProvider } from "react-router-dom";
-import MemberPage from "./pages/members";
-import HomePage from "./pages/home";
-import IndividualMemberPage from "./pages/member";
-import ShowsPage from "./pages/shows";
-import IndividualShowPage from "./pages/show";
-import FullPlayer from "./pages/fullplayer";
 import { PlayerCore } from "./player/core";
-import ContactPage from "./pages/contact";
 import { ErrorElem } from "./ErrorElem";
-import ScheduleGeneratorPage from "./pages/special/schedulegen";
-import SchedulePage from "./pages/schedule";
 import consolePatch from "./consolePatch";
-import ChangelogPage from "./pages/changelog";
+const MemberPage = lazy(async () => import("./pages/members"));
+const HomePage = lazy(async () => import("./pages/home"));
+const IndividualMemberPage = lazy(async () => import("./pages/member"));
+const ShowsPage = lazy(async () => import("./pages/shows"));
+const IndividualShowPage = lazy(async () => import("./pages/show"));
+const FullPlayer = lazy(async () => import("./pages/fullplayer"));
+const ContactPage = lazy(async () => import("./pages/contact"));
+const ScheduleGeneratorPage = lazy(
+  async () => import("./pages/special/schedulegen")
+);
+const SchedulePage = lazy(async () => import("./pages/schedule"));
+const ChangelogPage = lazy(async () => import("./pages/changelog"));
+const APIPage = lazy(async () => import("./api/api"));
 
 consolePatch();
 
 declare global {
   interface Window {
     player: PlayerCore;
+    api: any;
   }
 }
 // init player
@@ -40,6 +44,14 @@ const router = createHashRouter(
     {
       path: "/player",
       element: <FullPlayer />,
+    },
+    {
+      path: "/player/themes",
+      element: <div>Work In Progress</div>,
+    },
+    {
+      path: "/player/mini",
+      element: <div>Work In Progress</div>,
     },
     {
       path: "/schedule",
@@ -70,8 +82,16 @@ const router = createHashRouter(
       element: <ChangelogPage />,
     },
     {
+      path: "/api",
+      element: <APIPage />,
+    },
+    {
       path: "/secret/schedule/generator",
       element: <ScheduleGeneratorPage />,
+    },
+    {
+      path: "/secret/scriptable",
+      element: <div>Work In Progress</div>,
     },
   ],
   {
@@ -84,7 +104,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   </React.StrictMode>
 );
 
