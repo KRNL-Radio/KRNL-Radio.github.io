@@ -48,6 +48,7 @@
     "deploy": "gh-pages -d build",
     "postdeploy": "echo 'Deploy complete! This may take a few minutes to fully propagate...'",
     "predeploy": "npm run build",
+    "preanalyze": "npm run build",
     "prepare": "husky install"
   },
   "eslintConfig": {
