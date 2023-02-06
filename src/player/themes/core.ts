@@ -1,4 +1,9 @@
-import { FIRE_THEME, FOUNTAIN_THEME, SNOW_THEME } from "../themes";
+import {
+  FIRE_THEME,
+  FOUNTAIN_THEME,
+  SEA_ANEMONE_THEME,
+  SNOW_THEME,
+} from "../themes";
 
 export type ThemeType =
   | "particles"
@@ -53,6 +58,11 @@ export const themes: Theme[] = [
     name: "Fountain",
     type: "particles",
     options: [FOUNTAIN_THEME],
+  },
+  {
+    name: "Sea Anemone",
+    type: "particles",
+    options: [SEA_ANEMONE_THEME],
   },
   {
     name: "Seasonal",

@@ -86,6 +86,7 @@ function ParticlesThemeWrapper({
           init={particlesInit}
           loaded={particlesLoaded}
           options={theme.options[0]}
+          className="w-full h-full"
         ></Particles>
       </Suspense>
       {children}
