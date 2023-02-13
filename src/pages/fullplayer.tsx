@@ -92,9 +92,6 @@ function FullPlayer() {
     navigator.userAgent &&
     navigator.userAgent.indexOf("CriOS") === -1 &&
     navigator.userAgent.indexOf("FxiOS") === -1;
-  if (isSafari) {
-    console.log("Safari detected, disabling particles");
-  }
 
   let playPauseClick = () => {
     console.log("Play/pause clicked");

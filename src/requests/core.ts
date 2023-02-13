@@ -165,6 +165,19 @@ export default class RequestsCore extends Emitter {
   }
 
   async request(track_id: number) {
+    const result = await this._request(track_id);
+    if (result === "throttled") {
+      toast("Throttled!", { type: "error" });
+    } else if (result === "success") {
+      toast("Request sent!", { type: "success" });
+    } else if (result === "already_requested") {
+      toast("Already requested!", { type: "warning" });
+    } else {
+      toast("Unknown error!", { type: "error" });
+    }
+  }
+
+  async _request(track_id: number) {
     const response = await fetch(
       `https://public.radio.co/stations/${this.station_id}/requests`,
       {
@@ -185,16 +198,23 @@ export default class RequestsCore extends Emitter {
       } else {
         this.hit_period_throttle();
       }
-      toast("Throttled!", { type: "error" });
       this.emit("throttled", this.status);
+      // toast("Throttled!", { type: "error" });
+      return "throttled";
     } else if (response.status === 201) {
       this.hit_request();
-      toast("Request sent!", { type: "success" });
       this.emit("success");
+      // toast("Request sent!", { type: "success" });
+      return "success";
+    } else if (response.status === 409) {
+      // already requested
+      // toast("Already requested!", { type: "error" });
+      return "already_requested";
     } else {
       // how did we get here???
       console.log("unknown error", response);
-      toast("Unknown error", { type: "error" });
+      // toast("Unknown error", { type: "error" });
+      return "unknown_error";
     }
   }
 

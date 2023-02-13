@@ -256,7 +256,7 @@ export const KRNL_HOST: Host = {
     },
     {
       platform: "Twitter",
-      url: "https://twitter.com/KRNL89_7",
+      url: "https://twitter.com/krnl_cornell",
     },
     {
       platform: "TikTok",

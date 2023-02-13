@@ -1,5 +1,7 @@
 import React, { Suspense, useCallback, useEffect } from "react";
+import { toast } from "react-toastify";
 import { Engine, Container } from "tsparticles-engine";
+import { measureFPS } from "../../util/performance";
 import { BLANK_THEME, getDefaultTheme, getTheme, Theme } from "./core";
 // import butterchurn, { ButterchurnVisualizer } from "butterchurn";
 // import butterchurnPresets from "butterchurn-presets";
@@ -62,6 +64,7 @@ function ParticlesThemeWrapper({
   children: React.ReactNode;
   theme: Theme;
 }) {
+  const [shouldBenchmark, setShouldBenchmark] = React.useState(false);
   const particlesInit = useCallback(async (engine: Engine) => {
     // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -74,9 +77,36 @@ function ParticlesThemeWrapper({
     async (container: Container | undefined) => {
       // do something ig
       // actually, WTF CAN I DO HERE
+      if (container) {
+        setShouldBenchmark(true);
+      }
     },
     []
   );
+
+  useEffect(() => {
+    if (shouldBenchmark) {
+      // benchmark
+      console.log("benchmarking...");
+      measureFPS(10000).then((fps) => {
+        console.log("FPS", fps);
+        if (fps! < 5) {
+          // if it's less than 5, change the theme!
+          // provided that the window is active
+          if (!document.hasFocus()) {
+            return;
+          }
+          console.log("changing theme! (fps)");
+          // set the theme to "OLED Lover"
+          localStorage.setItem("theme", "OLED Lover");
+          window.dispatchEvent(
+            new CustomEvent("theme-change", { detail: { theme: "OLED Lover" } })
+          );
+          toast("The theme has been changed due to low performance!");
+        }
+      });
+    }
+  }, [shouldBenchmark]);
 
   return (
     <div className="w-full h-full">
