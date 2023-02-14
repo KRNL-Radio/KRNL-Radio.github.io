@@ -77,7 +77,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.20",
-    "prettier": "2.8.3",
+    "prettier": "2.8.4",
     "source-map-explorer": "^2.5.3",
     "tailwindcss": "^3.2.2"
   },
