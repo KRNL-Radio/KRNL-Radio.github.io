@@ -34,7 +34,7 @@ export const events: Event[] = [
       },
     },
     schedule: new ScheduleItem(
-      new Date(2022, 2, 9, 9, 0),
+      new Date(2023, 2, 9, 9, 0),
       new Date(2023, 2, 19, 9, 0)
     ),
   },
@@ -47,7 +47,7 @@ export const events: Event[] = [
       },
     },
     schedule: new ScheduleItem(
-      new Date(2022, 4, 15, 9, 0),
+      new Date(2023, 4, 15, 9, 0),
       new Date(2023, 7, 27, 9, 0)
     ),
   },
