@@ -115,4 +115,19 @@ export class ScheduleItem {
       )
     );
   }
+
+  toJSON() {
+    return {
+      _raw: {
+        start: this.start,
+        end: this.end,
+        invalidAfter: this.invalidAfter!,
+      },
+      computed: {
+        next: this.getNextOccurance(),
+        end: this.endToDate(),
+        is_current: this.isCurrent(),
+      },
+    };
+  }
 }
