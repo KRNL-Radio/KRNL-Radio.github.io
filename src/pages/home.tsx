@@ -1,10 +1,18 @@
 import React from "react";
 import Countdown from "../components/Countdown";
 import Header from "../components/Header";
+import Markdown from "../components/Markdown";
 import ShowCard from "../components/ShowCard";
 import { KRNLSocialButtons } from "../components/SocialButtons";
-import { isScheduleSuppressed, scheduleSuppressedBy } from "../data/events";
+import {
+  getHomeBanner,
+  hasHomeBanner,
+  isScheduleSuppressed,
+  scheduleSuppressedBy,
+} from "../data/events";
 import { getCurrentShows } from "../data/shows";
+import { toTailwind } from "../player/themes/core";
+import { TinyThemeWrapper } from "../player/themes/tinywrapper";
 
 function HomePage() {
   return (
@@ -12,6 +20,7 @@ function HomePage() {
       <Header />
       <div className="flex flex-col items-center justify-center p-4">
         <h1 className="text-4xl font-bold">Home</h1>
+        {hasHomeBanner() && HomeBanner()}
         {isScheduleSuppressed() ? (
           <div className="bg-gradient-to-b to-blue-900 from-blue-700 flex justify-center p-4 w-4/5 mx-auto rounded-lg m-4">
             <div className="flex flex-col items-center w-full">
@@ -74,3 +83,36 @@ function HomePage() {
 }
 
 export default HomePage;
+function HomeBanner(): React.ReactNode {
+  const banner = getHomeBanner()!;
+  const home_text = banner.effects.banner!.home_banner_text!;
+  const theme = banner.effects.banner!.background_theme || {
+    type: "tailwind",
+  };
+
+  if (theme.type === "tailwind") {
+    const compiled = (
+      theme.tailwind_options || ["to-purple-900", "from-purple-700"]
+    ).join(" ");
+    const direction = toTailwind(theme.tw_small_direction || "b");
+    return (
+      <div
+        className={`flex justify-center p-4 w-4/5 mx-auto rounded-lg m-4 ${direction} ${compiled}`}
+      >
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text-2xl">{banner.name}</h1>
+          <Markdown className="text-center text-lg">{home_text}</Markdown>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="flex justify-center p-4 w-4/5 mx-auto rounded-lg m-4">
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text-2xl">{banner.name}</h1>
+          <Markdown className="text-center text-lg">{home_text}</Markdown>
+        </div>
+      </div>
+    );
+  }
+}

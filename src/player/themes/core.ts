@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import {
   FIRE_THEME,
   FOUNTAIN_THEME,
@@ -28,6 +29,37 @@ export type Theme = {
   options: any[];
   hidden?: boolean;
 };
+
+type TailwindDirection = "t" | "tl" | "l" | "bl" | "b" | "br" | "r" | "tr";
+
+export type TinyTheme = {
+  type: "css" | "tailwind";
+  css_options?: CSSProperties | (() => CSSProperties);
+  tailwind_options?: string[];
+  tw_large_direction?: TailwindDirection;
+  tw_small_direction?: TailwindDirection;
+};
+
+export function toTailwind(direction: TailwindDirection) {
+  switch (direction) {
+    case "t":
+      return "bg-gradient-to-t";
+    case "tl":
+      return "bg-gradient-to-tl";
+    case "l":
+      return "bg-gradient-to-l";
+    case "bl":
+      return "bg-gradient-to-bl";
+    case "b":
+      return "bg-gradient-to-b";
+    case "br":
+      return "bg-gradient-to-br";
+    case "r":
+      return "bg-gradient-to-r";
+    case "tr":
+      return "bg-gradient-to-tr";
+  }
+}
 
 export const themes: Theme[] = [
   {
