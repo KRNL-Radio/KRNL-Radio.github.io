@@ -101,6 +101,32 @@ export const events: Event[] = [
       new Date(2023, 1, 16, 22, 5)
     ),
   },
+  {
+    name: "Iowa 'We Say Gay' Walkout",
+    effects: {
+      banner: {
+        background_theme: {
+          type: "tailwind",
+          tailwind_options: ["from-slate-900", "to-slate-800"],
+        },
+        site_banner_text: "🏳️‍🌈 Iowa 'We Say Gay' Walkout 🏳️‍⚧️",
+        home_banner_text: `Iowa students are walking out of class today to protest the ever growing number of anti-LGBTQ+ bills in the state legislature. We stand with them in solidarity.
+        
+[*Contact Your Representatives*](https://www.house.gov/representatives/find-your-representative)
+
+[*Iowa Bill Watch*](https://docs.google.com/document/d/1b2Jq7Vczsd6Slin-vSIvPpUkwQym6FXhx2y1DOV0G6Y/edit)
+
+[*Affiliated Organizations at Cornell*](https://www.cornellcollege.edu/intercultural-life/organizations.shtml)
+
+🏳️‍🌈🏳️‍⚧️
+`,
+      },
+    },
+    schedule: new ScheduleItem(
+      new Date(2023, 2, 1, 9, 50),
+      new Date(2023, 2, 1, 11, 10)
+    ),
+  },
 ];
 
 export function getCurrentEvents() {
