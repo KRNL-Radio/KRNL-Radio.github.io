@@ -4,6 +4,7 @@ import {
   FOUNTAIN_THEME,
   SEA_ANEMONE_THEME,
   SNOW_THEME,
+  SPRING_THEME,
 } from "../themes";
 
 export type ThemeType =
@@ -131,6 +132,11 @@ export const themes: Theme[] = [
     name: "Seasonal - Winter",
     type: "particles",
     options: [SNOW_THEME],
+  },
+  {
+    name: "Seasonal - Spring",
+    type: "particles",
+    options: [SPRING_THEME],
   },
   // {
   //   name: "Weather",

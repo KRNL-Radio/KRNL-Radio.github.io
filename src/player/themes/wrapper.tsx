@@ -78,7 +78,7 @@ function ParticlesThemeWrapper({
       // do something ig
       // actually, WTF CAN I DO HERE
       if (container) {
-        setShouldBenchmark(true);
+        // setShouldBenchmark(true);
       }
     },
     []

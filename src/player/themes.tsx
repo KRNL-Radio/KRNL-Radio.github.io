@@ -1,6 +1,7 @@
 // import { ClickMode, SizeMode } from "tsparticles-engine";
 import type { ISourceOptions } from "tsparticles-engine";
 import { curvesPathName } from "tsparticles-path-curves";
+import LeafSVG from "../assets/leaf.svg";
 
 export const SEA_ANEMONE_THEME: ISourceOptions = {
   fpsLimit: 120,
@@ -295,6 +296,94 @@ export const SNOW_THEME: ISourceOptions = {
       speed: {
         min: -5,
         max: 5,
+      },
+    },
+  },
+};
+
+export const SPRING_THEME: ISourceOptions = {
+  fpsLimit: 120,
+  fullScreen: {
+    enable: true,
+    zIndex: -1,
+  },
+  background: {
+    color: "#65a7de",
+  },
+  detectRetina: true,
+  interactivity: {
+    detectsOn: "window",
+    events: {
+      onClick: {
+        enable: true,
+        mode: "repluse",
+      },
+    },
+  },
+  particles: {
+    move: {
+      direction: "bottom-left",
+      enable: true,
+      random: false,
+      straight: false,
+    },
+    rotate: {
+      value: {
+        min: 0,
+        max: 360,
+      },
+      animation: {
+        enable: true,
+        speed: 10,
+      },
+      direction: "random",
+    },
+    tilt: {
+      value: {
+        min: 0,
+        max: 360,
+      },
+      animation: {
+        enable: true,
+        speed: 10,
+      },
+      direction: "random",
+      enable: true,
+    },
+    roll: {
+      darken: {
+        enable: true,
+        value: 5,
+      },
+      enable: true,
+      speed: {
+        min: 10,
+        max: 35,
+      },
+    },
+    opacity: {
+      value: 1,
+    },
+    color: {
+      value: ["#fcc9b9", "#ffb3ff", "#ff99ff"],
+    },
+    size: {
+      value: { min: 1, max: 10 }, // TODO: adjust?
+    },
+    wobble: {
+      // TODO: adjust?
+      distance: 20,
+      enable: false,
+      speed: {
+        min: -5,
+        max: 5,
+      },
+    },
+    shape: {
+      type: ["image"], // TODO: replace!
+      image: {
+        src: LeafSVG,
+        replace_color: true,
       },
     },
   },
