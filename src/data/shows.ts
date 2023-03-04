@@ -48,8 +48,8 @@ export const shows: Show[] = [
       "Somehow even *more* random than Mark's show, but at least 10x more chill! Ice not required.\n\n*when he feels like it",
     background: "#1c2dae",
     hosts: [getHostByName("Grayson")],
-    scheduleString: "Every Sunday from 9pm to 10pm*",
-    schedule: new ScheduleItem("0 21 * * 0", 60),
+    scheduleString: "Every Sunday from 4pm to 5pm*",
+    schedule: new ScheduleItem("0 16 * * 0", 60),
   },
   {
     name: "The After School Special",

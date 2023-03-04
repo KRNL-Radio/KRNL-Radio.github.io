@@ -316,7 +316,7 @@ export const SPRING_THEME: ISourceOptions = {
     events: {
       onClick: {
         enable: true,
-        mode: "repluse",
+        mode: "repulse",
       },
     },
   },
