@@ -6,6 +6,7 @@ import MarkImg from "../assets/members/mark.jpg";
 import ZoeImg from "../assets/members/zoe.jpg";
 import TreyImg from "../assets/members/trey.jpg";
 import CadenImg from "../assets/members/caden.jpg";
+import ChickadeeImg from "../assets/members/chickadee.jpg";
 import BrockImg from "../assets/members/brock.jpg";
 import getRandomSplash from "../egg/splash";
 
@@ -212,7 +213,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     pronouns: ["they", "them"],
     splash_text: "",
     bio: "*Missing bio!*",
-    image: CadenImg, // TODO: get actual image :D
+    image: ChickadeeImg, // TODO: get actual image :D
     socials: [],
     badges: ["DJ"],
   },

@@ -74,30 +74,6 @@ export const themes: Theme[] = [
     ],
   },
   {
-    name: "OLED Lover",
-    type: "background",
-    options: [
-      {
-        background: "#000",
-      },
-    ],
-  },
-  {
-    name: "Fire",
-    type: "particles",
-    options: [FIRE_THEME],
-  },
-  {
-    name: "Fountain",
-    type: "particles",
-    options: [FOUNTAIN_THEME],
-  },
-  {
-    name: "Sea Anemone",
-    type: "particles",
-    options: [SEA_ANEMONE_THEME],
-  },
-  {
     name: "Seasonal",
     type: "dynamic",
     options: [
@@ -127,6 +103,30 @@ export const themes: Theme[] = [
       },
       1000 * 60 * 60 * 24, // 1 day
     ],
+  },
+  {
+    name: "OLED Lover",
+    type: "background",
+    options: [
+      {
+        background: "#000",
+      },
+    ],
+  },
+  {
+    name: "Fire",
+    type: "particles",
+    options: [FIRE_THEME],
+  },
+  {
+    name: "Fountain",
+    type: "particles",
+    options: [FOUNTAIN_THEME],
+  },
+  {
+    name: "Sea Anemone",
+    type: "particles",
+    options: [SEA_ANEMONE_THEME],
   },
   {
     name: "Seasonal - Winter",

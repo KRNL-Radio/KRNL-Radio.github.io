@@ -5,6 +5,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { PlayerCore } from "./player/core";
 import { ErrorElem } from "./ErrorElem";
 import consolePatch from "./consolePatch";
+import { LargeLoading } from "./components/LoadingScreens";
 const MemberPage = lazy(async () => import("./pages/members"));
 const HomePage = lazy(async () => import("./pages/home"));
 const IndividualMemberPage = lazy(async () => import("./pages/member"));
@@ -44,54 +45,67 @@ const router = createHashRouter(
     {
       path: "/player",
       element: <FullPlayer />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/player/themes",
       element: <div>Work In Progress</div>,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/player/mini",
       element: <div>Work In Progress</div>,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/schedule",
       element: <SchedulePage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/schedule/shows",
       element: <ShowsPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/schedule/shows/:name",
       element: <IndividualShowPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/members",
       element: <MemberPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/members/:name",
       element: <IndividualMemberPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/contact",
       element: <ContactPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/changelog",
       element: <ChangelogPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/api",
       element: <APIPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/secret/schedule/generator",
       element: <ScheduleGeneratorPage />,
+      errorElement: <ErrorElem />,
     },
     {
       path: "/secret/scriptable",
       element: <div>Work In Progress</div>,
+      errorElement: <ErrorElem />,
     },
   ],
   {
@@ -104,7 +118,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LargeLoading />}>
       <RouterProvider router={router} />
     </Suspense>
   </React.StrictMode>

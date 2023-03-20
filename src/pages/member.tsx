@@ -10,7 +10,7 @@ function IndividualMemberPage() {
   const { name } = useParams();
   const member = findHostByName(name || "", true);
   if (!member) {
-    return <div>Member not found</div>;
+    throw new Error("Member not found");
   }
   return (
     <div className="text-white">
