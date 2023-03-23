@@ -6,6 +6,7 @@ import { PlayerCore } from "./player/core";
 import { ErrorElem } from "./ErrorElem";
 import consolePatch from "./consolePatch";
 import { LargeLoading } from "./components/LoadingScreens";
+const InfoDeskPlayerPage = lazy(async () => import("./pages/special/infodesk"));
 const MemberPage = lazy(async () => import("./pages/members"));
 const HomePage = lazy(async () => import("./pages/home"));
 const IndividualMemberPage = lazy(async () => import("./pages/member"));
@@ -100,6 +101,11 @@ const router = createHashRouter(
     {
       path: "/secret/schedule/generator",
       element: <ScheduleGeneratorPage />,
+      errorElement: <ErrorElem />,
+    },
+    {
+      path: "/secret/info-desk-player",
+      element: <InfoDeskPlayerPage />,
       errorElement: <ErrorElem />,
     },
     {
