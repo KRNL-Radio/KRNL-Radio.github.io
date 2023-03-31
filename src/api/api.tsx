@@ -6,7 +6,7 @@ import {
   NOT_FOUND_HOST,
 } from "../data/hosts";
 import { shows } from "../data/shows";
-import { getTheme, themes } from "../player/themes/core";
+import { getTheme, themes } from "../themes/core";
 import { measureFPS } from "../util/performance";
 
 function RefreshAPI() {

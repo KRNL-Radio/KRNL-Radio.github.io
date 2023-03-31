@@ -5,7 +5,7 @@ import {
   SEA_ANEMONE_THEME,
   SNOW_THEME,
   SPRING_THEME,
-} from "../themes";
+} from "../player/themes";
 
 export type ThemeType =
   | "particles"

@@ -5,7 +5,7 @@ import { Link, ScrollRestoration } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getSiteBanner, hasSiteBanner } from "../data/events";
-import { TinyThemeWrapper } from "../player/themes/tinywrapper";
+import { TinyThemeWrapper } from "../themes/tinywrapper";
 
 function SiteBanner() {
   if (hasSiteBanner()) {

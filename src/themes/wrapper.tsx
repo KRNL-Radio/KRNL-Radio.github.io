@@ -1,7 +1,7 @@
 import React, { Suspense, useCallback, useEffect } from "react";
 import { toast } from "react-toastify";
 import { Engine, Container } from "tsparticles-engine";
-import { measureFPS } from "../../util/performance";
+import { measureFPS } from "../util/performance";
 import { BLANK_THEME, getDefaultTheme, getTheme, Theme } from "./core";
 // import butterchurn, { ButterchurnVisualizer } from "butterchurn";
 // import butterchurnPresets from "butterchurn-presets";

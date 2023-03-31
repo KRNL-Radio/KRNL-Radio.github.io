@@ -17,8 +17,8 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { RequestTrack } from "../requests/core";
 import Countdown from "../components/Countdown";
 import type { StreamFormat } from "../player/core";
-import { getAllThemes } from "../player/themes/core";
-import { BrowserThemeWrapper } from "../player/themes/wrapper";
+import { getAllThemes } from "../themes/core";
+import { BrowserThemeWrapper } from "../themes/wrapper";
 // import Stats from "stats.js";
 
 function FullPlayer() {

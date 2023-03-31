@@ -177,9 +177,16 @@ export class PlayerCore extends Emitter {
       host_string: host.name,
       // host_string: "",
       collaborators: data.source.collaborators || [],
+      // current_track: {
+      //   title: data.current_track.title,
+      //   album_art: data.current_track.artwork_url_large,
+      // },
       current_track: {
-        title: data.current_track.title,
-        album_art: data.current_track.artwork_url_large,
+        title:
+          this.player_data?.current_track.title || data.current_track.title,
+        album_art:
+          this.player_data?.current_track.album_art ||
+          data.current_track.artwork_url_large,
       },
       previous_tracks:
         previous_tracks ||

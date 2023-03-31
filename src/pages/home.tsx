@@ -11,8 +11,8 @@ import {
   scheduleSuppressedBy,
 } from "../data/events";
 import { getCurrentShows } from "../data/shows";
-import { toTailwind } from "../player/themes/core";
-import { TinyThemeWrapper } from "../player/themes/tinywrapper";
+import { toTailwind } from "../themes/core";
+import { TinyThemeWrapper } from "../themes/tinywrapper";
 
 function HomePage() {
   return (

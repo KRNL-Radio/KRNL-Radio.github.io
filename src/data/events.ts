@@ -127,6 +127,24 @@ export const events: Event[] = [
       new Date(2023, 2, 1, 11, 10)
     ),
   },
+  {
+    name: "Trans Day of Visibility",
+    effects: {
+      banner: {
+        background_theme: {
+          type: "tailwind",
+          tailwind_options: ["from-slate-900", "to-slate-800"],
+        },
+        site_banner_text: "🏳️‍⚧️ Happy Trans Day of Visibility! 🏳️‍⚧️",
+        home_banner_text:
+          "Happy Trans Day of Visibility! 🏳️‍⚧️ (and happy birthday Adrien!)",
+      },
+    },
+    schedule: new ScheduleItem(
+      new Date(2023, 2, 31, 0, 0),
+      new Date(2023, 2, 31, 23, 59)
+    ),
+  },
 ];
 
 export function getCurrentEvents() {

@@ -109,6 +109,13 @@ export const shows: Show[] = [
     scheduleString: "Every Monday from 8am to 8:18am",
     schedule: new ScheduleItem("0 8 * * 1", 18),
   },
+  // {
+  //   name: "CCPR (Previously Recorded)",
+  //   splash_text: "",
+  //   description: "Missed the live show? No worries, we got you covered!",
+  //   background: "#ddfe60",
+  //   hosts: [getHostByName("Adrien"), getHostByName("Sophie")],
+  // }
   {
     name: "The Box",
     splash_text: "",
@@ -118,6 +125,16 @@ export const shows: Show[] = [
     guests: "Garnett Strack",
     scheduleString: "Every Friday from 8pm to 9pm",
     schedule: new ScheduleItem("0 20 * * 5", 60),
+  },
+  {
+    name: "?????",
+    splash_text: "It's something!",
+    description: "What could this be??",
+    background: "#ddfe60",
+    hosts: [getHostByName("Mark")],
+    scheduleString: "Saturday from 2pm to 4pm",
+    schedule: new ScheduleItem("0 14 * * 6", 120, new Date(2023, 3, 3)),
+    hiddenAfter: new Date(2023, 3, 7),
   },
 ];
 
