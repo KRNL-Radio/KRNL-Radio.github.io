@@ -5,6 +5,12 @@
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
+      "automergeSchedule": [
+        "before 2am"
+      ],
+      "schedule": [
+        "every weekday"
+      ]
       "ignoreTests": true
     }
   ]
