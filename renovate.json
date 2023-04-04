@@ -10,7 +10,7 @@
       ],
       "schedule": [
         "every weekday"
-      ]
+      ],
       "ignoreTests": true
     }
   ]
