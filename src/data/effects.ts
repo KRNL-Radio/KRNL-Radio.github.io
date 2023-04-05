@@ -16,7 +16,7 @@ export type BannerEffect = {
 // cool name, i know
 // ONLY OVERRIDES IF THE THEME IS SET TO "Default"
 export type ThemeEffect = {
-  theme: Theme;
+  theme: string;
 };
 
 // suppresses the schedule, useful for breaks!

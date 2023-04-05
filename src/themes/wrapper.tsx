@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { Engine, Container } from "tsparticles-engine";
 import { measureFPS } from "../util/performance";
 import { BLANK_THEME, getDefaultTheme, getTheme, Theme } from "./core";
+import { getOverrideTheme } from "../data/events";
 // import butterchurn, { ButterchurnVisualizer } from "butterchurn";
 // import butterchurnPresets from "butterchurn-presets";
 const Particles = React.lazy(() => import("react-particles"));
@@ -65,6 +66,9 @@ function ParticlesThemeWrapper({
   theme: Theme;
 }) {
   const [shouldBenchmark, setShouldBenchmark] = React.useState(false);
+  const [containerRef, setContainerRef] = React.useState<
+    Container | undefined
+  >();
   const particlesInit = useCallback(async (engine: Engine) => {
     // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -90,7 +94,9 @@ function ParticlesThemeWrapper({
       console.log("benchmarking...");
       measureFPS(10000).then((fps) => {
         console.log("FPS", fps);
-        if (fps! < 5) {
+        // if (fps! < 5) {
+        if (true) {
+          // fixme
           // if it's less than 5, change the theme!
           // provided that the window is active
           if (!document.hasFocus()) {
@@ -112,7 +118,7 @@ function ParticlesThemeWrapper({
     <div className="w-full h-full">
       <Suspense>
         <Particles
-          id="tsparticles"
+          // id="tsparticles"
           init={particlesInit}
           loaded={particlesLoaded}
           options={theme.options[0]}
@@ -261,6 +267,15 @@ export function BrowserThemeWrapper({
       window.removeEventListener("storage", () => {});
       window.removeEventListener("theme-change", () => {});
     };
+  }, []);
+
+  useEffect(() => {
+    // override the theme if needed
+    let overrideTheme = getOverrideTheme();
+    if (overrideTheme) {
+      console.log("OVERRIDE!", getTheme(overrideTheme.effects.theme!.theme));
+      setTheme(getTheme(overrideTheme.effects.theme!.theme));
+    }
   }, []);
 
   return <ThemeWrapper theme={theme}>{children}</ThemeWrapper>;

@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import {
+  FIREWORKS_THEME,
   FIRE_THEME,
   FOUNTAIN_THEME,
   SEA_ANEMONE_THEME,
@@ -117,6 +118,11 @@ export const themes: Theme[] = [
     name: "Fire",
     type: "particles",
     options: [FIRE_THEME],
+  },
+  {
+    name: "Fireworks",
+    type: "particles",
+    options: [FIREWORKS_THEME],
   },
   {
     name: "Fountain",

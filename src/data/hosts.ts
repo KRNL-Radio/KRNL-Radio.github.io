@@ -273,6 +273,10 @@ export const KRNL_HOST: Host = {
       url: "https://www.tiktok.com/@krnl_cornell",
     },
     {
+      platform: "YouTube",
+      url: "https://www.youtube.com/@krnl_cornell",
+    },
+    {
       platform: "Email",
       url: "mailto:krnl@cornellcollege.edu",
     },

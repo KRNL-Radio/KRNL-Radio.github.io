@@ -145,6 +145,26 @@ export const events: Event[] = [
       new Date(2023, 2, 31, 23, 59)
     ),
   },
+  {
+    name: "KRNL's 75th Anniversary!",
+    effects: {
+      banner: {
+        background_theme: {
+          type: "tailwind",
+          tailwind_options: ["from-slate-900", "to-slate-800"],
+        },
+        site_banner_text: "🎉 KRNL's 75th Anniversary! 🎉",
+        home_banner_text: `KRNL is celebraing our 75th anniversary! (i need to finish this placeholder text!!!)`,
+      },
+      theme: {
+        theme: "Fireworks",
+      },
+    },
+    schedule: new ScheduleItem(
+      new Date(2023, 3, 17, 0, 0),
+      new Date(2023, 3, 17, 23, 59)
+    ),
+  },
 ];
 
 export function getCurrentEvents() {
@@ -209,10 +229,6 @@ export function getHomeBanner() {
   );
 }
 
-export function getEffect() {
-  // TODO: this!
-  return (
-    getCurrentEvents().find((event) => event.effects.theme !== undefined) ||
-    "Seasonal"
-  );
+export function getOverrideTheme() {
+  return getCurrentEvents().find((event) => event.effects.theme !== undefined);
 }
