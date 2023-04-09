@@ -11,6 +11,7 @@ import {
 } from "tsparticles-engine";
 import { curvesPathName } from "tsparticles-path-curves";
 import LeafSVG from "../assets/leaf.svg";
+import RabbitSVG from "../assets/rabbit.svg";
 
 export const SEA_ANEMONE_THEME: ISourceOptions = {
   fpsLimit: 120,
@@ -601,6 +602,102 @@ export const FIREWORKS_THEME: ISourceOptions = {
         enable: true,
         length: 10,
       },
+    },
+  },
+};
+
+export const RABBIT_THEME: ISourceOptions = {
+  fpsLimit: 120,
+  fullScreen: false,
+  particles: {
+    bounce: {
+      vertical: {
+        value: {
+          min: 0.75,
+          max: 0.85,
+        },
+      },
+    },
+    color: {
+      value: ["#ffffff"],
+    },
+    number: {
+      value: 0,
+    },
+    destroy: {
+      mode: "split",
+      split: {
+        count: 2,
+        factor: {
+          value: {
+            min: 1.1,
+            max: 2,
+          },
+        },
+        rate: {
+          value: {
+            min: 2,
+            max: 3,
+          },
+        },
+      },
+    },
+    size: {
+      value: {
+        min: 10,
+        max: 20,
+      },
+    },
+    shape: {
+      type: ["image"], // TODO: replace!
+      image: {
+        src: RabbitSVG,
+        replace_color: true,
+      },
+    },
+    move: {
+      enable: true,
+      gravity: {
+        enable: true,
+        maxSpeed: 50,
+      },
+      speed: {
+        min: 10,
+        max: 20,
+      },
+      direction: "none",
+      random: false,
+      straight: false,
+      outModes: {
+        bottom: "split",
+        default: "bounce",
+        top: "none",
+      },
+      trail: {
+        enable: true,
+        fillColor: "#000",
+        length: 1.5,
+      },
+    },
+  },
+  detectRetina: true,
+  background: {
+    color: "#fff",
+  },
+  emitters: {
+    direction: "top",
+    life: {
+      count: 0,
+      duration: 0.15,
+      delay: 3,
+    },
+    rate: {
+      delay: 0.1,
+      quantity: 5,
+    },
+    size: {
+      width: 0,
+      height: 0,
     },
   },
 };

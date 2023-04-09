@@ -146,6 +146,18 @@ export const events: Event[] = [
     ),
   },
   {
+    name: "Easter",
+    effects: {
+      theme: {
+        theme: "Rabbits",
+      },
+    },
+    schedule: new ScheduleItem(
+      new Date(2023, 3, 9, 0, 0),
+      new Date(2023, 3, 9, 23, 59)
+    ),
+  },
+  {
     name: "KRNL's 75th Anniversary!",
     effects: {
       banner: {

@@ -34,6 +34,7 @@
     "react-toastify": "^9.1.1",
     "react-transition-group": "^4.4.5",
     "remark-gfm": "^3.0.1",
+    "remark-remove-comments": "^1.0.1",
     "stats.js": "^0.17.0",
     "tsparticles": "^2.7.0",
     "tsparticles-engine": "^2.7.0",

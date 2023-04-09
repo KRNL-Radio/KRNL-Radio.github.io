@@ -1,5 +1,6 @@
 import React from "react";
 import remarkGfm from "remark-gfm";
+import removeComments from "remark-remove-comments";
 const ReactMarkdown = React.lazy(() => import("react-markdown"));
 
 type MarkdownProps = {
@@ -10,7 +11,10 @@ type MarkdownProps = {
 function Markdown({ children: content, className }: MarkdownProps) {
   return (
     <React.Suspense fallback={<div className={className}>Loading...</div>}>
-      <ReactMarkdown remarkPlugins={[remarkGfm]} className={className}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, removeComments]}
+        className={className}
+      >
         {content}
       </ReactMarkdown>
     </React.Suspense>

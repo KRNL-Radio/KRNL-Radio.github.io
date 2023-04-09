@@ -3,6 +3,7 @@ import {
   FIREWORKS_THEME,
   FIRE_THEME,
   FOUNTAIN_THEME,
+  RABBIT_THEME,
   SEA_ANEMONE_THEME,
   SNOW_THEME,
   SPRING_THEME,
@@ -128,6 +129,11 @@ export const themes: Theme[] = [
     name: "Fountain",
     type: "particles",
     options: [FOUNTAIN_THEME],
+  },
+  {
+    name: "Rabbits",
+    type: "particles",
+    options: [RABBIT_THEME],
   },
   {
     name: "Sea Anemone",

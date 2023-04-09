@@ -6,6 +6,9 @@ import { PlayerCore } from "./player/core";
 import { ErrorElem } from "./ErrorElem";
 import consolePatch from "./consolePatch";
 import { LargeLoading } from "./components/LoadingScreens";
+import SecretParticles from "./egg/secretparticles";
+import NewsletterList from "./pages/newsletter/list";
+import NewsletterIndividualPage from "./pages/newsletter/individual";
 const InfoDeskPlayerPage = lazy(async () => import("./pages/special/infodesk"));
 const MemberPage = lazy(async () => import("./pages/members"));
 const HomePage = lazy(async () => import("./pages/home"));
@@ -99,6 +102,16 @@ const router = createHashRouter(
       errorElement: <ErrorElem />,
     },
     {
+      path: "/newsletter/archive",
+      element: <NewsletterList />,
+      errorElement: <ErrorElem />,
+    },
+    {
+      path: "/newsletter/archive/:id",
+      element: <NewsletterIndividualPage />,
+      errorElement: <ErrorElem />,
+    },
+    {
       path: "/secret/schedule/generator",
       element: <ScheduleGeneratorPage />,
       errorElement: <ErrorElem />,
@@ -111,6 +124,11 @@ const router = createHashRouter(
     {
       path: "/secret/scriptable",
       element: <div>Work In Progress</div>,
+      errorElement: <ErrorElem />,
+    },
+    {
+      path: "/secret/particles",
+      element: <SecretParticles />,
       errorElement: <ErrorElem />,
     },
   ],
