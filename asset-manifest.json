@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.aed57ebc.css",
-    "main.js": "/static/js/main.353c9b85.js",
+    "main.js": "/static/js/main.6bcb08d3.js",
     "static/js/831.9a615e5a.chunk.js": "/static/js/831.9a615e5a.chunk.js",
     "static/css/678.015ec912.chunk.css": "/static/css/678.015ec912.chunk.css",
     "static/js/678.1123d4b5.chunk.js": "/static/js/678.1123d4b5.chunk.js",
@@ -27,8 +27,8 @@
     "static/js/430.88eebc11.chunk.js": "/static/js/430.88eebc11.chunk.js",
     "static/js/779.0692b200.chunk.js": "/static/js/779.0692b200.chunk.js",
     "static/js/429.237cd94a.chunk.js": "/static/js/429.237cd94a.chunk.js",
+    "static/media/sophie.jpg": "/static/media/sophie.2d48ea44d2a69def3727.jpg",
     "static/media/mark.jpg": "/static/media/mark.487f559e38d7653a68e6.jpg",
-    "static/media/sophie.jpg": "/static/media/sophie.65cf6d2c69cb0d276367.jpg",
     "static/media/trey.jpg": "/static/media/trey.d3b536fe5ad243619ccb.jpg",
     "static/media/zoe.jpg": "/static/media/zoe.28431bac61203682e879.jpg",
     "static/media/caden.jpg": "/static/media/caden.f28b37eecb3638200657.jpg",
@@ -44,7 +44,7 @@
     "index.html": "/index.html",
     "static/media/leaf.svg": "/static/media/leaf.8c657ece0a6e0447f118952de78f8be2.svg",
     "main.aed57ebc.css.map": "/static/css/main.aed57ebc.css.map",
-    "main.353c9b85.js.map": "/static/js/main.353c9b85.js.map",
+    "main.6bcb08d3.js.map": "/static/js/main.6bcb08d3.js.map",
     "831.9a615e5a.chunk.js.map": "/static/js/831.9a615e5a.chunk.js.map",
     "678.015ec912.chunk.css.map": "/static/css/678.015ec912.chunk.css.map",
     "678.1123d4b5.chunk.js.map": "/static/js/678.1123d4b5.chunk.js.map",
@@ -73,6 +73,6 @@
   },
   "entrypoints": [
     "static/css/main.aed57ebc.css",
-    "static/js/main.353c9b85.js"
+    "static/js/main.6bcb08d3.js"
   ]
 }
