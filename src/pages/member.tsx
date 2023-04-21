@@ -12,11 +12,31 @@ function IndividualMemberPage() {
   if (!member) {
     throw new Error("Member not found");
   }
+  let color = "from-purple-700 to-purple-900"; // current members
+
+  if (member.badges?.includes("Honorary")) {
+    color = "from-red-500 to-red-700";
+  } else if (member.badges?.includes("Executive Board")) {
+    color = "from-teal-500 to-teal-700";
+  } else if (
+    member.badges?.includes("Alumni") &&
+    member.badges?.includes("Past Executive Board")
+  ) {
+    color = "from-teal-500 to-yellow-600";
+  } else if (member.badges?.includes("Alumni")) {
+    color = "from-yellow-500 to-yellow-600";
+  } else if (member.badges?.includes("Past Executive Board")) {
+    color = "from-gray-500 to-teal-700";
+  } else if (member.badges?.includes("Past")) {
+    color = "from-gray-500 to-gray-700";
+  }
   return (
     <div className="text-white">
       <Header />
       <div>
-        <div className="bg-gradient-to-b to-purple-900 from-purple-700 flex justify-center p-4 w-4/5 mx-auto rounded-lg m-4">
+        <div
+          className={`bg-gradient-to-b ${color} flex justify-center p-4 w-4/5 mx-auto rounded-lg m-4`}
+        >
           <div className="flex flex-col items-center w-full">
             <img
               src={
@@ -31,16 +51,28 @@ function IndividualMemberPage() {
             <Markdown className="p-4 bg-violet-700 rounded-xl my-8 text-center">
               {member.bio}
             </Markdown>
-            {/* add a list of the shows that they made */}
-            <div className="w-full">
-              <h2 className="text-xl text-center">Hosts</h2>
-              <div className="flex flex-wrap justify-center p-4 w-full">
-                {/* add a list of the hosts that are on the show */}
-                {getShowsByHost(member).map((show) => {
-                  return <ShowCard show={show} key={show.name} />;
+            {/* add a list of their badges! */}
+            {member.badges && (
+              <div className="flex flex-wrap justify-center pb-8 w-full">
+                {member.badges.map((badge) => {
+                  return (
+                    <p className="bg-red-700 rounded-xl p-2 m-2">{badge}</p>
+                  );
                 })}
               </div>
-            </div>
+            )}
+            {/* add a list of the shows that they made */}
+            {member.badges?.includes("DJ") && (
+              <div className="w-full p-2">
+                <h2 className="text-xl text-center">Hosts</h2>
+                <div className="flex flex-wrap justify-center p-4 w-full">
+                  {/* add a list of the hosts that are on the show */}
+                  {getShowsByHost(member).map((show) => {
+                    return <ShowCard show={show} key={show.name} />;
+                  })}
+                </div>
+              </div>
+            )}
             <SocialButtons member={member} />
           </div>
         </div>

@@ -8,6 +8,7 @@ import TreyImg from "../assets/members/trey.jpg";
 import CadenImg from "../assets/members/caden.jpg";
 import ChickadeeImg from "../assets/members/chickadee.jpg";
 import BrockImg from "../assets/members/brock.jpg";
+import GarnettImg from "../assets/members/garnett.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -18,28 +19,19 @@ import getRandomSplash from "../egg/splash";
 export type HostBadge =
   | "DJ"
   | "Station Manager"
-  | "Public Relations"
   | "Technical Director"
+  | "Program Director"
+  | "Financial Director"
+  | "Event and Marketing Director"
+  | "Music Director"
   | "Sports Director"
-  | "Record Keeper"
+  | "Executive Board"
   | "Faculty Advisor"
   | "Alumni"
+  | "Honorary"
+  | "Past Executive Board" // Either alumni or current students, but no longer on the exec board.
   | "Past" // Not yet alumni, but no longer on the team.
   | "Hidden"; // Hidden from the website. Not *really* a badge, but it's easier to handle it here.
-
-// export enum Social {
-//   "Twitter",
-//   "Instagram",
-//   "Facebook",
-//   "LinkedIn",
-//   "YouTube",
-//   "Twitch",
-//   "Spotify",
-//   "Soundcloud",
-//   "Apple Music",
-//   "GitHub",
-//   // Let me know if you want more!
-// }
 
 export type Platform =
   | "Instagram"
@@ -67,7 +59,6 @@ export type Host = {
   splash_text: string;
   bio: string;
   image: string;
-  // socials: Partial<Record<keyof typeof Social, string>>;
   socials: Social[];
   badges?: HostBadge[];
 };
@@ -91,7 +82,7 @@ export const hosts: Host[] = [
         url: "https://open.spotify.com/user/akaplan1488",
       },
     ],
-    badges: ["DJ", "Station Manager"],
+    badges: ["DJ", "Station Manager", "Executive Board"],
   },
   {
     name: "Mark",
@@ -107,10 +98,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         platform: "Tumblr",
         url: "https://totallynotmark6.tumblr.com",
       },
-      // {
-      //   platform: "Twitter",
-      //   url: "https://twitter.com/totallynotmark6",
-      // },
       {
         platform: "Instagram",
         url: "https://instagram.com/totallynotmark6",
@@ -119,39 +106,12 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         platform: "YouTube",
         url: "https://youtube.com/@totallynotmark6",
       },
-      // {
-      //   platform: "Twitch",
-      //   url: "https://twitch.tv/TheShawChemist",
-      // },
       {
         platform: "GitHub",
         url: "https://github.com/totallynotmark6",
       },
     ],
-    badges: ["DJ", "Technical Director"],
-  },
-  {
-    name: "Grayson",
-    pronouns: ["he", "him"],
-    splash_text: "Defender of the World from Nickelback",
-    bio: `It's so hard being a single mom when you have no kids and are a male teenager.`,
-    image: GraysonImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/son_ofgray/",
-      },
-    ],
-    badges: ["DJ", "Public Relations"],
-  },
-  {
-    name: "Brock",
-    pronouns: ["he", "him"],
-    splash_text: "The Elusive One",
-    bio: `Hello! I'm Brock, the one that is impossible to get a hold of. I don't know what I'm doing either :)`,
-    image: BrockImg,
-    socials: [],
-    badges: ["DJ", "Sports Director"],
+    badges: ["DJ", "Technical Director", "Executive Board"],
   },
   {
     name: "Sophie",
@@ -169,7 +129,44 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://open.spotify.com/user/caucasian_nugget",
       },
     ],
-    badges: ["DJ", "Record Keeper"],
+    badges: ["DJ", "Program Director", "Executive Board"],
+  },
+  {
+    name: "Garnett",
+    pronouns: ["he", "him"],
+    splash_text: "Guy that does money things",
+    bio: `Yo! My name is Garnett, and I’m the treasurer for KRNL. I know that 2+2=4 and that is the extent of my qualifications for this position!`,
+    image: GarnettImg,
+    socials: [
+      {
+        platform: "Instagram",
+        url: "https://www.instagram.com/garnet_steak/",
+      },
+    ],
+    badges: ["Financial Director", "Executive Board"],
+  },
+  {
+    name: "Grayson",
+    pronouns: ["he", "him"],
+    splash_text: "Defender of the World from Nickelback",
+    bio: `It's so hard being a single mom when you have no kids and are a male teenager.`,
+    image: GraysonImg,
+    socials: [
+      {
+        platform: "Instagram",
+        url: "https://www.instagram.com/son_ofgray/",
+      },
+    ],
+    badges: ["DJ", "Event and Marketing Director", "Executive Board"],
+  },
+  {
+    name: "Brock",
+    pronouns: ["he", "him"],
+    splash_text: "The Elusive One",
+    bio: `Hello! I'm Brock, the one that is impossible to get a hold of. I don't know what I'm doing either :)`,
+    image: BrockImg,
+    socials: [],
+    badges: ["DJ", "Music Director", "Executive Board"],
   },
   {
     name: "Zoe",
@@ -217,6 +214,12 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     socials: [],
     badges: ["DJ"],
   },
+  // {
+  //   name: "Jake",
+  // },
+  // {
+  //   name: "Sami",
+  // }
   // {
   //   name: "Matt",
   //   pronouns: ["he", "him"],
@@ -303,3 +306,53 @@ export const AUTOMATED_HOST: Host = {
   socials: [],
   badges: ["Hidden"],
 };
+
+type HostBadgeOrNot = HostBadge | "";
+
+export function sortHosts(hosts: Host[]): Host[] {
+  const HOST_ORDER = [
+    "Station Manager",
+    "Technical Director",
+    "Program Director",
+    "Financial Director",
+    "Event and Marketing Director",
+    "Music Director",
+    "Sports Director",
+  ];
+  return hosts.sort((a, b) => {
+    // sort in the following order:
+    // station manager
+    // technical director
+    // program director
+    // finance director
+    // event and marketing director
+    // music director
+    // sports director
+    // everything else
+    // but only if they're currently on exec board (no past execs)
+    if (
+      a.badges?.includes("Executive Board") &&
+      b.badges?.includes("Executive Board")
+    ) {
+      const a_index = HOST_ORDER.indexOf(
+        a.badges?.find((badge) => HOST_ORDER.includes(badge)) ?? ""
+      );
+      const b_index = HOST_ORDER.indexOf(
+        b.badges?.find((badge) => HOST_ORDER.includes(badge)) ?? ""
+      );
+      console.table({ a_index, b_index, a: a.name, b: b.name });
+      if (a_index !== -1 && b_index !== -1) {
+        return a_index - b_index;
+      }
+    } else {
+      // if one is on exec board and the other isn't, put the one that is on exec board first
+      if (a.badges?.includes("Executive Board")) {
+        return -1;
+      } else if (b.badges?.includes("Executive Board")) {
+        return 1;
+      }
+    }
+    // sort by name
+    return a.name.localeCompare(b.name);
+  });
+}

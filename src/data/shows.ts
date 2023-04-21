@@ -90,17 +90,6 @@ export const shows: Show[] = [
     schedule: new ScheduleItem("0 13 * * 0", 120),
   },
   {
-    name: "KRNL Tabling!",
-    splash_text: "Come say hi!",
-    description:
-      "We'll be on the third floor of Thomas Commons during lunch! Come say hi! Mark (and someone else we just don't quite know who) will also be live throughout the entirety of lunch!",
-    background: "#ddfe60",
-    hosts: [KRNL_HOST],
-    scheduleString: "Tuesday and Wednesday from 11am to 1pm in Thomas Commons",
-    schedule: new ScheduleItem("0 11 24,25 1 *", 120, new Date(2023, 2, 2)),
-    hiddenAfter: new Date(2023, 2, 1),
-  },
-  {
     name: "CCPR",
     splash_text: "",
     description: "Because we can do anything in 18 ~~days~~ minutes!",
@@ -125,16 +114,6 @@ export const shows: Show[] = [
     guests: "Garnett Strack",
     scheduleString: "Every Friday from 8pm to 9pm",
     schedule: new ScheduleItem("0 20 * * 5", 60),
-  },
-  {
-    name: "?????",
-    splash_text: "It's something!",
-    description: "What could this be??",
-    background: "#ddfe60",
-    hosts: [getHostByName("Mark")],
-    scheduleString: "Saturday from 2pm to 4pm",
-    schedule: new ScheduleItem("0 14 * * 6", 120, new Date(2023, 3, 3)),
-    hiddenAfter: new Date(2023, 3, 7),
   },
 ];
 
@@ -186,4 +165,32 @@ export function getNearestShows(): Show[] {
 
 export function getCurrentShows(): Show[] {
   return getAllShows().filter((show) => show.schedule.isCurrent());
+}
+
+export function sortShowsByNextOccurance(shows: Show[]): Show[] {
+  return shows.sort((a, b) => {
+    const aDate = a.schedule.getNextOccurance();
+    const bDate = b.schedule.getNextOccurance();
+    if (aDate === undefined || bDate === undefined) {
+      // whatever one has a date is first
+      if (aDate !== undefined) {
+        return -1;
+      }
+      if (bDate !== undefined) {
+        return 1;
+      }
+      // else, they're both undefined, so by name it goes!
+      return a.name.localeCompare(b.name);
+    }
+    return aDate.getTime() - bDate.getTime();
+  });
+}
+
+export function sortShowsByName(shows: Show[]): Show[] {
+  return shows.sort((a, b) => {
+    // if the show starts with "The", ignore it
+    const aName = a.name.startsWith("The ") ? a.name.slice(4) : a.name;
+    const bName = b.name.startsWith("The ") ? b.name.slice(4) : b.name;
+    return aName.localeCompare(bName);
+  });
 }

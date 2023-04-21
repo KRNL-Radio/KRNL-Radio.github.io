@@ -48,11 +48,31 @@ function renderBadges(member: Host) {
           text: "Technical Director",
         };
         break;
-      case "Public Relations":
+      case "Program Director":
         return {
-          icon: solid("share-nodes"),
+          icon: solid("microphone"),
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
-          text: "Public Relations",
+          text: "Program Director",
+        };
+        break;
+      case "Financial Director":
+        return {
+          icon: solid("dollar-sign"),
+          background: "from-purple-700 to-purple-900 bg-gradient-to-b",
+          text: "Financial Director",
+        };
+      case "Event and Marketing Director":
+        return {
+          icon: solid("calendar"),
+          background: "from-purple-700 to-purple-900 bg-gradient-to-b",
+          text: "Events Director", // we have to abbreviate this because it's too long!
+        };
+        break;
+      case "Music Director":
+        return {
+          icon: solid("music"),
+          background: "from-purple-700 to-purple-900 bg-gradient-to-b",
+          text: "Music Director",
         };
         break;
       case "Sports Director":
@@ -67,13 +87,6 @@ function renderBadges(member: Host) {
           icon: solid("user-tie"),
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
           text: "Faculty Advisor",
-        };
-        break;
-      case "Record Keeper":
-        return {
-          icon: solid("record-vinyl"),
-          background: "from-orange-700 to-orange-900 bg-gradient-to-b",
-          text: "Record Keeper",
         };
         break;
       default:

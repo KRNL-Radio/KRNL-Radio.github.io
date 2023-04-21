@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import MemberCard from "../components/MemberCard";
-import { getAllHosts } from "../data/hosts";
+import { getAllHosts, sortHosts } from "../data/hosts";
 
 function MemberPage() {
   return (
@@ -11,7 +11,7 @@ function MemberPage() {
           <h1 className="text-4xl font-bold">Members</h1>
         </div>
         <div className="flex flex-wrap justify-center p-4 w-full">
-          {getAllHosts().map((host) => {
+          {sortHosts(getAllHosts()).map((host) => {
             return <MemberCard member={host} key={host.name} />;
           })}
         </div>
