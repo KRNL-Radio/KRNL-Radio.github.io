@@ -36,7 +36,7 @@
     "remark-gfm": "^3.0.1",
     "remark-remove-comments": "^1.0.1",
     "stats.js": "^0.17.0",
-    "tsparticles": "2.8.0",
+    "tsparticles": "2.9.3",
     "tsparticles-engine": "2.8.0",
     "tsparticles-path-curves": "2.8.0",
     "typescript": "^4.8.4",
