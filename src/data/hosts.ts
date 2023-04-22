@@ -9,6 +9,7 @@ import CadenImg from "../assets/members/caden.jpg";
 import ChickadeeImg from "../assets/members/chickadee.jpg";
 import BrockImg from "../assets/members/brock.jpg";
 import GarnettImg from "../assets/members/garnett.jpg";
+import SamiImg from "../assets/members/sami.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -217,9 +218,20 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   // {
   //   name: "Jake",
   // },
-  // {
-  //   name: "Sami",
-  // }
+  {
+    name: "Sami",
+    pronouns: ["they", "them"],
+    splash_text: "Certified Dog Photo Shower",
+    bio: `Hi I’m Sami! I have a very wide range of music taste but Florence + the machine, the crane wives, Marika Hackman, and vocaloid (PAFL) are my go-to! Peace and love Hatsune Miku!`,
+    image: SamiImg,
+    socials: [
+      {
+        platform: "Instagram",
+        url: "https://www.instagram.com/still.want.a.ferret/",
+      },
+    ],
+    badges: ["DJ"],
+  },
   // {
   //   name: "Matt",
   //   pronouns: ["he", "him"],
