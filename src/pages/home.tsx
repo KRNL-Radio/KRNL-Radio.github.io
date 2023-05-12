@@ -13,6 +13,7 @@ import {
 import { getCurrentShows } from "../data/shows";
 import { toTailwind } from "../themes/core";
 import { TinyThemeWrapper } from "../themes/tinywrapper";
+import getMotto from "../egg/motto";
 
 function HomePage() {
   return (
@@ -45,6 +46,7 @@ function HomePage() {
             Welcome! KRNL is a student-run college radio station that was
             broadcasting at 89.7 FM.
           </p>
+          <p>{getMotto()}</p>
 
           <p className="text-xl">
             We seek to provide a personal, alternative source of entertainment
