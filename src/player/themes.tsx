@@ -12,7 +12,17 @@ import {
 import { curvesPathName } from "tsparticles-path-curves";
 import LeafSVG from "../assets/leaf.svg";
 import RabbitSVG from "../assets/rabbit.svg";
-
+import PrideParticle01 from "../assets/pride-particles/tile1.png";
+import PrideParticle02 from "../assets/pride-particles/tile2.png";
+import PrideParticle03 from "../assets/pride-particles/tile3.png";
+import PrideParticle04 from "../assets/pride-particles/tile4.png";
+import PrideParticle05 from "../assets/pride-particles/tile5.png";
+import PrideParticle06 from "../assets/pride-particles/tile6.png";
+import PrideParticle07 from "../assets/pride-particles/tile7.png";
+import PrideParticle08 from "../assets/pride-particles/tile8.png";
+import PrideParticle09 from "../assets/pride-particles/tile9.png";
+import PrideParticle10 from "../assets/pride-particles/tile10.png";
+import PrideParticle11 from "../assets/pride-particles/tile11.png";
 export const SEA_ANEMONE_THEME: ISourceOptions = {
   fpsLimit: 120,
   fullScreen: {
@@ -383,7 +393,7 @@ export const SPRING_THEME: ISourceOptions = {
     wobble: {
       // TODO: adjust?
       distance: 20,
-      enable: false,
+      enable: true,
       speed: {
         min: -5,
         max: 5,
@@ -395,6 +405,94 @@ export const SPRING_THEME: ISourceOptions = {
         src: LeafSVG,
         replace_color: true,
       },
+    },
+  },
+};
+
+export const PRIDE_THEME: ISourceOptions = {
+  fpsLimit: 120,
+  fullScreen: {
+    enable: true,
+    zIndex: -1,
+  },
+  background: {
+    color: "#231638",
+  },
+  detectRetina: true,
+  interactivity: {
+    detectsOn: "window",
+    events: {
+      onClick: {
+        enable: true,
+        mode: "repulse",
+      },
+    },
+  },
+  particles: {
+    move: {
+      direction: "outside",
+      enable: true,
+      random: false,
+      straight: false,
+      speed: {
+        min: 3,
+        max: 7,
+      },
+    },
+    rotate: {
+      value: {
+        min: 0,
+        max: 360,
+      },
+      animation: {
+        enable: true,
+        speed: 10,
+      },
+      direction: "random",
+    },
+    opacity: {
+      value: 1,
+    },
+    size: {
+      value: { min: 5, max: 25 }, // TODO: adjust?
+    },
+    shape: {
+      type: ["image"],
+      image: [
+        {
+          src: PrideParticle01,
+        },
+        {
+          src: PrideParticle02,
+        },
+        {
+          src: PrideParticle03,
+        },
+        {
+          src: PrideParticle04,
+        },
+        {
+          src: PrideParticle05,
+        },
+        {
+          src: PrideParticle06,
+        },
+        {
+          src: PrideParticle07,
+        },
+        {
+          src: PrideParticle08,
+        },
+        {
+          src: PrideParticle09,
+        },
+        {
+          src: PrideParticle10,
+        },
+        {
+          src: PrideParticle11,
+        },
+      ],
     },
   },
 };

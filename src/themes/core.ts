@@ -3,6 +3,7 @@ import {
   FIREWORKS_THEME,
   FIRE_THEME,
   FOUNTAIN_THEME,
+  PRIDE_THEME,
   RABBIT_THEME,
   SEA_ANEMONE_THEME,
   SNOW_THEME,
@@ -90,6 +91,7 @@ export const themes: Theme[] = [
           case 5:
             return "Seasonal - Spring";
           case 6:
+            return "Seasonal - Pride";
           case 7:
           case 8:
             return "Seasonal - Summer";
@@ -149,6 +151,25 @@ export const themes: Theme[] = [
     name: "Seasonal - Spring",
     type: "particles",
     options: [SPRING_THEME],
+  },
+  {
+    name: "Seasonal - Pride",
+    type: "particles",
+    options: [PRIDE_THEME],
+  },
+  {
+    // going to be honest, i have no idea what to do for a summer theme
+    // just gonna leave this here? gradient doesn't look terrible.
+    // maybe i'll do something with the particles later.
+    // idk.
+    name: "Seasonal - Summer",
+    type: "tailwind",
+    options: [
+      "bg-gradient-to-r",
+      "from-yellow-300",
+      "via-red-500",
+      "to-pink-600",
+    ],
   },
   // {
   //   name: "Weather",
