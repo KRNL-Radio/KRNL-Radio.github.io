@@ -1,7 +1,7 @@
 // Various "events" that occur, such as Christmas, Halloween, Graduation, etc. that can change the appearence of the site.
 
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Theme, TinyTheme } from "../themes/core";
+import { TinyTheme } from "../themes/core";
 
 export type BannerEffect = {
   background_theme: TinyTheme;

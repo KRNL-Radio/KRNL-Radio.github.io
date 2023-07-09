@@ -1,5 +1,4 @@
 import React from "react";
-import Countdown from "../components/Countdown";
 import Header from "../components/Header";
 import Markdown from "../components/Markdown";
 import ShowCard from "../components/ShowCard";
@@ -12,7 +11,6 @@ import {
 } from "../data/events";
 import { getCurrentShows } from "../data/shows";
 import { toTailwind } from "../themes/core";
-import { TinyThemeWrapper } from "../themes/tinywrapper";
 import getMotto from "../egg/motto";
 
 function HomePage() {

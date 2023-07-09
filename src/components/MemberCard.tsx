@@ -1,33 +1,8 @@
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { AUTOMATED_HOST, Host, KRNL_HOST } from "../data/hosts";
 import { slugify } from "../util/slug";
 import Card from "./Card";
-
-function Badge({
-  icon,
-  color,
-  hover_text,
-}: {
-  icon: IconDefinition;
-  color?: string;
-  hover_text: string;
-}) {
-  if (color === undefined) {
-    color = "from-purple-700 to-purple-900";
-  }
-  return (
-    <div className="flex items-center">
-      <div className={`${color} bg-gradient-to-b mask mask-hexagon-2 p-1`}>
-        <a className="tooltip" data-tip={hover_text} key={slugify(hover_text)}>
-          <FontAwesomeIcon icon={icon} size="1x" className="p-1" />
-        </a>
-      </div>
-    </div>
-  );
-}
 
 function renderBadges(member: Host) {
   if (member.badges === undefined) {
@@ -47,14 +22,12 @@ function renderBadges(member: Host) {
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
           text: "Technical Director",
         };
-        break;
       case "Program Director":
         return {
           icon: solid("microphone"),
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
           text: "Program Director",
         };
-        break;
       case "Financial Director":
         return {
           icon: solid("dollar-sign"),
@@ -67,28 +40,24 @@ function renderBadges(member: Host) {
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
           text: "Events Director", // we have to abbreviate this because it's too long!
         };
-        break;
       case "Music Director":
         return {
           icon: solid("music"),
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
           text: "Music Director",
         };
-        break;
       case "Sports Director":
         return {
           icon: solid("medal"),
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
           text: "Sports Director",
         };
-        break;
       case "Faculty Advisor":
         return {
           icon: solid("user-tie"),
           background: "from-purple-700 to-purple-900 bg-gradient-to-b",
           text: "Faculty Advisor",
         };
-        break;
       default:
         break;
     }

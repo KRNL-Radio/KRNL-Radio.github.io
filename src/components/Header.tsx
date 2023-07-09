@@ -16,7 +16,7 @@ function SiteBanner() {
     const link_url = banner.effects.banner!.site_banner_link;
     const link_text = banner.effects.banner!.site_banner_link_text;
     return (
-      <TinyThemeWrapper theme={banner.effects.banner!.background_theme}>
+      <TinyThemeWrapper theme={theme}>
         <div className="border-white border-solid border-b text-l m-0 p-2 text-center text-white">
           {/* right, all we need to do now is make the banner!~ */}
           {/* it goes: icon, text: link */}

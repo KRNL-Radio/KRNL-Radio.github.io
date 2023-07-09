@@ -319,8 +319,6 @@ export const AUTOMATED_HOST: Host = {
   badges: ["Hidden"],
 };
 
-type HostBadgeOrNot = HostBadge | "";
-
 export function sortHosts(hosts: Host[]): Host[] {
   const HOST_ORDER = [
     "Station Manager",
@@ -347,10 +345,10 @@ export function sortHosts(hosts: Host[]): Host[] {
       b.badges?.includes("Executive Board")
     ) {
       const a_index = HOST_ORDER.indexOf(
-        a.badges?.find((badge) => HOST_ORDER.includes(badge)) ?? ""
+        a.badges?.find((badge) => HOST_ORDER.includes(badge)) ?? "",
       );
       const b_index = HOST_ORDER.indexOf(
-        b.badges?.find((badge) => HOST_ORDER.includes(badge)) ?? ""
+        b.badges?.find((badge) => HOST_ORDER.includes(badge)) ?? "",
       );
       console.table({ a_index, b_index, a: a.name, b: b.name });
       if (a_index !== -1 && b_index !== -1) {

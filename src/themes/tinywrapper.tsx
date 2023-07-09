@@ -1,5 +1,5 @@
 import React from "react";
-import { BLANK_THEME, TinyTheme, toTailwind } from "./core";
+import { TinyTheme, toTailwind } from "./core";
 // import butterchurn, { ButterchurnVisualizer } from "butterchurn";
 // import butterchurnPresets from "butterchurn-presets";
 function BackgroundTinyThemeWrapper({

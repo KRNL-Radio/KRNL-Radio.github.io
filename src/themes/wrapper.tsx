@@ -4,59 +4,9 @@ import { Engine, Container } from "tsparticles-engine";
 import { measureFPS } from "../util/performance";
 import { BLANK_THEME, getDefaultTheme, getTheme, Theme } from "./core";
 import { getOverrideTheme } from "../data/events";
-// import butterchurn, { ButterchurnVisualizer } from "butterchurn";
-// import butterchurnPresets from "butterchurn-presets";
 const Particles = React.lazy(() => import("react-particles"));
 
 // individual handlers
-// function AudioThemeWrapper({ children, theme }: { children: React.ReactNode; theme: Theme }) {
-//   // on mount, start the audio
-//   let [actualVis, setActualVis] = React.useState<ButterchurnVisualizer | null>(null);
-//   let render = () => {
-//     if (actualVis) {
-//       actualVis.render();
-//     }
-//     console.log("rendering", actualVis)
-//     requestAnimationFrame(render);
-//   }
-
-//   useEffect(() => {
-//     if (actualVis) {
-//       return
-//     }
-
-//     window.player.on("play", () => {
-//       let canvas = document.getElementById("audio-canvas") as HTMLCanvasElement;
-//       let ac = window.player.audio_context!
-//       canvas.width = 1713;
-//       canvas.height = 857;
-
-//       let visualizer = butterchurn.createVisualizer(ac, canvas, {
-//         // 1713 857
-//         width: 1713,
-//         height: 857,
-//       });
-//       const presets = butterchurnPresets.getPresets();
-//       const preset = presets['martin - chain breaker'];
-
-//       visualizer.loadPreset(preset, 0.0); // 2nd argument is the number of seconds to blend presets
-//       setActualVis(visualizer);
-//       visualizer.connectAudio(window.player.audio_node);
-//       visualizer.launchSongTitleAnim("hi")
-//       setInterval(() => {
-//         visualizer.render();
-//       }, 1000 / 60);
-//     })
-//     window.player.on("pause", () => {
-//       // visualizer.disconnectAudio();
-//     })
-//   }, [render, actualVis]);
-
-//   return <div className="w-full h-full">
-//     <canvas id="audio-canvas" className="w-full h-full"></canvas>
-//     {children}
-//   </div>
-// }
 
 function ParticlesThemeWrapper({
   children,
@@ -66,9 +16,6 @@ function ParticlesThemeWrapper({
   theme: Theme;
 }) {
   const [shouldBenchmark, setShouldBenchmark] = React.useState(false);
-  const [containerRef, setContainerRef] = React.useState<
-    Container | undefined
-  >();
   const particlesInit = useCallback(async (engine: Engine) => {
     // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -85,7 +32,7 @@ function ParticlesThemeWrapper({
         // setShouldBenchmark(true);
       }
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -106,7 +53,9 @@ function ParticlesThemeWrapper({
           // set the theme to "OLED Lover"
           localStorage.setItem("theme", "OLED Lover");
           window.dispatchEvent(
-            new CustomEvent("theme-change", { detail: { theme: "OLED Lover" } })
+            new CustomEvent("theme-change", {
+              detail: { theme: "OLED Lover" },
+            }),
           );
           toast("The theme has been changed due to low performance!");
         }
@@ -206,8 +155,6 @@ export function ThemeWrapper({
   theme: Theme;
 }) {
   switch (theme.type) {
-    // case "audio":
-    //   return <AudioThemeWrapper theme={theme}>{children}</AudioThemeWrapper>
     case "particles":
       return (
         <ParticlesThemeWrapper theme={theme}>{children}</ParticlesThemeWrapper>
@@ -240,7 +187,26 @@ export function BrowserThemeWrapper({
 }) {
   // alright, let's get the theme from localStorage
   // let theme = getTheme(localStorage.getItem("theme") || "");
-  const [theme, setTheme] = React.useState<Theme>(getTheme("OLED Lover"));
+  const [theme, trueSetTheme] = React.useState<Theme>(getTheme("OLED Lover"));
+  const setTheme = useCallback(
+    (newTheme: Theme) => {
+      if (newTheme.name === theme.name) {
+        return;
+      }
+      if (newTheme.type === "particles" && theme.type === "particles") {
+        // if the theme is particles, and the current theme is particles, we need to temporarily
+        // set the theme to blank, so that the particles can be reloaded
+        // else, the tab crashes.
+        trueSetTheme(BLANK_THEME);
+        setTimeout(() => {
+          trueSetTheme(newTheme);
+        }, 2);
+      } else {
+        trueSetTheme(newTheme);
+      }
+    },
+    [theme, trueSetTheme],
+  );
 
   useEffect(() => {
     // set the theme
@@ -267,7 +233,7 @@ export function BrowserThemeWrapper({
       window.removeEventListener("storage", () => {});
       window.removeEventListener("theme-change", () => {});
     };
-  }, []);
+  }, [setTheme]);
 
   useEffect(() => {
     // override the theme if needed
@@ -276,7 +242,7 @@ export function BrowserThemeWrapper({
       console.log("OVERRIDE!", getTheme(overrideTheme.effects.theme!.theme));
       setTheme(getTheme(overrideTheme.effects.theme!.theme));
     }
-  }, []);
+  }, [setTheme]);
 
   return <ThemeWrapper theme={theme}>{children}</ThemeWrapper>;
 }

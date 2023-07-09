@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-import Countdown from "../components/Countdown";
 import Header from "../components/Header";
 import Markdown from "../components/Markdown";
 import MemberCard from "../components/MemberCard";

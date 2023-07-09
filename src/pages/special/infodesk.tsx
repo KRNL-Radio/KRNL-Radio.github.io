@@ -1,6 +1,5 @@
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DateTime } from "luxon";
 import React, { useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Countdown from "../../components/Countdown";
@@ -8,7 +7,6 @@ import Header from "../../components/Header";
 import { SmallLoading, IconLoading } from "../../components/LoadingScreens";
 import PlaceholderImage from "../../assets/placeholder.jpg";
 import Silence from "../../assets/silence.mp3";
-import { ScheduleItem } from "../../data/schedule";
 import { RequestTrack } from "../../requests/core";
 import { getCurrentShows, getNearestShows, Show } from "../../data/shows";
 import Countup from "../../components/Countup";
@@ -199,7 +197,7 @@ function InfoDeskPlayerPage() {
                 pending: "Running func setupNotifs()",
                 success: "it worked",
                 error: "it failed!!!!!1!1",
-              }
+              },
             );
           }}
         >
@@ -235,10 +233,10 @@ function RequestsModal() {
   const [searchText, setSearchText] = React.useState("");
   const [searchResults, setSearchResults] = React.useState<RequestTrack[]>([]);
   const [status, setStatus] = React.useState(
-    window.player.requests_core.status
+    window.player.requests_core.status,
   );
   const [pnr, setPnr] = React.useState(
-    window.player.requests_core.probable_next_request
+    window.player.requests_core.probable_next_request,
   );
   useEffect(() => {
     window.player.requests_core.get_tracks().then((res_tracks) => {
@@ -256,8 +254,8 @@ function RequestsModal() {
         tracks.filter(
           (track) =>
             track.title.toLowerCase().includes(searchText.toLowerCase()) ||
-            track.artist.toLowerCase().includes(searchText.toLowerCase())
-        )
+            track.artist.toLowerCase().includes(searchText.toLowerCase()),
+        ),
       );
     }
   }, [searchText, tracks]);
@@ -324,7 +322,7 @@ function RequestsModal() {
                         } catch (_) {}
                         setStatus(window.player.requests_core.status);
                         setPnr(
-                          window.player.requests_core.probable_next_request
+                          window.player.requests_core.probable_next_request,
                         );
                       }}
                       icon={solid("add")}
