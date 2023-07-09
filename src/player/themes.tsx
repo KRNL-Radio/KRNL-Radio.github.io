@@ -12,17 +12,17 @@ import {
 import { curvesPathName } from "tsparticles-path-curves";
 import LeafSVG from "../assets/leaf.svg";
 import RabbitSVG from "../assets/rabbit.svg";
-import PrideParticle01 from "../assets/pride-particles/tile1.png";
-import PrideParticle02 from "../assets/pride-particles/tile2.png";
-import PrideParticle03 from "../assets/pride-particles/tile3.png";
-import PrideParticle04 from "../assets/pride-particles/tile4.png";
-import PrideParticle05 from "../assets/pride-particles/tile5.png";
-import PrideParticle06 from "../assets/pride-particles/tile6.png";
-import PrideParticle07 from "../assets/pride-particles/tile7.png";
-import PrideParticle08 from "../assets/pride-particles/tile8.png";
-import PrideParticle09 from "../assets/pride-particles/tile9.png";
-import PrideParticle10 from "../assets/pride-particles/tile10.png";
-import PrideParticle11 from "../assets/pride-particles/tile11.png";
+import PrideParticle01 from "../assets/pride-particles/agender.png";
+import PrideParticle02 from "../assets/pride-particles/aromantic.png";
+import PrideParticle03 from "../assets/pride-particles/asexual.png";
+import PrideParticle04 from "../assets/pride-particles/bisexual.png";
+import PrideParticle05 from "../assets/pride-particles/genderfluid.png";
+import PrideParticle06 from "../assets/pride-particles/genderqueer.png";
+import PrideParticle07 from "../assets/pride-particles/lesbian.png";
+import PrideParticle08 from "../assets/pride-particles/nonbinary.png";
+import PrideParticle09 from "../assets/pride-particles/pansexual.png";
+import PrideParticle10 from "../assets/pride-particles/pride.png";
+import PrideParticle11 from "../assets/pride-particles/transgender.png";
 export const SEA_ANEMONE_THEME: ISourceOptions = {
   fpsLimit: 120,
   fullScreen: {
