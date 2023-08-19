@@ -33,7 +33,7 @@ export const shows: Show[] = [
   },
   {
     name: "Stochastic Shuffle",
-    splash_text: "",
+    splash_text: "Unpredictability at its finest - every time, by design!",
     description:
       "This is a totally unplanned show, where anything can happen (within contractual obligations). There's no logic behind this show, it just is.",
     background: "#0f3cec",
@@ -82,7 +82,7 @@ export const shows: Show[] = [
   },
   {
     name: "The Bard's Tale",
-    splash_text: "The only show that matters",
+    splash_text: "Where every note tells a tale of bravery, magic, and mayhem!",
     description: "",
     background: "#ddfe60",
     hosts: [getHostByName("Caden")],
@@ -91,12 +91,12 @@ export const shows: Show[] = [
   },
   {
     name: "CCPR",
-    splash_text: "",
+    splash_text: "Cornell College Public Radio",
     description: "Because we can do anything in 18 ~~days~~ minutes!",
     background: "#ddfe60",
     hosts: [getHostByName("Adrien"), getHostByName("Sophie")],
-    scheduleString: "Every Monday from 8am to 8:18am",
-    schedule: new ScheduleItem("0 8 * * 1", 18),
+    scheduleString: "Every Monday from 8:05am to 8:23am",
+    schedule: new ScheduleItem("5 8 * * 1", 18),
   },
   // {
   //   name: "CCPR (Previously Recorded)",
@@ -123,7 +123,7 @@ export function getShowByName(name: string): Show | undefined {
 
 export function getShowsByHost(host: Host): Show[] {
   return shows.filter(
-    (show) => show.hosts.includes(host) || show.hosts.includes(KRNL_HOST)
+    (show) => show.hosts.includes(host) || show.hosts.includes(KRNL_HOST),
   );
 }
 
