@@ -497,6 +497,94 @@ export const PRIDE_THEME: ISourceOptions = {
   },
 };
 
+export const FALL_THEME: ISourceOptions = {
+  fpsLimit: 120,
+  fullScreen: {
+    enable: true,
+    zIndex: -1,
+  },
+  background: {
+    color: "#716888", // TODO: adjust!
+  },
+  detectRetina: true,
+  interactivity: {
+    detectsOn: "window",
+    events: {
+      onClick: {
+        enable: true,
+        mode: "repulse",
+      },
+    },
+  },
+  particles: {
+    move: {
+      direction: "bottom-left",
+      enable: true,
+      random: false,
+      straight: false,
+    },
+    rotate: {
+      value: {
+        min: 0,
+        max: 360,
+      },
+      animation: {
+        enable: true,
+        speed: 10,
+      },
+      direction: "random",
+    },
+    tilt: {
+      value: {
+        min: 0,
+        max: 360,
+      },
+      animation: {
+        enable: true,
+        speed: 10,
+      },
+      direction: "random",
+      enable: true,
+    },
+    roll: {
+      darken: {
+        enable: true,
+        value: 5,
+      },
+      enable: true,
+      speed: {
+        min: 10,
+        max: 35,
+      },
+    },
+    opacity: {
+      value: 1,
+    },
+    color: {
+      value: ["#f2d64a", "#f34b19", "#b20205", "#c27ac0", "#5d1f07"],
+    },
+    size: {
+      value: { min: 1, max: 10 }, // TODO: adjust?
+    },
+    wobble: {
+      // TODO: adjust?
+      distance: 20,
+      enable: true,
+      speed: {
+        min: -5,
+        max: 5,
+      },
+    },
+    shape: {
+      type: ["image"], // TODO: replace!
+      image: {
+        src: LeafSVG,
+        replace_color: true,
+      },
+    },
+  },
+};
+
 const fixRange = (value: IRangeValue, min: number, max: number): RangeValue => {
   const diffSMax = value.max > max ? value.max - max : 0;
   let res = setRangeValue(value);

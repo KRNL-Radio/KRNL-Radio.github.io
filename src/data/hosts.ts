@@ -9,6 +9,7 @@ import CadenImg from "../assets/members/caden.jpg";
 import ChickadeeImg from "../assets/members/chickadee.jpg";
 import BrockImg from "../assets/members/brock.jpg";
 import GarnettImg from "../assets/members/garnett.jpg";
+import JakeImg from "../assets/members/jake.jpg";
 import SamiImg from "../assets/members/sami.jpg";
 import getRandomSplash from "../egg/splash";
 
@@ -215,9 +216,20 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     socials: [],
     badges: ["DJ"],
   },
-  // {
-  //   name: "Jake",
-  // },
+  {
+    name: "Jake",
+    pronouns: ["he", "him"],
+    splash_text: "Season Ticket Holder to the Boonta Eve Classic",
+    bio: "Hi! I'm Jake. It wasn't until I worked at a wedding venue that I realized my playlist was mostly millennial reception music.",
+    image: JakeImg,
+    socials: [
+      {
+        platform: "Instagram",
+        url: "https://www.instagram.com/jakethsnowflaketh",
+      },
+    ],
+    badges: ["DJ"],
+  },
   {
     name: "Sami",
     pronouns: ["they", "them"],

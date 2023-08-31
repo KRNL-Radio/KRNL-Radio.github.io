@@ -8,6 +8,7 @@ import {
   SEA_ANEMONE_THEME,
   SNOW_THEME,
   SPRING_THEME,
+  FALL_THEME,
 } from "../player/themes";
 
 export type ThemeType =
@@ -170,6 +171,11 @@ export const themes: Theme[] = [
       "via-red-500",
       "to-pink-600",
     ],
+  },
+  {
+    name: "Seasonal - Autumn",
+    type: "particles",
+    options: [FALL_THEME],
   },
   // {
   //   name: "Weather",
