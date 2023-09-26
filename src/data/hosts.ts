@@ -5,7 +5,7 @@ import AdrienImg from "../assets/members/adrien.jpg";
 import MarkImg from "../assets/members/mark.jpg";
 import ZoeImg from "../assets/members/zoe.jpg";
 import TreyImg from "../assets/members/trey.jpg";
-import CadenImg from "../assets/members/caden.jpg";
+import SolaceImg from "../assets/members/solace.jpg";
 import ChickadeeImg from "../assets/members/chickadee.jpg";
 import BrockImg from "../assets/members/brock.jpg";
 import GarnettImg from "../assets/members/garnett.jpg";
@@ -69,7 +69,7 @@ export const hosts: Host[] = [
   {
     name: "Adrien",
     pronouns: ["they", "he"],
-    splash_text: "Resurrected Radio Star",
+    splash_text: "Driver of the Clown Car",
     bio: `Hi!! I’m Adrien: alt rock lover, ‘80s music extraordinaire, black lipstick aficionado.
     
 [*It’s not a phase, mom.*](https://www.youtube.com/watch?v=Kjr7US2Z9aY)`,
@@ -199,18 +199,18 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     badges: ["DJ"],
   },
   {
-    name: "Caden",
-    pronouns: ["they", "them"],
+    name: "Solace",
+    pronouns: ["she", "they"],
     splash_text: "Arch-Bishop of the Church of the Bards",
     bio: "*Missing bio!*",
-    image: CadenImg,
+    image: SolaceImg,
     socials: [],
     badges: ["DJ"],
   },
   {
     name: "Chickadee",
     pronouns: ["they", "them"],
-    splash_text: "",
+    splash_text: "Still exists!",
     bio: "*Missing bio!*",
     image: ChickadeeImg, // TODO: get actual image :D
     socials: [],

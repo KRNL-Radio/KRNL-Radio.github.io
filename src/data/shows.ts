@@ -80,15 +80,15 @@ export const shows: Show[] = [
     scheduleString: "Every Wednesday from 3:30pm to 4:30pm",
     schedule: new ScheduleItem("30 15 * * 3", 60),
   },
-  {
-    name: "The Bard's Tale",
-    splash_text: "Where every note tells a tale of bravery, magic, and mayhem!",
-    description: "",
-    background: "#ddfe60",
-    hosts: [getHostByName("Caden")],
-    scheduleString: "Every Sunday from 1pm to 3pm",
-    schedule: new ScheduleItem("0 13 * * 0", 120),
-  },
+  // {
+  //   name: "The Bard's Tale",
+  //   splash_text: "Where every note tells a tale of bravery, magic, and mayhem!",
+  //   description: "",
+  //   background: "#ddfe60",
+  //   hosts: [getHostByName("Solace")],
+  //   scheduleString: "Every Sunday from 1pm to 3pm",
+  //   schedule: new ScheduleItem("0 13 * * 0", 120),
+  // },
   {
     name: "CCPR",
     splash_text: "Cornell College Public Radio",
@@ -114,6 +114,25 @@ export const shows: Show[] = [
     guests: "Garnett Strack",
     scheduleString: "Every Friday from 8pm to 9pm",
     schedule: new ScheduleItem("0 20 * * 5", 60),
+  },
+  {
+    name: "Twin Suns",
+    splash_text: "",
+    description:
+      "A show about Star Wars (and other stuff idk im making stuff up ~mark)",
+    background: "#ddfe60",
+    hosts: [getHostByName("Jake"), getHostByName("Sami")],
+    scheduleString: "Every Tuesday from 8:30pm to 9:30pm", // i think?
+    schedule: new ScheduleItem("30 20 * * 2", 60),
+  },
+  {
+    name: "Melatonin",
+    splash_text: "",
+    description: "WORK IN PROGRESS - Check Instagram for updates!",
+    background: "#ddfe60",
+    hosts: [getHostByName("Mark")],
+    scheduleString: "Every Saturday from 11pm to 1am (for now)",
+    schedule: new ScheduleItem("0 23 * * 6", 120),
   },
 ];
 
