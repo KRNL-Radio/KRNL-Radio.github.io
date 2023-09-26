@@ -123,11 +123,11 @@ export class PlayerCore extends Emitter {
     if (this.refresh_mode === "fast") return;
     this._refresh_metadata_interval = setInterval(
       () => this._refresh_metadata(),
-      1000 * 60 * 5
+      1000 * 60 * 5,
     );
     this._refresh_track_data_interval = setInterval(
       () => this._refresh_track_data(),
-      1000 * 30
+      1000 * 30,
     );
     this.refresh_mode = "slow";
   }
@@ -136,11 +136,11 @@ export class PlayerCore extends Emitter {
     if (this.refresh_mode === "fast") return;
     this._refresh_metadata_interval = setInterval(
       () => this._refresh_metadata(),
-      1000 * 30
+      1000 * 30,
     );
     this._refresh_track_data_interval = setInterval(
       () => this._refresh_track_data(),
-      1000 * 5
+      1000 * 5,
     );
     this.refresh_mode = "fast";
   }
@@ -158,10 +158,10 @@ export class PlayerCore extends Emitter {
       };
     });
     this.desktop_format = this.formats!.find(
-      (format) => format.format.toLowerCase() === "mp3"
+      (format) => format.format.toLowerCase() === "mp3",
     );
     this.mobile_format = this.formats!.find(
-      (format) => format.format.toLowerCase() === "aac"
+      (format) => format.format.toLowerCase() === "aac",
     );
   }
 
@@ -257,8 +257,22 @@ export class PlayerCore extends Emitter {
           this.emit("current_track", new_track);
         }
         this._refresh_browser_metadata();
+        this._melatonin_check();
         save_player_options(this.player_options);
       });
+  }
+
+  _melatonin_check() {
+    // Automatically disconnect at the end of Melatonin!
+    // Don't need to be jumpscared by whatever's up next in the queue.
+    if (
+      this.player_data?.current_track.title === "Melatonin_DISCONNECT" &&
+      this.is_playing
+    ) {
+      this.unload();
+      this.emit("melatonin_disconnect");
+      this.emit("unload");
+    }
   }
 
   _get_best_format() {
@@ -342,7 +356,7 @@ export class PlayerCore extends Emitter {
           pending: "Changing format...",
           success: "Format changed!",
           error: "Failed to change format!",
-        }
+        },
       );
     }
   }
@@ -363,7 +377,7 @@ export class PlayerCore extends Emitter {
     }
     if (!this._audio_ctx_node) {
       this._audio_ctx_node = this.audio_context!.createMediaElementSource(
-        this._audio
+        this._audio,
       );
     }
     return this._audio_ctx_node;
