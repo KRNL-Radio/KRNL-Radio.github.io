@@ -58,8 +58,8 @@ export const shows: Show[] = [
       "I play music, different vibes every week, and do some rambling (usually too much rambling)",
     background: "#6f69dd",
     hosts: [getHostByName("Sophie")],
-    scheduleString: "Every Thursday from 3:30pm to 4:30pm",
-    schedule: new ScheduleItem("30 15 * * 4", 60),
+    scheduleString: "Every Thursday from 3:15pm to 4:15pm",
+    schedule: new ScheduleItem("15 15 * * 4", 60),
   },
   {
     name: "Latino Hour",
@@ -76,7 +76,7 @@ export const shows: Show[] = [
     description:
       "Come and listen to music from all over the world! There's no jet lag here, only Timezones.",
     background: "#232323",
-    hosts: [getHostByName("Trey"), getHostByName("Zoe")],
+    hosts: [getHostByName("Trey")],
     scheduleString: "Every Wednesday from 3:30pm to 4:30pm",
     schedule: new ScheduleItem("30 15 * * 3", 60),
   },
