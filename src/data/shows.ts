@@ -14,7 +14,6 @@ export type Show = {
   logo?: ShowLogo;
   background?: string;
   guests?: string; // any guests on the show. they don't get their own page, but they get a mention on the show page.
-  scheduleString: string;
   schedule: ScheduleItem;
   hidden?: boolean;
   hiddenAfter?: Date;
@@ -28,7 +27,6 @@ export const shows: Show[] = [
       "Alt is such a broad genre. What does any of it even mean? All I know is you love listening to me every week.",
     background: "#fc73e3",
     hosts: [getHostByName("Adrien")],
-    scheduleString: "Every Tuesday from 10pm to 11pm",
     schedule: new ScheduleItem("0 22 * * 2", 60),
   },
   {
@@ -38,7 +36,6 @@ export const shows: Show[] = [
       "This is a totally unplanned show, where anything can happen (within contractual obligations). There's no logic behind this show, it just is.",
     background: "#0f3cec",
     hosts: [getHostByName("Mark")],
-    scheduleString: "Every Monday from 9 pm to 10 pm",
     schedule: new ScheduleItem("0 21 * * 1", 60),
   },
   {
@@ -48,7 +45,6 @@ export const shows: Show[] = [
       "Somehow even *more* random than Mark's show, but at least 10x more chill! Ice not required.\n\n*when he feels like it",
     background: "#1c2dae",
     hosts: [getHostByName("Grayson")],
-    scheduleString: "Every Sunday from 4pm to 5pm*",
     schedule: new ScheduleItem("0 16 * * 0", 60),
   },
   {
@@ -58,7 +54,6 @@ export const shows: Show[] = [
       "I play music, different vibes every week, and do some rambling (usually too much rambling)",
     background: "#6f69dd",
     hosts: [getHostByName("Sophie")],
-    scheduleString: "Every Thursday from 3:15pm to 4:15pm",
     schedule: new ScheduleItem("15 15 * * 4", 60),
   },
   {
@@ -67,7 +62,6 @@ export const shows: Show[] = [
     description: "Just vibe and listen to music from across Latin America.",
     background: "#ddfe60",
     hosts: [getHostByName("Zoe")],
-    scheduleString: "Every Friday from 4pm to 5pm",
     schedule: new ScheduleItem("0 16 * * 5", 60),
   },
   {
@@ -77,7 +71,6 @@ export const shows: Show[] = [
       "Come and listen to music from all over the world! There's no jet lag here, only Timezones.",
     background: "#232323",
     hosts: [getHostByName("Trey")],
-    scheduleString: "Every Wednesday from 3:30pm to 4:30pm",
     schedule: new ScheduleItem("30 15 * * 3", 60),
   },
   // {
@@ -95,7 +88,6 @@ export const shows: Show[] = [
     description: "Because we can do anything in 18 ~~days~~ minutes!",
     background: "#ddfe60",
     hosts: [getHostByName("Adrien"), getHostByName("Sophie")],
-    scheduleString: "Every Monday from 8:05am to 8:23am",
     schedule: new ScheduleItem("5 8 * * 1", 18),
   },
   // {
@@ -112,17 +104,15 @@ export const shows: Show[] = [
     background: "#ddfe60",
     hosts: [getHostByName("Brock")],
     guests: "Garnett Strack",
-    scheduleString: "Every Friday from 8pm to 9pm",
     schedule: new ScheduleItem("0 20 * * 5", 60),
   },
   {
     name: "Twin Suns",
     splash_text: "",
     description:
-      "A show about Star Wars (and other stuff idk im making stuff up ~mark)",
+      "One of us knows a lot about Star Wars, the other... ¯\\_(ツ)_/¯",
     background: "#ddfe60",
     hosts: [getHostByName("Jake"), getHostByName("Sami")],
-    scheduleString: "Every Tuesday from 8:30pm to 9:30pm", // i think?
     schedule: new ScheduleItem("30 20 * * 2", 60),
   },
   {
@@ -131,7 +121,6 @@ export const shows: Show[] = [
     description: "WORK IN PROGRESS - Check Instagram for updates!",
     background: "#ddfe60",
     hosts: [getHostByName("Mark")],
-    scheduleString: "Every Saturday from 11pm to 1am (for now)",
     schedule: new ScheduleItem("0 23 * * 6", 120),
   },
 ];

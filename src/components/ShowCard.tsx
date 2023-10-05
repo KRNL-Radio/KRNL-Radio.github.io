@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Show } from "../data/shows";
 import { slugify } from "../util/slug";
 import Card from "./Card";
+import createScheduleString from "../data/localizer";
 
 function ShowCard({ show }: { show: Show }) {
   const nav = useNavigate();
@@ -12,7 +13,7 @@ function ShowCard({ show }: { show: Show }) {
   return (
     <Card
       title={show.name}
-      subtitle={show.scheduleString}
+      subtitle={createScheduleString(show.schedule)}
       background={bg}
       onClick={clickHandler}
     />

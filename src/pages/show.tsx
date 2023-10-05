@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Markdown from "../components/Markdown";
 import MemberCard from "../components/MemberCard";
 import { findShowByName } from "../data/shows";
+import Countdown from "../components/Countdown";
 
 function IndividualShowPage() {
   const { name } = useParams();
@@ -18,6 +19,7 @@ function IndividualShowPage() {
           <div className="flex flex-col items-center w-full">
             <h1 className="text-2xl">{show.name}</h1>
             <h2 className="text-xl">{show.splash_text}</h2>
+            <Countdown to={show.schedule.getNextOccurance()!} />
             <Markdown className="p-4 bg-violet-700 rounded-xl my-8 text-center">
               {show.description || "*No description!*"}
             </Markdown>

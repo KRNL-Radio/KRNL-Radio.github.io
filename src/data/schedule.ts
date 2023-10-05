@@ -1,4 +1,5 @@
 import parser, { ParserOptions } from "cron-parser";
+import { dateToKRNLDate } from "./localizer";
 
 let PARSER_OPTIONS: ParserOptions = {
   tz: "America/Chicago",
@@ -10,7 +11,7 @@ export class ScheduleItem {
     public start: Date | string,
     public end: Date | number,
     // optional invalid after date
-    public invalidAfter?: Date
+    public invalidAfter?: Date,
   ) {
     this.start = start;
     this.end = end;
@@ -32,8 +33,8 @@ export class ScheduleItem {
     let end = this.end;
     if (typeof start === "string") {
       let startExp = parser.parseExpression(start, PARSER_OPTIONS);
-      let prevDate = startExp.prev().toDate();
-      let nextDate = startExp.next().toDate();
+      let prevDate = dateToKRNLDate(startExp.prev().toDate());
+      let nextDate = dateToKRNLDate(startExp.next().toDate());
       if (typeof end === "number") {
         // we gotta work
         let endA = new Date(prevDate.getTime() + end * 60000);
@@ -67,7 +68,7 @@ export class ScheduleItem {
     let start = this.start;
     if (typeof start === "string") {
       let startExp = parser.parseExpression(start, PARSER_OPTIONS);
-      return startExp.next().toDate();
+      return dateToKRNLDate(startExp.next().toDate());
     }
     if (now < start) {
       return start;
@@ -82,8 +83,8 @@ export class ScheduleItem {
       let start = this.start;
       if (typeof start === "string") {
         let startExp = parser.parseExpression(start, PARSER_OPTIONS);
-        let prevDate = startExp.prev().toDate();
-        let nextDate = startExp.next().toDate();
+        let prevDate = dateToKRNLDate(startExp.prev().toDate());
+        let nextDate = dateToKRNLDate(startExp.next().toDate());
         // which one is closer?
         if (
           Math.abs(prevDate.getTime() - now.getTime()) <
@@ -111,8 +112,8 @@ export class ScheduleItem {
   static getParserFields() {
     return JSON.parse(
       JSON.stringify(
-        parser.parseExpression("0 0 0 * * *", PARSER_OPTIONS).fields
-      )
+        parser.parseExpression("0 0 0 * * *", PARSER_OPTIONS).fields,
+      ),
     );
   }
 

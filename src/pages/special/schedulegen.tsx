@@ -3,6 +3,7 @@ import React from "react";
 import Header from "../../components/Header";
 // import { DateTime } from "ts-luxon";
 import { ScheduleItem } from "../../data/schedule";
+import createScheduleString from "../../data/localizer";
 
 function ScheduleGeneratorPage() {
   // create a state for the dates
@@ -62,6 +63,7 @@ function ScheduleGeneratorPage() {
         hours: durationDT.hour,
         minutes: durationDT.minute,
       });
+      let si = new ScheduleItem(exp.stringify(), totalDuration);
       setOutput(
         // exp.stringify() +
         //   "\n" +
@@ -73,7 +75,8 @@ function ScheduleGeneratorPage() {
         `Cron: ${exp.stringify()}
 Duration: ${totalDuration}
 Start: ${nextDateDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}
-End: ${endDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}`
+End: ${endDT.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}
+TEST: ${createScheduleString(si)}`,
       );
     }
   }, [dates, startTime, duration]);
