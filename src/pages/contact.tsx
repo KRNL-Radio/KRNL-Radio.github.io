@@ -6,7 +6,7 @@ function info(
   name: string,
   email: string,
   category: string,
-  force_debug: boolean = false
+  force_debug: boolean = false,
 ) {
   let debug = force_debug || category === "Report a Problem";
   return `
@@ -15,8 +15,8 @@ function info(
 Name: ${name}
 Preferred Email: ${email}
 Category: ${category}
-Website Version: 2.2.0
-Player Version: 1.1.0
+Website Version: 2.3.0
+Player Version: 1.2.0
 User Agent: ${navigator.userAgent}
 ${
   debug
@@ -36,7 +36,7 @@ export function createLink(
   name: string,
   category: string,
   from_email: string,
-  to_email: string = "krnl@cornellcollege.edu"
+  to_email: string = "krnl@cornellcollege.edu",
 ) {
   return mailtoLink({
     to: to_email,
