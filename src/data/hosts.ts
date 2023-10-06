@@ -13,6 +13,8 @@ import JakeImg from "../assets/members/jake.jpg";
 import SamiImg from "../assets/members/sami.jpg";
 import ReaganImg from "../assets/members/reagan.jpg";
 import EvaImg from "../assets/members/eva.jpg";
+import BeanImg from "../assets/members/bean.jpg";
+import BruceImg from "../assets/members/bruce.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -212,9 +214,9 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   {
     name: "Chickadee",
     pronouns: ["they", "them"],
-    splash_text: "",
-    bio: "",
-    image: ChickadeeImg, // TODO: get actual image :D
+    splash_text: "the plushies guy",
+    bio: "I might not have donated any plushies to the studio like Mark did, but boy howdy do I have a few",
+    image: ChickadeeImg,
     socials: [],
     badges: ["DJ"],
   },
@@ -253,6 +255,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     bio: "reptiles and tennis, silly lil guy",
     image: ReaganImg,
     socials: [],
+    badges: ["DJ"],
   },
   {
     name: "Eva",
@@ -261,6 +264,27 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     bio: "Hi! I love to read, sing, and hang with cool people :)",
     image: EvaImg,
     socials: [],
+    badges: ["DJ"],
+  },
+  {
+    name: "Bean",
+    pronouns: ["she", "her"],
+    splash_text: "Book Nerd",
+    bio: `just your run of the mill music loving book loving theater kid
+    
+(From Mark: this is a placeholder image! bean if you're reading this send me an image! :D)`,
+    image: BeanImg,
+    socials: [],
+    badges: ["DJ"],
+  },
+  {
+    name: "Bruce",
+    pronouns: ["he", "him"],
+    splash_text: "guy",
+    bio: "I listened to music for about 51 days of last year, and that was down from the year before.",
+    image: BruceImg,
+    socials: [],
+    badges: ["DJ"],
   },
   // {
   //   name: "Matt",
