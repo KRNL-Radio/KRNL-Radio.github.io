@@ -58,8 +58,10 @@ export const shows: Show[] = [
   },
   {
     name: "Latino Hour",
-    splash_text: ":D",
-    description: "Just vibe and listen to music from across Latin America.",
+    splash_text: "",
+    description: `Just vibe and listen to music from across Latin America.
+    
+[**Suggestions form!**](https://forms.gle/RuyBbKaaxmkEQ3bD9) (Requires Cornell Email! Use the Contact Form if you don't have one)`,
     background: "#ddfe60",
     hosts: [getHostByName("Zoe")],
     schedule: new ScheduleItem("0 16 * * 5", 60),

@@ -11,6 +11,8 @@ import BrockImg from "../assets/members/brock.jpg";
 import GarnettImg from "../assets/members/garnett.jpg";
 import JakeImg from "../assets/members/jake.jpg";
 import SamiImg from "../assets/members/sami.jpg";
+import ReaganImg from "../assets/members/reagan.jpg";
+import EvaImg from "../assets/members/eva.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -210,8 +212,8 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   {
     name: "Chickadee",
     pronouns: ["they", "them"],
-    splash_text: "Still exists!",
-    bio: "*Missing bio!*",
+    splash_text: "",
+    bio: "",
     image: ChickadeeImg, // TODO: get actual image :D
     socials: [],
     badges: ["DJ"],
@@ -244,6 +246,22 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     ],
     badges: ["DJ"],
   },
+  {
+    name: "Reagan / Orion",
+    pronouns: ReaganPronouns(),
+    splash_text: "resident door artist",
+    bio: "reptiles and tennis, silly lil guy",
+    image: ReaganImg,
+    socials: [],
+  },
+  {
+    name: "Eva",
+    pronouns: ["She", "they"],
+    splash_text: "Lover of all things Cat",
+    bio: "Hi! I love to read, sing, and hang with cool people :)",
+    image: EvaImg,
+    socials: [],
+  },
   // {
   //   name: "Matt",
   //   pronouns: ["he", "him"],
@@ -254,6 +272,12 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   //   badges: ["Faculty Advisor"],
   // },
 ];
+
+function ReaganPronouns() {
+  // random shuffle this!
+  const pronouns = ["they", "he"];
+  return Math.random() > 0.5 ? pronouns.reverse() : pronouns;
+}
 
 export function findHostByName(name: string, slug?: boolean): Host | undefined {
   if (slug === true) {
