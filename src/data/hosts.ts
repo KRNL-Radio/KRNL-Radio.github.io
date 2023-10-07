@@ -15,6 +15,7 @@ import ReaganImg from "../assets/members/reagan.jpg";
 import EvaImg from "../assets/members/eva.jpg";
 import BeanImg from "../assets/members/bean.jpg";
 import BruceImg from "../assets/members/bruce.jpg";
+import RonnieImg from "../assets/members/ronnie.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -283,6 +284,15 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "guy",
     bio: "I listened to music for about 51 days of last year, and that was down from the year before.",
     image: BruceImg,
+    socials: [],
+    badges: ["DJ"],
+  },
+  {
+    name: "Ronnie",
+    pronouns: ["she", "her"],
+    splash_text: "Boy Scout",
+    bio: "Hi!! If I'm not in the woods, I'm thinking about the woods - blasting music that reminds be of the woods.",
+    image: RonnieImg,
     socials: [],
     badges: ["DJ"],
   },

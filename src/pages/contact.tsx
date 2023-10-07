@@ -16,7 +16,7 @@ Name: ${name}
 Preferred Email: ${email}
 Category: ${category}
 Website Version: 2.3.0
-Player Version: 1.2.0
+Player Version: 1.2.1
 User Agent: ${navigator.userAgent}
 ${
   debug
