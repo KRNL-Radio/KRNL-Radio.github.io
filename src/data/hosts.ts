@@ -271,9 +271,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     name: "Bean",
     pronouns: ["she", "her"],
     splash_text: "Book Nerd",
-    bio: `just your run of the mill music loving book loving theater kid
-    
-(From Mark: this is a placeholder image! bean if you're reading this send me an image! :D)`,
+    bio: `just your run of the mill music loving book loving theater kid`,
     image: BeanImg,
     socials: [],
     badges: ["DJ"],
