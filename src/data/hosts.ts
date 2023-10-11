@@ -289,7 +289,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     name: "Ronnie",
     pronouns: ["she", "her"],
     splash_text: "Boy Scout",
-    bio: "Hi!! If I'm not in the woods, I'm thinking about the woods - blasting music that reminds be of the woods.",
+    bio: "Hi!! If I'm not in the woods, I'm thinking about the woods - blasting music that reminds me of the woods.",
     image: RonnieImg,
     socials: [],
     badges: ["DJ"],
@@ -346,10 +346,6 @@ export const KRNL_HOST: Host = {
     {
       platform: "Instagram",
       url: "https://instagram.com/krnl_cornell",
-    },
-    {
-      platform: "Twitter",
-      url: "https://twitter.com/krnl_cornell",
     },
     {
       platform: "TikTok",
