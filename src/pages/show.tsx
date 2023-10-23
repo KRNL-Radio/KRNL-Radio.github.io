@@ -17,6 +17,37 @@ function IndividualShowPage() {
       <div>
         <div className="bg-gradient-to-b to-purple-900 from-purple-700 flex justify-center p-4 w-4/5 mx-auto rounded-lg m-4">
           <div className="flex flex-col items-center w-full">
+            {/* if show.logo? exists then */}
+            {show.logo?.opaque ? (
+              <label className="swap swap-flip text-9xl">
+                <input type="checkbox" />
+
+                <div className="swap-on">
+                  <img
+                    src={
+                      show.logo?.opaque
+                        ? show.logo?.opaque
+                        : "https://via.placeholder.com/150"
+                    }
+                    alt={show.name}
+                    className="rounded-3xl w-96 object-cover drop-shadow-md"
+                  />
+                </div>
+                <div className="swap-off">
+                  <img
+                    src={
+                      show.logo?.transparent
+                        ? show.logo?.transparent
+                        : "https://via.placeholder.com/150"
+                    }
+                    alt={show.name}
+                    className="rounded-3xl w-96 object-cover drop-shadow-md"
+                  />
+                </div>
+              </label>
+            ) : (
+              <label></label>
+            )}
             <h1 className="text-2xl">{show.name}</h1>
             <h2 className="text-xl">{show.splash_text}</h2>
             <Countdown to={show.schedule.getNextOccurance()!} />

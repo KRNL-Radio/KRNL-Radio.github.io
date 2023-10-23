@@ -93,7 +93,7 @@ export const hosts: Host[] = [
   },
   {
     name: "Mark",
-    pronouns: ["he", "they"],
+    pronouns: ["they", "them"],
     splash_text: getRandomSplash(),
     bio: `Hello, world! I'm Mark, and I make stuff and also play music occassionally.
 

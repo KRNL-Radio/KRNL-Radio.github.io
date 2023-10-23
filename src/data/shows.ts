@@ -1,6 +1,10 @@
 import { slugify } from "../util/slug";
 import { getHostByName, Host, KRNL_HOST } from "./hosts";
 import { ScheduleItem } from "./schedule";
+import TSLogo from "../assets/logos/twin-suns.png"; // credit: jake
+import ASLogo from "../assets/logos/after-sunset.png"; // credit: bruce
+import ASSLogo from "../assets/logos/after-school-special.png"; // credit: bruce
+
 export type ShowLogo = {
   transparent: string;
   opaque: string;
@@ -54,6 +58,10 @@ export const shows: Show[] = [
       "I play music, different vibes every week, and do some rambling (usually too much rambling)",
     background: "#6f69dd",
     hosts: [getHostByName("Sophie")],
+    logo: {
+      transparent: ASSLogo,
+      opaque: ASSLogo,
+    },
     schedule: new ScheduleItem("15 15 * * 4", 60),
   },
   {
@@ -112,9 +120,13 @@ export const shows: Show[] = [
     name: "Twin Suns",
     splash_text: "",
     description:
-      "One of us knows a lot about Star Wars, the other... ¯\\_(ツ)_/¯",
+      "One of us knows a lot about Star Wars, the other... ¯\\\\_(ツ)_/¯",
     background: "#ddfe60",
     hosts: [getHostByName("Jake"), getHostByName("Sami")],
+    logo: {
+      transparent: TSLogo,
+      opaque: TSLogo,
+    },
     schedule: new ScheduleItem("30 20 * * 2", 60),
   },
   {
@@ -122,8 +134,32 @@ export const shows: Show[] = [
     splash_text: "",
     description: "WORK IN PROGRESS - Check Instagram for updates!",
     background: "#ddfe60",
+    // logo: {
+    //   transparent: "https://placekitten.com/521/521",
+    //   opaque: "https://placekitten.com/200/200",
+    // },
     hosts: [getHostByName("Mark")],
     schedule: new ScheduleItem("0 23 * * 6", 120),
+  },
+  {
+    name: "After Sunset",
+    splash_text: "",
+    description: "",
+    background: "#ddfe60",
+    hosts: [getHostByName("Bruce")],
+    logo: {
+      transparent: ASLogo,
+      opaque: ASLogo,
+    },
+    schedule: new ScheduleItem("0 20 * * 6", 60),
+  },
+  {
+    name: "Craft Time",
+    splash_text: "",
+    description: "",
+    background: "#ddfe60",
+    hosts: [getHostByName("Ronnie"), getHostByName("Ori")],
+    schedule: new ScheduleItem("30 16 * * 1", 60),
   },
 ];
 
