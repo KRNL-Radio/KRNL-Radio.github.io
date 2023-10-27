@@ -28,18 +28,23 @@ function Card({
   // if (background !== undefined) {
   //   background = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), url(${background})`;
   // }
+  let trueBackground;
 
   if (background === undefined) {
-    background =
+    trueBackground =
       "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%)";
   } else {
-    if (background.startsWith("http") || background.startsWith("/")) {
-      background = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), url(${background})`;
+    if (
+      background.startsWith("http") ||
+      background.startsWith("/") ||
+      background.startsWith("data")
+    ) {
+      trueBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), url(${background})`;
     } else if (background.startsWith("#")) {
-      background = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), ${background}`;
+      trueBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), ${background}`;
     } else {
       console.error("Invalid background type!");
-      background = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), url(${background})`;
+      trueBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%), url(${background})`;
       // background = "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .90) 100%)";
     }
   }
@@ -50,8 +55,8 @@ function Card({
       onMouseMove={(e) => {
         for (const card of Array.from(
           document.getElementsByClassName(
-            "card"
-          ) as HTMLCollectionOf<HTMLElement>
+            "card",
+          ) as HTMLCollectionOf<HTMLElement>,
         )) {
           const rect = card.getBoundingClientRect(),
             x = e.clientX - rect.left,
@@ -65,7 +70,7 @@ function Card({
       <div
         className="card-content"
         style={{
-          background: background,
+          backgroundImage: trueBackground,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

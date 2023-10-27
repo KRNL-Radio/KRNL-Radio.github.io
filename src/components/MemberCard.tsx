@@ -65,9 +65,21 @@ function renderBadges(member: Host) {
   return;
 }
 
-function MemberCard({ member }: { member: Host }) {
+function MemberCard({
+  member,
+  should_nav,
+}: {
+  member: Host;
+  should_nav?: boolean;
+}) {
+  if (should_nav === undefined) {
+    should_nav = true;
+  }
   const nav = useNavigate();
   let clickHandler = () => {
+    if (!should_nav) {
+      return;
+    }
     if (member === KRNL_HOST || member === AUTOMATED_HOST) {
       nav(`/members`);
       return;

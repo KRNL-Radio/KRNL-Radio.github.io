@@ -9,6 +9,7 @@ import { LargeLoading } from "./components/LoadingScreens";
 import SecretParticles from "./egg/secretparticles";
 import NewsletterList from "./pages/newsletter/list";
 import NewsletterIndividualPage from "./pages/newsletter/individual";
+import HostCreatorPage from "./pages/special/detail/hostcreator";
 const InfoDeskPlayerPage = lazy(async () => import("./pages/special/infodesk"));
 const MemberPage = lazy(async () => import("./pages/members"));
 const HomePage = lazy(async () => import("./pages/home"));
@@ -18,7 +19,7 @@ const IndividualShowPage = lazy(async () => import("./pages/show"));
 const FullPlayer = lazy(async () => import("./pages/fullplayer"));
 const ContactPage = lazy(async () => import("./pages/contact"));
 const ScheduleGeneratorPage = lazy(
-  async () => import("./pages/special/schedulegen")
+  async () => import("./pages/special/schedulegen"),
 );
 const SchedulePage = lazy(async () => import("./pages/schedule"));
 const ChangelogPage = lazy(async () => import("./pages/changelog"));
@@ -131,21 +132,26 @@ const router = createHashRouter(
       element: <SecretParticles />,
       errorElement: <ErrorElem />,
     },
+    {
+      path: "/secret/create/host",
+      element: <HostCreatorPage />,
+      errorElement: <ErrorElem />,
+    },
   ],
   {
     // basename: '/',
-  }
+  },
 );
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 root.render(
   <React.StrictMode>
     <Suspense fallback={<LargeLoading />}>
       <RouterProvider router={router} />
     </Suspense>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
