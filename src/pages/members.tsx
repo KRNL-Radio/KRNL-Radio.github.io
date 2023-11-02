@@ -9,6 +9,9 @@ function MemberPage() {
       <div>
         <div className="flex flex-col items-center justify-center p-4">
           <h1 className="text-4xl font-bold">Members</h1>
+          <div className="text-lg">
+            {getAllHosts().length} members (and counting!)
+          </div>
         </div>
         <div className="flex flex-wrap justify-center p-4 w-full">
           {sortHosts(getAllHosts()).map((host) => {

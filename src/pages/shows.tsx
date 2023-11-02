@@ -9,6 +9,9 @@ function ShowsPage() {
       <div>
         <div className="flex flex-col items-center justify-center p-4">
           <h1 className="text-4xl font-bold">Shows</h1>
+          <div className="text-lg">
+            {getAllShows().length} shows (and counting!)
+          </div>
         </div>
         <div className="flex flex-wrap justify-center p-4 w-full">
           {sortShowsByName(getAllShows()).map((show) => {

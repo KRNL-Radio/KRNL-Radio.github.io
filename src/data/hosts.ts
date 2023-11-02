@@ -16,6 +16,8 @@ import EvaImg from "../assets/members/eva.jpg";
 import BeanImg from "../assets/members/bean.jpg";
 import BruceImg from "../assets/members/bruce.jpg";
 import RonnieImg from "../assets/members/ronnie.jpg";
+import ValeImg from "../assets/members/vale.jpg";
+import OriImg from "../assets/members/ori.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -291,6 +293,24 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Boy Scout",
     bio: "Hi!! If I'm not in the woods, I'm thinking about the woods - blasting music that reminds me of the woods.",
     image: RonnieImg,
+    socials: [],
+    badges: ["DJ"],
+  },
+  {
+    name: "Vale",
+    pronouns: ["he", "they"],
+    splash_text: "Endorphin orphan morphing lemon cheese equally",
+    bio: "Lover of all music. \nI strive to listen to every song ever, so send me to me. \nAlso Jon Mess is my spirit animal.",
+    image: ValeImg,
+    socials: [],
+    badges: ["DJ"],
+  },
+  {
+    name: "Ori",
+    pronouns: ["she", "they"],
+    splash_text: "scottish wannabe",
+    bio: "hey hey! i like music that your parents would listen to, music that’s not in english, music you could milk a cow to, and pitbull",
+    image: OriImg,
     socials: [],
     badges: ["DJ"],
   },

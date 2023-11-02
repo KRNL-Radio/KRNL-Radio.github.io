@@ -10,6 +10,8 @@ import SecretParticles from "./egg/secretparticles";
 import NewsletterList from "./pages/newsletter/list";
 import NewsletterIndividualPage from "./pages/newsletter/individual";
 import HostCreatorPage from "./pages/special/detail/hostcreator";
+import ArchivePage from "./pages/archive";
+import ShowCreatorPage from "./pages/special/detail/showcreator";
 const InfoDeskPlayerPage = lazy(async () => import("./pages/special/infodesk"));
 const MemberPage = lazy(async () => import("./pages/members"));
 const HomePage = lazy(async () => import("./pages/home"));
@@ -135,6 +137,16 @@ const router = createHashRouter(
     {
       path: "/secret/create/host",
       element: <HostCreatorPage />,
+      errorElement: <ErrorElem />,
+    },
+    {
+      path: "/secret/create/show",
+      element: <ShowCreatorPage />,
+      errorElement: <ErrorElem />,
+    },
+    {
+      path: "/archive",
+      element: <ArchivePage />,
       errorElement: <ErrorElem />,
     },
   ],

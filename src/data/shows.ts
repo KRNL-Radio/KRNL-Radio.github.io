@@ -120,7 +120,7 @@ export const shows: Show[] = [
     name: "Twin Suns",
     splash_text: "",
     description:
-      "One of us knows a lot about Star Wars, the other... ¯\\\\_(ツ)_/¯",
+      "One of us knows a lot about Star Wars, the other... ¯\\\\\\_(ツ)_/¯",
     background: "#ddfe60",
     hosts: [getHostByName("Jake"), getHostByName("Sami")],
     logo: {
@@ -160,6 +160,14 @@ export const shows: Show[] = [
     background: "#ddfe60",
     hosts: [getHostByName("Ronnie"), getHostByName("Ori")],
     schedule: new ScheduleItem("30 16 * * 1", 60),
+  },
+  {
+    name: "Relics",
+    splash_text: "",
+    description: "",
+    background: "#ddfe60",
+    hosts: [getHostByName("Mark"), getHostByName("Sophie")],
+    schedule: new ScheduleItem("30 20 * * 3", 60),
   },
 ];
 

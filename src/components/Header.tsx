@@ -78,19 +78,31 @@ function Header() {
       <SiteBanner />
       <nav className="border-white border-solid border-b text-xl m-0 p-3 text-center text-white bg-slate-900">
         <ul className="m-0 p-0">
-          <Link to="/" className="inline-block my-0 mx-4">
+          <Link to="/" className="inline-block my-0 mx-4 hover:underline">
             Home
           </Link>
-          <Link to="/player" className="inline-block my-0 mx-4">
+          <Link to="/player" className="inline-block my-0 mx-4 hover:underline">
             Player
           </Link>
-          <Link to="/schedule" className="inline-block my-0 mx-4">
+          <Link
+            to="/schedule"
+            className="inline-block my-0 mx-4 hover:underline"
+          >
             Schedule
           </Link>
-          <Link to="/members" className="inline-block my-0 mx-4">
+          <Link
+            to="/members"
+            className="inline-block my-0 mx-4 hover:underline"
+          >
             Members
           </Link>
-          <Link to="/contact" className="inline-block my-0 mx-4">
+          {/* <Link to="/archive" className="inline-block my-0 mx-4 hover:underline">
+            Archive
+          </Link> */}
+          <Link
+            to="/contact"
+            className="inline-block my-0 mx-4 hover:underline"
+          >
             Contact
           </Link>
         </ul>
