@@ -183,10 +183,10 @@ export class PlayerCore extends Emitter {
       // },
       current_track: {
         title:
-          this.player_data?.current_track.title || data.current_track.title,
+          data.current_track.title || this.player_data?.current_track.title,
         album_art:
-          this.player_data?.current_track.album_art ||
-          data.current_track.artwork_url_large,
+          data.current_track.artwork_url_large ||
+          this.player_data?.current_track.album_art,
       },
       previous_tracks:
         previous_tracks ||

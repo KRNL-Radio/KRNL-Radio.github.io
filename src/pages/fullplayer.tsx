@@ -59,6 +59,8 @@ function FullPlayer() {
   useEffect(() => {
     window.player.start_fast_refresh();
     let metadataCb = (data: any) => {
+      setTitle(data.current_track.title);
+      setAlbumArt(data.current_track.album_art);
       setHost(data.host_string);
     };
     window.player.on("metadata", metadataCb);
@@ -257,7 +259,7 @@ function FullPlayer() {
 function SettingsModal() {
   const [theme, setTheme] = React.useState("word");
   const [streamFormat, setStreamFormat] = React.useState(
-    window.player.get_preferred_format
+    window.player.get_preferred_format,
   );
 
   // React.useEffect(() => {
@@ -271,7 +273,7 @@ function SettingsModal() {
     localStorage.setItem("theme", theme);
     // emit event to change theme
     window.dispatchEvent(
-      new CustomEvent("theme-change", { detail: { theme: theme } })
+      new CustomEvent("theme-change", { detail: { theme: theme } }),
     );
   }, [theme]);
 
@@ -340,10 +342,10 @@ function RequestsModal() {
   const [searchText, setSearchText] = React.useState("");
   const [searchResults, setSearchResults] = React.useState<RequestTrack[]>([]);
   const [status, setStatus] = React.useState(
-    window.player.requests_core.status
+    window.player.requests_core.status,
   );
   const [pnr, setPnr] = React.useState(
-    window.player.requests_core.probable_next_request
+    window.player.requests_core.probable_next_request,
   );
   useEffect(() => {
     window.player.requests_core.get_tracks().then((res_tracks) => {
@@ -361,8 +363,8 @@ function RequestsModal() {
         tracks.filter(
           (track) =>
             track.title.toLowerCase().includes(searchText.toLowerCase()) ||
-            track.artist.toLowerCase().includes(searchText.toLowerCase())
-        )
+            track.artist.toLowerCase().includes(searchText.toLowerCase()),
+        ),
       );
     }
   }, [searchText, tracks]);
@@ -429,7 +431,7 @@ function RequestsModal() {
                         } catch (_) {}
                         setStatus(window.player.requests_core.status);
                         setPnr(
-                          window.player.requests_core.probable_next_request
+                          window.player.requests_core.probable_next_request,
                         );
                       }}
                       icon={solid("add")}
