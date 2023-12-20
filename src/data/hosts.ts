@@ -272,7 +272,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   {
     name: "Bean",
     pronouns: ["she", "her"],
-    splash_text: "Book Nerd",
+    splash_text: "Forklift Certified",
     bio: `just your run of the mill music loving book loving theater kid`,
     image: BeanImg,
     socials: [],

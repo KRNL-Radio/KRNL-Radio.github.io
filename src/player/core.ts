@@ -277,6 +277,9 @@ export class PlayerCore extends Emitter {
       this.unload();
       this.emit("melatonin_disconnect");
       this.emit("unload");
+      toast.info("Automatically disconnected!", {
+        autoClose: 15000,
+      });
     }
   }
 
@@ -316,7 +319,12 @@ export class PlayerCore extends Emitter {
       this._audio = new Audio(this._get_best_format().streaming_url);
     }
     this._audio.volume = this.player_options.volume;
-    await this._audio.play();
+    toast.promise(this._audio.play(), {
+      pending: "Connecting...",
+      success: "Connected!",
+      error: "Failed to connect! Sorry about that :(",
+    });
+
     this.emit("play");
   }
 
@@ -334,6 +342,7 @@ export class PlayerCore extends Emitter {
       this._audio = undefined;
       this._audio_context = undefined;
       this._audio_ctx_node = undefined;
+      toast.info("Disconnected!");
     }
     save_player_options(this.player_options);
     this.emit("unload");

@@ -161,13 +161,29 @@ export const shows: Show[] = [
     hosts: [getHostByName("Ronnie"), getHostByName("Ori")],
     schedule: new ScheduleItem("30 16 * * 1", 60),
   },
+  // {
+  //   name: "Relics",
+  //   splash_text: "",
+  //   description: "",
+  //   background: "#ddfe60",
+  //   hosts: [getHostByName("Mark"), getHostByName("Sophie")],
+  //   schedule: new ScheduleItem("30 20 * * 3", 60),
+  // },
   {
-    name: "Relics",
+    name: "<untitled>",
     splash_text: "",
     description: "",
     background: "#ddfe60",
-    hosts: [getHostByName("Mark"), getHostByName("Sophie")],
-    schedule: new ScheduleItem("30 20 * * 3", 60),
+    hosts: [getHostByName("Vale")],
+    schedule: new ScheduleItem("0 15 * * 0", 60),
+  },
+  {
+    name: "Hour of Chaos",
+    splash_text: "",
+    description: "",
+    background: "#ddfe60",
+    hosts: [getHostByName("Bean")],
+    schedule: new ScheduleItem("0 16 * * 2", 60),
   },
 ];
 
