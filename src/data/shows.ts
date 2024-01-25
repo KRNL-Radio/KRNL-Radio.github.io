@@ -139,7 +139,7 @@ export const shows: Show[] = [
     //   opaque: "https://placekitten.com/200/200",
     // },
     hosts: [getHostByName("Mark")],
-    schedule: new ScheduleItem("0 23 * * 6", 120),
+    schedule: new ScheduleItem("0 23 * * 0", 120),
   },
   {
     name: "After Sunset",
@@ -170,7 +170,7 @@ export const shows: Show[] = [
   //   schedule: new ScheduleItem("30 20 * * 3", 60),
   // },
   {
-    name: "<untitled>",
+    name: "Replay",
     splash_text: "",
     description: "",
     background: "#ddfe60",
