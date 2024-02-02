@@ -35,7 +35,7 @@ function getBadge(social: Social) {
 
 export default function Badges({ member }: { member: Host }) {
   let buttons = [];
-  for (const social of member.socials) {
+  for (const social of member.socials || []) {
     buttons.push(
       <a className="tooltip" data-tip={social.platform} href={social.url}>
         <FontAwesomeIcon

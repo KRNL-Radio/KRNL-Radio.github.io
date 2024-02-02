@@ -28,6 +28,10 @@ function getImage(social: Social) {
       return brands("tiktok");
     case "Email":
       return solid("envelope");
+    case "LinkedIn":
+      return brands("linkedin");
+    case "Generic":
+      return solid("link");
     default:
       console.assert(
         false,
@@ -39,7 +43,7 @@ function getImage(social: Social) {
 
 export default function SocialButtons({ member }: { member: Host }) {
   let buttons = [];
-  for (const social of member.socials) {
+  for (const social of member.socials || []) {
     buttons.push(
       <a
         className="tooltip"

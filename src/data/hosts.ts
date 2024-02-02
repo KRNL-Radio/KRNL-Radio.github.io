@@ -18,6 +18,7 @@ import BruceImg from "../assets/members/bruce.jpg";
 import RonnieImg from "../assets/members/ronnie.jpg";
 import ValeImg from "../assets/members/vale.jpg";
 import OriImg from "../assets/members/ori.jpg";
+import LunaImg from "../assets/members/luna.jpg";
 import getRandomSplash from "../egg/splash";
 
 // Badge Colors:
@@ -55,7 +56,8 @@ export type Platform =
   | "GitHub"
   | "Tumblr"
   | "Email"
-  | "TikTok";
+  | "TikTok"
+  | "Generic";
 
 export type Social = {
   platform: Platform;
@@ -68,7 +70,7 @@ export type Host = {
   splash_text: string;
   bio: string;
   image: string;
-  socials: Social[];
+  socials?: Social[];
   badges?: HostBadge[];
 };
 
@@ -102,24 +104,6 @@ export const hosts: Host[] = [
 
 I also somehow ended up providing the station with a stuffed Pikachu. Don't ask, I don't know how that happened either.`,
     image: MarkImg,
-    socials: [
-      {
-        platform: "Tumblr",
-        url: "https://totallynotmark6.tumblr.com",
-      },
-      {
-        platform: "Instagram",
-        url: "https://instagram.com/totallynotmark6",
-      },
-      {
-        platform: "YouTube",
-        url: "https://youtube.com/@totallynotmark6",
-      },
-      {
-        platform: "GitHub",
-        url: "https://github.com/totallynotmark6",
-      },
-    ],
     badges: ["DJ", "Technical Director", "Executive Board"],
   },
   {
@@ -174,7 +158,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: ":3",
     bio: `Hello! I'm Brock, the one that is impossible to get a hold of. I don't know what I'm doing either :3`,
     image: BrockImg,
-    socials: [],
     badges: ["DJ", "Music Director", "Executive Board"],
   },
   {
@@ -211,7 +194,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Arch-Bishop of the Church of the Bards",
     bio: "*Missing bio!*",
     image: SolaceImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -220,7 +202,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "the plushies guy",
     bio: "I might not have donated any plushies to the studio like Mark did, but boy howdy do I have a few",
     image: ChickadeeImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -257,7 +238,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "resident door artist",
     bio: "reptiles and tennis, silly lil guy",
     image: ReaganImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -266,7 +246,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Lover of all things Cat",
     bio: "Hi! I love to read, sing, and hang with cool people :)",
     image: EvaImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -275,7 +254,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Forklift Certified",
     bio: `just your run of the mill music loving book loving theater kid`,
     image: BeanImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -284,7 +262,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "guy",
     bio: "I listened to music for about 51 days of last year, and that was down from the year before.",
     image: BruceImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -293,7 +270,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Boy Scout",
     bio: "Hi!! If I'm not in the woods, I'm thinking about the woods - blasting music that reminds me of the woods.",
     image: RonnieImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -302,7 +278,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Endorphin orphan morphing lemon cheese equally",
     bio: "Lover of all music. \nI strive to listen to every song ever, so send me to me. \nAlso Jon Mess is my spirit animal.",
     image: ValeImg,
-    socials: [],
     badges: ["DJ"],
   },
   {
@@ -311,16 +286,44 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "scottish wannabe",
     bio: "hey hey! i like music that your parents would listen to, music that’s not in english, music you could milk a cow to, and pitbull",
     image: OriImg,
-    socials: [],
     badges: ["DJ"],
   },
+  {
+    name: "Luna",
+    pronouns: ["she", "they"],
+    splash_text: getRandomSplash(),
+    bio: "hello, world! i'm luna! you might know me as someone else. who knows? i sure don't.",
+    image: LunaImg,
+    socials: [
+      {
+        platform: "Tumblr",
+        url: "https://totallynotmark6.tumblr.com",
+      },
+      {
+        platform: "Instagram",
+        url: "https://instagram.com/totallynotmark6",
+      },
+      {
+        platform: "YouTube",
+        url: "https://youtube.com/@totallynotmark6",
+      },
+      {
+        platform: "GitHub",
+        url: "https://github.com/totallynotmark6",
+      },
+      {
+        platform: "Generic",
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      }
+    ],
+    badges: ["Honorary"],
+  }
   // {
   //   name: "Matt",
   //   pronouns: ["he", "him"],
   //   splash_text: "The The",
   //   bio: `Markdown render demo`,
   //   image: "https://picsum.photos/516",
-  //   socials: [],
   //   badges: ["Faculty Advisor"],
   // },
 ];
@@ -389,7 +392,6 @@ export const NOT_FOUND_HOST: Host = {
   splash_text: "The Myth",
   bio: "The member you are searching for isn't here. They may be hiding, or they may not exist at all.",
   image: "",
-  socials: [],
   badges: ["Hidden"],
 };
 
@@ -399,7 +401,6 @@ export const AUTOMATED_HOST: Host = {
   splash_text: "The Machine",
   bio: "Max Jr. is a machine that plays music. They are not a person, but they are a member of the team.",
   image: "",
-  socials: [],
   badges: ["Hidden"],
 };
 
