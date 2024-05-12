@@ -2,7 +2,6 @@ import { slugify } from "../util/slug";
 import GraysonImg from "../assets/members/grayson.jpg";
 import SophieImg from "../assets/members/sophie.jpg";
 import AdrienImg from "../assets/members/adrien.jpg";
-import MarkImg from "../assets/members/mark.jpg";
 import ZoeImg from "../assets/members/zoe.jpg";
 import TreyImg from "../assets/members/trey.jpg";
 import SolaceImg from "../assets/members/solace.jpg";
@@ -96,15 +95,15 @@ export const hosts: Host[] = [
     badges: ["DJ", "Station Manager", "Executive Board"],
   },
   {
-    name: "Mark",
-    pronouns: ["they", "them"],
+    name: "Luna",
+    pronouns: ["she", "they"],
     splash_text: getRandomSplash(),
-    bio: `Hello, world! I'm Mark, and I make stuff and also play music occassionally.
+    bio: `Hello, world! I'm Luna, and I make stuff and also play music occassionally.
 
 
 I also somehow ended up providing the station with a stuffed Pikachu. Don't ask, I don't know how that happened either.`,
-    image: MarkImg,
-    badges: ["DJ", "Technical Director", "Executive Board"],
+    image: LunaImg,
+    badges: ["DJ", "Station Manager", "Executive Board", "Financial Director"],
   },
   {
     name: "Sophie",
@@ -122,7 +121,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://open.spotify.com/user/caucasian_nugget",
       },
     ],
-    badges: ["DJ", "Program Director", "Executive Board"],
+    badges: ["DJ", "Music Director", "Executive Board"],
   },
   {
     name: "Garnett",
@@ -150,7 +149,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
         url: "https://www.instagram.com/son_ofgray/",
       },
     ],
-    badges: ["DJ", "Event and Marketing Director", "Executive Board"],
+    badges: ["DJ", "Sports Director", "Executive Board"],
   },
   {
     name: "Brock",
@@ -200,7 +199,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     name: "Chickadee",
     pronouns: ["they", "them"],
     splash_text: "the plushies guy",
-    bio: "I might not have donated any plushies to the studio like Mark did, but boy howdy do I have a few",
+    bio: "I might not have donated any plushies to the studio like Luna did, but boy howdy do I have a few",
     image: ChickadeeImg,
     badges: ["DJ"],
   },
@@ -238,7 +237,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "resident door artist",
     bio: "reptiles and tennis, silly lil guy",
     image: ReaganImg,
-    badges: ["DJ"],
+    badges: ["DJ", "Event and Marketing Director", "Executive Board"],
   },
   {
     name: "Eva",
@@ -254,13 +253,13 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Forklift Certified",
     bio: `just your run of the mill music loving book loving theater kid`,
     image: BeanImg,
-    badges: ["DJ"],
+    badges: ["DJ", "Technical Director", "Executive Board"],
   },
   {
     name: "Bruce",
     pronouns: ["he", "him"],
     splash_text: "guy",
-    bio: "I listened to music for about 51 days of last year, and that was down from the year before.",
+    bio: "I'm Bruce.",
     image: BruceImg,
     badges: ["DJ"],
   },
@@ -286,38 +285,8 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "scottish wannabe",
     bio: "hey hey! i like music that your parents would listen to, music that’s not in english, music you could milk a cow to, and pitbull",
     image: OriImg,
-    badges: ["DJ"],
+    badges: ["DJ", "Program Director", "Executive Board"],
   },
-  {
-    name: "Luna",
-    pronouns: ["she", "they"],
-    splash_text: getRandomSplash(),
-    bio: "hello, world! i'm luna! you might know me as someone else. who knows? i sure don't.",
-    image: LunaImg,
-    socials: [
-      {
-        platform: "Tumblr",
-        url: "https://totallynotmark6.tumblr.com",
-      },
-      {
-        platform: "Instagram",
-        url: "https://instagram.com/totallynotmark6",
-      },
-      {
-        platform: "YouTube",
-        url: "https://youtube.com/@totallynotmark6",
-      },
-      {
-        platform: "GitHub",
-        url: "https://github.com/totallynotmark6",
-      },
-      {
-        platform: "Generic",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      }
-    ],
-    badges: ["Honorary"],
-  }
   // {
   //   name: "Matt",
   //   pronouns: ["he", "him"],

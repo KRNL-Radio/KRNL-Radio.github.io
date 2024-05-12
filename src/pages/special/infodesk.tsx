@@ -15,6 +15,8 @@ import { toast } from "react-toastify";
 function InfoDeskPlayerPage() {
   const [isPrimed, setIsPrimed] = React.useState(false);
   const [isRunning, setIsRunning] = React.useState(false);
+  const [isSkipping, setIsSkipping] = React.useState(false);
+  const [skipTitle, setSkipTitle] = React.useState("");
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [title, setTitle] = React.useState("Loading...");
   const [host, setHost] = React.useState("Loading...");
@@ -40,6 +42,11 @@ function InfoDeskPlayerPage() {
             setIsPlaying(false);
           }
         }
+      }
+      if (isSkipping) {
+        setIsSkipping(false);
+        setSkipTitle("");
+        window.player.play();
       }
     };
     window.player.on("metadata", metadataCb);
@@ -131,6 +138,22 @@ function InfoDeskPlayerPage() {
               onClick={() => setIsPlaying(true)}
             >
               Play
+            </button>
+          )}
+          {isSkipping ? (
+            <div className="btn btn-error mx-2 btn-disabled">Skipping</div>
+          ) : (
+            <button
+              className="btn btn-error mx-2"
+              onClick={() => {
+                setIsSkipping(true);
+                window.player.unload();
+                setSkipTitle(
+                  window.player.player_data?.current_track.title || "",
+                );
+              }}
+            >
+              Skip
             </button>
           )}
         </div>

@@ -39,14 +39,14 @@ export const shows: Show[] = [
     description:
       "This is a totally unplanned show, where anything can happen (within contractual obligations). There's no logic behind this show, it just is.",
     background: "#0f3cec",
-    hosts: [getHostByName("Mark")],
+    hosts: [getHostByName("Luna")],
     schedule: new ScheduleItem("0 21 * * 1", 60),
   },
   {
     name: "The Vibe",
     splash_text: "vibes~",
     description:
-      "Somehow even *more* random than Mark's show, but at least 10x more chill! Ice not required.\n\n*when he feels like it",
+      "Somehow even *more* random than Luna's show, but at least 10x more chill! Ice not required.\n\n*when he feels like it",
     background: "#1c2dae",
     hosts: [getHostByName("Grayson")],
     schedule: new ScheduleItem("0 16 * * 0", 60),
@@ -138,13 +138,14 @@ export const shows: Show[] = [
     //   transparent: "https://placekitten.com/521/521",
     //   opaque: "https://placekitten.com/200/200",
     // },
-    hosts: [getHostByName("Mark")],
+    hosts: [getHostByName("Luna")],
     schedule: new ScheduleItem("0 23 * * 0", 120),
   },
   {
     name: "After Sunset",
     splash_text: "",
-    description: "",
+    description:
+      "50 or so minutes of music based on a theme. Contains multitudes.",
     background: "#ddfe60",
     hosts: [getHostByName("Bruce")],
     logo: {
@@ -166,7 +167,7 @@ export const shows: Show[] = [
   //   splash_text: "",
   //   description: "",
   //   background: "#ddfe60",
-  //   hosts: [getHostByName("Mark"), getHostByName("Sophie")],
+  //   hosts: [getHostByName("Luna"), getHostByName("Sophie")],
   //   schedule: new ScheduleItem("30 20 * * 3", 60),
   // },
   {
