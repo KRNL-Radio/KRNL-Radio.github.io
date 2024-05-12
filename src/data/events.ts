@@ -20,16 +20,21 @@ type Event = {
 
 export const events: Event[] = [
   {
-    name: "Winter Break",
+    name: "Graduation",
     effects: {
-      schedule: {
-        is_hard_suppression: false,
-        message: "We're on break for the holidays! We'll be back soon!",
+      banner: {
+        background_theme: {
+          type: "tailwind",
+        },
+        home_banner_text:
+          "Congrats Brock, Garnett, and Chickadee! We'll miss you!",
+        site_banner_text: "Congrats Brock, Garnett, and Chickadee!",
       },
     },
     schedule: new ScheduleItem(
-      new Date(2022, 11, 21, 9, 0),
-      new Date(2023, 0, 14, 9, 0),
+      // may 12, 2024
+      new Date(2024, 4, 12, 0, 0),
+      new Date(2024, 4, 17, 0, 0),
     ),
   },
 ];
