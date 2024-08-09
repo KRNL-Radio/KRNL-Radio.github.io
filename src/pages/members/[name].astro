@@ -1,0 +1,27 @@
+---
+import { Picture } from "astro:assets";
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import members from "./members.json";
+
+export function getStaticPaths() {
+  return members.map((member) => ({
+    params: { name: member.name.toLowerCase() },
+    props: { member },
+  }));
+}
+
+const { member } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/members/*.{jpeg,jpg,png,gif}",
+);
+const image_path = `/src/assets/members/${member.name.toLowerCase()}.jpg`;
+---
+
+<Layout title={member.name}>
+  <Header />
+  <main class="flex flex-col items-center justify-center p-4">
+    <Picture src={images[image_path]()} alt="Something!" />
+  </main>
+  <a href="/members" class="flex justify-center">Back to Members</a>
+</Layout>

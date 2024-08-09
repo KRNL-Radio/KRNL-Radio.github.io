@@ -1,0 +1,25 @@
+---
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import members from "./members.json";
+---
+
+<Layout title="Welcome to Astro.">
+  <Header />
+  <main class="flex flex-col items-center justify-center p-4">
+    <h1 class="text-4xl font-bold">Members</h1>
+    <div class="p-8">
+      <ul>
+        {
+          members.map((member) => (
+            <li>
+              <a href={`/members/${member.name.toLowerCase()}`}>
+                {member.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </main>
+</Layout>

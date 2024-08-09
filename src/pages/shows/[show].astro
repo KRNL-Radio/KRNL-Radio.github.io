@@ -1,0 +1,21 @@
+---
+import { Picture } from "astro:assets";
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import shows from "./shows.json";
+
+export function getStaticPaths() {
+  return shows.map((show) => ({
+    params: { show: show.name.toLowerCase() },
+    props: { show },
+  }));
+}
+
+const { show } = Astro.props;
+---
+
+<Layout title={show.name}>
+  <Header />
+  <main class="flex flex-col items-center justify-center p-4"></main>
+  <a href="/shows" class="flex justify-center">Back to Shows</a>
+</Layout>
