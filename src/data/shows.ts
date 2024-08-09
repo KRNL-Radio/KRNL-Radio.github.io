@@ -39,7 +39,7 @@ export const shows: Show[] = [
     description:
       "This is a totally unplanned show, where anything can happen (within contractual obligations). There's no logic behind this show, it just is.",
     background: "#0f3cec",
-    hosts: [getHostByName("Luna")],
+    hosts: [getHostByName("Mark")],
     schedule: new ScheduleItem("0 21 * * 1", 60),
   },
   {
@@ -108,15 +108,6 @@ export const shows: Show[] = [
   //   hosts: [getHostByName("Adrien"), getHostByName("Sophie")],
   // }
   {
-    name: "The Box",
-    splash_text: "",
-    description: "Vibe with music and the occasional conversation",
-    background: "#ddfe60",
-    hosts: [getHostByName("Brock")],
-    guests: "Garnett Strack",
-    schedule: new ScheduleItem("0 20 * * 5", 60),
-  },
-  {
     name: "Twin Suns",
     splash_text: "",
     description:
@@ -138,7 +129,7 @@ export const shows: Show[] = [
     //   transparent: "https://placekitten.com/521/521",
     //   opaque: "https://placekitten.com/200/200",
     // },
-    hosts: [getHostByName("Luna")],
+    hosts: [getHostByName("Mark")],
     schedule: new ScheduleItem("0 23 * * 0", 120),
   },
   {
@@ -167,7 +158,7 @@ export const shows: Show[] = [
   //   splash_text: "",
   //   description: "",
   //   background: "#ddfe60",
-  //   hosts: [getHostByName("Luna"), getHostByName("Sophie")],
+  //   hosts: [getHostByName("Mark"), getHostByName("Sophie")],
   //   schedule: new ScheduleItem("30 20 * * 3", 60),
   // },
   {

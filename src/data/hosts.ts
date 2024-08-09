@@ -5,12 +5,9 @@ import AdrienImg from "../assets/members/adrien.jpg";
 import ZoeImg from "../assets/members/zoe.jpg";
 import TreyImg from "../assets/members/trey.jpg";
 import SolaceImg from "../assets/members/solace.jpg";
-import ChickadeeImg from "../assets/members/chickadee.jpg";
-import BrockImg from "../assets/members/brock.jpg";
-import GarnettImg from "../assets/members/garnett.jpg";
 import JakeImg from "../assets/members/jake.jpg";
 import SamiImg from "../assets/members/sami.jpg";
-import ReaganImg from "../assets/members/reagan.jpg";
+import OrionImg from "../assets/members/orion.jpg";
 import EvaImg from "../assets/members/eva.jpg";
 import BeanImg from "../assets/members/bean.jpg";
 import BruceImg from "../assets/members/bruce.jpg";
@@ -95,15 +92,24 @@ export const hosts: Host[] = [
     badges: ["DJ", "Station Manager", "Executive Board"],
   },
   {
-    name: "Luna",
-    pronouns: ["she", "they"],
+    name: "Mark",
+    pronouns: ["they", "them"],
     splash_text: getRandomSplash(),
-    bio: `Hello, world! I'm Luna, and I make stuff and also play music occassionally.
+    bio: `Hello, world! I'm [Mark](/#/members/luna), and I make stuff and also play music occassionally.
 
 
 I also somehow ended up providing the station with a stuffed Pikachu. Don't ask, I don't know how that happened either.`,
     image: LunaImg,
     badges: ["DJ", "Station Manager", "Executive Board", "Financial Director"],
+  },
+  {
+    // ... yeah. :c
+    name: "Luna",
+    pronouns: ["she", "they"],
+    splash_text: getRandomSplash(),
+    bio: `hello, world! i'm luna! you might know me as someone else. who knows? i sure don't.`,
+    image: LunaImg,
+    badges: ["Honorary"],
   },
   {
     name: "Sophie",
@@ -124,20 +130,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     badges: ["DJ", "Music Director", "Executive Board"],
   },
   {
-    name: "Garnett",
-    pronouns: ["he", "him"],
-    splash_text: "Guy that does money things",
-    bio: `Yo! My name is Garnett, and I’m the treasurer for KRNL. I know that 2+2=4 and that is the extent of my qualifications for this position!`,
-    image: GarnettImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/garnet_steak/",
-      },
-    ],
-    badges: ["Financial Director", "Executive Board"],
-  },
-  {
     name: "Grayson",
     pronouns: ["he", "him"],
     splash_text: "Defender of the World from Nickelback",
@@ -150,14 +142,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
       },
     ],
     badges: ["DJ", "Sports Director", "Executive Board"],
-  },
-  {
-    name: "Brock",
-    pronouns: ["he", "him"],
-    splash_text: ":3",
-    bio: `Hello! I'm Brock, the one that is impossible to get a hold of. I don't know what I'm doing either :3`,
-    image: BrockImg,
-    badges: ["DJ", "Music Director", "Executive Board"],
   },
   {
     name: "Zoe",
@@ -196,14 +180,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     badges: ["DJ"],
   },
   {
-    name: "Chickadee",
-    pronouns: ["they", "them"],
-    splash_text: "the plushies guy",
-    bio: "I might not have donated any plushies to the studio like Luna did, but boy howdy do I have a few",
-    image: ChickadeeImg,
-    badges: ["DJ"],
-  },
-  {
     name: "Jake",
     pronouns: ["he", "him"],
     splash_text: "Season Ticket Holder to the Boonta Eve Classic",
@@ -232,11 +208,11 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     badges: ["DJ"],
   },
   {
-    name: "Reagan / Orion",
-    pronouns: ReaganPronouns(),
+    name: "Orion",
+    pronouns: OrionPronouns(),
     splash_text: "resident door artist",
-    bio: "reptiles and tennis, silly lil guy",
-    image: ReaganImg,
+    bio: "ex-blonde and sad about it",
+    image: OrionImg,
     badges: ["DJ", "Event and Marketing Director", "Executive Board"],
   },
   {
@@ -305,7 +281,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
   // },
 ];
 
-function ReaganPronouns() {
+function OrionPronouns() {
   // random shuffle this!
   const pronouns = ["they", "he"];
   return Math.random() > 0.5 ? pronouns.reverse() : pronouns;
