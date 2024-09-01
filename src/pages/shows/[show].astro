@@ -2,12 +2,12 @@
 import { Picture } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
-import shows from "./shows.json";
+import { getCollection } from "astro:content";
 
-export function getStaticPaths() {
-  return shows.map((show) => ({
-    params: { show: show.name.toLowerCase() },
-    props: { show },
+export async function getStaticPaths() {
+  return (await getCollection("shows")).map((show) => ({
+    params: { show: show.data.name.toLowerCase() },
+    props: { show: show.data },
   }));
 }
 

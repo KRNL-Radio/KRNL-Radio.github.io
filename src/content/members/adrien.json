@@ -1,0 +1,24 @@
+{
+  "name": "Adrien",
+  "pronouns": [
+    "they",
+    "he"
+  ],
+  "splash_text": "Driver of the Clown Car",
+  "bio": "Hi!! I’m Adrien: alt rock lover, ‘80s music extraordinaire, black lipstick aficionado.\n    \n[*It’s not a phase, mom.*](https://www.youtube.com/watch?v=Kjr7US2Z9aY)",
+  "socials": [
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/jellybeanz_3/"
+    },
+    {
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/user/akaplan1488"
+    }
+  ],
+  "badges": [
+    "DJ",
+    "Station Manager",
+    "Executive Board"
+  ]
+}

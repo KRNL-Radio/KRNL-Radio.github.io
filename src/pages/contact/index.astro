@@ -1,20 +1,20 @@
 ---
+import { exec } from "child_process";
+import { promisify } from "util";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
+
+// const build = await $`git rev-parse --short HEAD`.text();
+const build = (await (promisify(exec)("git rev-parse --short HEAD"))).stdout.trim();
 ---
 
 <Layout title="Welcome to Astro.">
   <Header />
   <main class="flex flex-col items-center justify-center p-4">
     <h1 class="text-4xl font-bold">Contact</h1>
-    <div class="p-8">
-      <p class="text-xl">Placeholder!</p>
-      <p class="text-xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        incidunt aperiam libero impedit exercitationem perferendis deserunt,
-        veritatis quibusdam eligendi provident, optio quo temporibus. Culpa quo
-        ratione architecto deleniti iusto nemo!
-      </p>
+    <!-- add build info -->
+    <div>
+      <p class="text-slate-400 italic">Build: {build}</p>
     </div>
   </main>
 </Layout>

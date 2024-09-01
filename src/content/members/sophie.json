@@ -1,0 +1,24 @@
+{
+  "name": "Sophie",
+  "pronouns": [
+    "they",
+    "them"
+  ],
+  "splash_text": "The Legend",
+  "bio": "Heyo! I'm Sophie and I play music sometimes! come share in the vibes! :)",
+  "socials": [
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/s_brown_6/"
+    },
+    {
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/user/caucasian_nugget"
+    }
+  ],
+  "badges": [
+    "DJ",
+    "Music Director",
+    "Executive Board"
+  ]
+}

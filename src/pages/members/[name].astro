@@ -2,12 +2,12 @@
 import { Picture } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
-import members from "./members.json";
+import { getCollection } from "astro:content";
 
-export function getStaticPaths() {
-  return members.map((member) => ({
-    params: { name: member.name.toLowerCase() },
-    props: { member },
+export async function getStaticPaths() {
+  return (await getCollection("members")).map((member) => ({
+    params: { name: member.data.name.toLowerCase() },
+    props: { member: member.data },
   }));
 }
 
@@ -21,7 +21,12 @@ const image_path = `/src/assets/members/${member.name.toLowerCase()}.jpg`;
 <Layout title={member.name}>
   <Header />
   <main class="flex flex-col items-center justify-center p-4">
-    <Picture src={images[image_path]()} alt="Something!" />
+    <Picture src={images[image_path]()} alt="Something!" class="rounded-3xl w-96 object-cover drop-shadow-md" />
+    <h1 class="text-2xl">{member.name}</h1>
+    <h2 class="text-xl italic">{member.splash_text}</h2>
+    <h2 class="text-l">({member.pronouns.join(' / ')})</h2>
+    <p>{member.bio}</p> <!-- TODO: markdown -->
   </main>
+  <!-- TODO: background, badges, social -->
   <a href="/members" class="flex justify-center">Back to Members</a>
 </Layout>
