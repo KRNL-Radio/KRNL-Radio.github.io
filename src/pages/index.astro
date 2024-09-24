@@ -40,3 +40,42 @@ import Layout from "../layouts/Layout.astro";
   }
 </script>
 
+<script>
+  // Website V2 to V3 migration!
+  // This script shall disable itself 2 months after V3 release.
+  const migrationDate = new Date("2024-11-01");
+  const currentDate = new Date();
+  if (currentDate > migrationDate) {
+    console.log("Migration script disabled!");
+  } else {
+    console.log("Migration script active!");
+    // check url local params
+    const hash = window.location.hash
+    if (hash === "#/") {
+      window.location.hash = "";
+    } else if (hash === "#/player") {
+      window.location.hash = "";
+      window.location.href = "/player";
+    } else if (hash === "#/schedule") {
+      window.location.hash = "";
+      window.location.href = "/schedule";
+    } else if (hash === "#/schedule/shows") {
+      window.location.hash = "";
+      window.location.href = "/shows";
+    } else if (hash === "#/members") {
+      window.location.hash = "";
+      window.location.href = "/members";
+    } else if (hash === "#/contact") {
+      window.location.hash = "";
+      window.location.href = "/contact";
+    } else if (hash.includes("#/schedule/shows/")) {
+      const show = hash.replace("#/schedule/shows/", "").replaceAll("-", " ");
+      window.location.hash = "";
+      window.location.href = `/shows/${show}`;
+    } else if (hash.includes("#/members/",)) {
+      const member = hash.replace("#/members/", "");
+      window.location.hash = "";
+      window.location.href = `/members/${member}`;
+    }
+  }
+</script>
