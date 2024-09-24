@@ -7,15 +7,36 @@ import Layout from "../layouts/Layout.astro";
   <Header />
   <main class="flex flex-col items-center justify-center p-4">
     <h1 class="text-4xl font-bold">KRNL Radio</h1>
+    <h2 class="text-xl italic" id="subtitle">Foster Home of Rock & Roll</h2>
     <div class="p-8">
-      <p class="text-xl">
+      <p class="text-lg">
         Welcome! KRNL is a student-run college radio station that was
         broadcasting at 89.7 FM.
       </p>
-      <p class="text-xl">
+      <p class="text-lg">
         We seek to provide a personal, alternative source of entertainment to
         the outlying community.
       </p>
+      <h3 class="text-2xl font-bold">Our Objectives</h3>
+      <ul class="list-disc list-inside">
+        <li>Encourage and broadcast a diverse selection of music</li>
+        <li>Provide a platform for students to learn about radio</li>
+        <li>Promote personal experimentation and growth of broadcasting and managerial techniques within all persons associated with KRNL</li>
+        <li>Be a valuable resource for people within the community</li>
+      </ul>
+      <h3 class="text-2xl font-bold">What We Do</h3>
+      <p>In no particular order, we broadcast a variety of music, host live events (including sponsoring the Big Event), and provide a platform for students to learn about radio, and to be themselves!</p>
+      <p>We have meetings every Thursday from 4:30 - 5:00 in our studio, come say hi!</p>
     </div>
   </main>
 </Layout>
+
+<script>
+  // 5% chance of changing the subtitle
+  if (Math.random() < 0.05) {
+    const subtitle = document.getElementById("subtitle")!;
+    subtitle.textContent = "Unoffical Weezer Fan Club";
+    subtitle.style.color = "#189bcc"
+  }
+</script>
+
