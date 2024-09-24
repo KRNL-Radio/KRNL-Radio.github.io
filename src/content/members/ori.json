@@ -1,14 +1,7 @@
 {
   "name": "Ori",
-  "pronouns": [
-    "she",
-    "they"
-  ],
+  "pronouns": ["she", "they"],
   "splash_text": "scottish wannabe",
   "bio": "hey hey! i like music that your parents would listen to, music that’s not in english, music you could milk a cow to, and pitbull",
-  "badges": [
-    "DJ",
-    "Program Director",
-    "Executive Board"
-  ]
+  "badges": ["DJ", "Program Director", "Executive Board"]
 }

@@ -1,0 +1,10 @@
+{
+  "name": "Twin Suns",
+  "description": "One of us knows a lot about Star Wars, the other... ¯\\\\_(ツ)_/¯",
+  "hosts": ["Jake", "Sami"],
+  "schedule": {
+    "start": "30 20 * * 2",
+    "duration": 60,
+    "parseType": "cron"
+  }
+}

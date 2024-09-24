@@ -1,0 +1,10 @@
+{
+  "name": "Timezones",
+  "description": "Come and listen to music from all over the world! There's no jet lag here, only Timezones.",
+  "hosts": ["Trey"],
+  "schedule": {
+    "start": "30 15 * * 3",
+    "duration": 60,
+    "parseType": "cron"
+  }
+}

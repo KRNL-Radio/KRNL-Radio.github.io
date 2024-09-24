@@ -1,12 +1,7 @@
 {
   "name": "Eva",
-  "pronouns": [
-    "She",
-    "they"
-  ],
+  "pronouns": ["She", "they"],
   "splash_text": "Lover of all things Cat",
   "bio": "Hi! I love to read, sing, and hang with cool people :)",
-  "badges": [
-    "DJ"
-  ]
+  "badges": ["DJ"]
 }

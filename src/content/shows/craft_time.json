@@ -1,0 +1,10 @@
+{
+  "name": "Craft Time",
+  "description": "",
+  "hosts": ["Ronnie", "Ori"],
+  "schedule": {
+    "start": "30 16 * * 1",
+    "duration": 60,
+    "parseType": "cron"
+  }
+}

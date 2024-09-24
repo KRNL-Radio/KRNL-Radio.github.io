@@ -1,12 +1,7 @@
 {
   "name": "Vale",
-  "pronouns": [
-    "he",
-    "they"
-  ],
+  "pronouns": ["he", "they"],
   "splash_text": "Endorphin orphan morphing lemon cheese equally",
   "bio": "Lover of all music. \nI strive to listen to every song ever, so send me to me. \nAlso Jon Mess is my spirit animal.",
-  "badges": [
-    "DJ"
-  ]
+  "badges": ["DJ"]
 }

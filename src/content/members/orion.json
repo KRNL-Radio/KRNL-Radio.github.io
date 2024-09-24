@@ -1,14 +1,7 @@
 {
   "name": "Orion",
-  "pronouns": [
-    "he",
-    "they"
-  ],
+  "pronouns": ["he", "they"],
   "splash_text": "resident door artist",
   "bio": "ex-blonde and sad about it",
-  "badges": [
-    "DJ",
-    "Event and Marketing Director",
-    "Executive Board"
-  ]
+  "badges": ["DJ", "Event and Marketing Director", "Executive Board"]
 }

@@ -1,0 +1,10 @@
+{
+  "name": "Stochastic Shuffle",
+  "description": "This is a totally unplanned show, where anything can happen (within contractual obligations). There's no logic behind this show, it just is.",
+  "hosts": ["Mark"],
+  "schedule": {
+    "start": "0 21 * * 1",
+    "duration": 60,
+    "parseType": "cron"
+  }
+}

@@ -1,9 +1,6 @@
 {
   "name": "Sami",
-  "pronouns": [
-    "they",
-    "them"
-  ],
+  "pronouns": ["they", "them"],
   "splash_text": "Certified Dog Photo Shower",
   "bio": "Hi I’m Sami! I have a very wide range of music taste but Florence + the machine, the crane wives, Marika Hackman, and vocaloid (PAFL) are my go-to! Peace and love Hatsune Miku!",
   "socials": [
@@ -12,7 +9,5 @@
       "url": "https://www.instagram.com/still.want.a.ferret/"
     }
   ],
-  "badges": [
-    "DJ"
-  ]
+  "badges": ["DJ"]
 }

@@ -1,9 +1,6 @@
 {
   "name": "Trey",
-  "pronouns": [
-    "he",
-    "him"
-  ],
+  "pronouns": ["he", "him"],
   "splash_text": "Enjoyer of Things, Listener of Music",
   "bio": "Yo, I’m Trey, lover of all things art, media, and entertainment? ...Honestly, I’d enjoy almost anything",
   "socials": [
@@ -12,7 +9,5 @@
       "url": "https://www.instagram.com/ssvfw/"
     }
   ],
-  "badges": [
-    "DJ"
-  ]
+  "badges": ["DJ"]
 }

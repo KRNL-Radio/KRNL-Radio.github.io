@@ -1,15 +1,7 @@
 {
   "name": "Mark",
-  "pronouns": [
-    "they",
-    "them"
-  ],
+  "pronouns": ["they", "them"],
   "splash_text": "Local Weather Prophet",
   "bio": "Hello, world! I'm [Mark](/#/members/luna), and I make stuff and also play music occassionally.\n\n\nI also somehow ended up providing the station with a stuffed Pikachu. Don't ask, I don't know how that happened either.",
-  "badges": [
-    "DJ",
-    "Station Manager",
-    "Executive Board",
-    "Financial Director"
-  ]
+  "badges": ["DJ", "Station Manager", "Executive Board", "Financial Director"]
 }

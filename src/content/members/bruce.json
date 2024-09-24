@@ -1,12 +1,7 @@
 {
   "name": "Bruce",
-  "pronouns": [
-    "he",
-    "him"
-  ],
+  "pronouns": ["he", "him"],
   "splash_text": "guy",
   "bio": "I'm Bruce.",
-  "badges": [
-    "DJ"
-  ]
+  "badges": ["DJ"]
 }

@@ -1,9 +1,6 @@
 {
   "name": "Jake",
-  "pronouns": [
-    "he",
-    "him"
-  ],
+  "pronouns": ["he", "him"],
   "splash_text": "Season Ticket Holder to the Boonta Eve Classic",
   "bio": "Hi! I'm Jake. It wasn't until I worked at a wedding venue that I realized my playlist was mostly millennial reception music.",
   "socials": [
@@ -12,7 +9,5 @@
       "url": "https://www.instagram.com/jakethsnowflaketh"
     }
   ],
-  "badges": [
-    "DJ"
-  ]
+  "badges": ["DJ"]
 }

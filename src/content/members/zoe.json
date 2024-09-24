@@ -1,9 +1,6 @@
 {
   "name": "Zoe",
-  "pronouns": [
-    "they",
-    "she"
-  ],
+  "pronouns": ["they", "she"],
   "splash_text": "Resident Bookwarm",
   "bio": "Hey, I’m Zoe! [Waiting Room by Phoebe Bridgers](https://www.youtube.com/watch?v=cgJLXrOtASc) was my #1 song this year, interpret that how you will.",
   "socials": [
@@ -12,7 +9,5 @@
       "url": "https://www.instagram.com/zothevirg.o/"
     }
   ],
-  "badges": [
-    "DJ"
-  ]
+  "badges": ["DJ"]
 }

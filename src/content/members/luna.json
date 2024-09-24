@@ -1,12 +1,7 @@
 {
   "name": "Luna",
-  "pronouns": [
-    "she",
-    "they"
-  ],
+  "pronouns": ["she", "they"],
   "splash_text": "square",
   "bio": "hello, world! i'm luna! you might know me as someone else. who knows? i sure don't.",
-  "badges": [
-    "Honorary"
-  ]
+  "badges": ["Honorary"]
 }

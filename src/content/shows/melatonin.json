@@ -1,0 +1,10 @@
+{
+  "name": "Melatonin",
+  "description": "WORK IN PROGRESS - Check Instagram for updates!",
+  "hosts": ["Luna"],
+  "schedule": {
+    "start": "0 23 * * 0",
+    "duration": 120,
+    "parseType": "cron"
+  }
+}

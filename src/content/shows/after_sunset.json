@@ -1,0 +1,10 @@
+{
+  "name": "After Sunset",
+  "description": "50 or so minutes of music based on a theme. Contains multitudes.",
+  "hosts": ["Bruce"],
+  "schedule": {
+    "start": "0 20 * * 6",
+    "duration": 60,
+    "parseType": "cron"
+  }
+}

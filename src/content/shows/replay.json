@@ -1,0 +1,10 @@
+{
+  "name": "Replay",
+  "description": "",
+  "hosts": ["Vale"],
+  "schedule": {
+    "start": "0 15 * * 0",
+    "duration": 60,
+    "parseType": "cron"
+  }
+}
