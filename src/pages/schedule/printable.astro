@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const last_updated = new Date().toLocaleDateString("en-US");
+const shows = await getCollection("shows");
+---
+
+<Layout title="Printable Schedule">
+  <main class="flex flex-col items-center p-4 print:bg-white print:text-black">
+    <h1 class="text-4xl">KRNL Typical Schedule</h1>
+    <p>Last Updated {last_updated}</p>
+    <table class="border m-4 text-center table-fixed">
+      <!-- Sunday - Saturday -->
+      <thead class="font-bold">
+        <th class="border p-2 border-b-2">Sunday</th>
+        <th class="border p-2 border-b-2">Monday</th>
+        <th class="border p-2 border-b-2">Tuesday</th>
+        <th class="border p-2 border-b-2">Wednesday</th>
+        <th class="border p-2 border-b-2">Thursday</th>
+        <th class="border p-2 border-b-2">Friday</th>
+        <th class="border p-2 border-b-2">Saturday</th>
+      </thead>
+
+      <!-- and, now, all the shows when they happen -->
+      <tr>
+        {shows.map((show) => <td class="border p-2">{show.data.name}</td>)}
+      </tr>
+    </table>
+    <p>
+      Instagram / TikTok / YouTube: @krnl_cornell // Website: <u
+        >krnl-radio.github.io</u
+      >
+    </p>
+  </main>
+</Layout>
