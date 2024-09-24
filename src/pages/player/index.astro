@@ -1,20 +1,27 @@
 ---
 import Header from "../../components/Header.astro";
+import PlayerComponent from "../../components/Player";
 import Layout from "../../layouts/Layout.astro";
+
+const albumArt = "https://via.placeholder.com/500";
+const title = "Buddy Holly - Weezer";
+const host = "Luna";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Player">
   <Header />
-  <main class="flex flex-col items-center justify-center p-4">
-    <h1 class="text-4xl font-bold">Player</h1>
-    <div class="p-8">
-      <p class="text-xl">Placeholder!</p>
-      <p class="text-xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        incidunt aperiam libero impedit exercitationem perferendis deserunt,
-        veritatis quibusdam eligendi provident, optio quo temporibus. Culpa quo
-        ratione architecto deleniti iusto nemo!
-      </p>
+  <main class="flex h-screen flex-col">
+    <div class="flex flex-grow w-full">
+      <PlayerComponent client:load />
     </div>
   </main>
+  <!-- <script>
+    function onPlayPauseClick() {
+      console.log("Play/Pause clicked");
+    }
+
+    document
+      .getElementById("playPauseBtn")!
+      .addEventListener("click", onPlayPauseClick);
+  </script> -->
 </Layout>
