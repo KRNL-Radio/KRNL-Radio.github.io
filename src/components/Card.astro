@@ -2,7 +2,7 @@
 interface Props {
   title: string;
   subtitle: string;
-  background: any;
+  background?: ImageMetadata;
   href: string;
 }
 
@@ -11,7 +11,7 @@ const { href, title, subtitle, background } = Astro.props;
 
 <a class="card m-1 overflow-hidden" href={href}>
   <div class="card-content">
-    <!-- <div class="card-badge-wrapper"></div> -->
+    <div class="card-badge-wrapper h-[140px]"></div>
     <div class="card-info-wrapper">
       <div class="card-info">
         <div class="card-info-title">
