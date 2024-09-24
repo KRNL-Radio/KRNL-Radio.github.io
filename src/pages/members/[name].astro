@@ -3,29 +3,42 @@ import { Picture } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { marked } from "marked";
 
 export async function getStaticPaths() {
-  return (await getCollection("members")).map((member) => ({
-    params: { name: member.data.name.toLowerCase() },
-    props: { member: member.data },
-  }));
+  const images = import.meta.glob<{ default: ImageMetadata }>(
+    `/src/assets/members/*.{jpg,png}`,
+  );
+  return (await getCollection("members")).map((member) => {
+    const image_path = Object.keys(images).find((path) =>
+      path.includes(member.data.name.toLowerCase()),
+    );
+    return {
+      params: { name: member.data.name.toLowerCase() },
+      props: { member: member.data, image: images[image_path!] },
+    };
+  });
 }
 
-const { member } = Astro.props;
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/members/*.{jpeg,jpg,png,gif}",
-);
-const image_path = `/src/assets/members/${member.name.toLowerCase()}.jpg`;
+const { member, image } = Astro.props;
+const bio = await marked(member.bio);
 ---
 
 <Layout title={member.name}>
   <Header />
   <main class="flex flex-col items-center justify-center p-4">
-    <Picture src={images[image_path]()} alt="Something!" class="rounded-3xl w-96 object-cover drop-shadow-md" />
+    <Picture
+      src={image()}
+      alt="Something!"
+      class="rounded-3xl w-96 object-cover drop-shadow-md bg-gradient-to-b to-slate-950 from-slate-800"
+    />
     <h1 class="text-2xl">{member.name}</h1>
     <h2 class="text-xl italic">{member.splash_text}</h2>
-    <h2 class="text-l">({member.pronouns.join(' / ')})</h2>
-    <p>{member.bio}</p> <!-- TODO: markdown -->
+    <h2 class="text-l">({member.pronouns.join(" / ")})</h2>
+    <div class="prose !prose-invert">
+      <p set:html={bio} />
+    </div>
+    <!-- TODO: markdown -->
   </main>
   <!-- TODO: background, badges, social -->
   <a href="/members" class="flex justify-center">Back to Members</a>

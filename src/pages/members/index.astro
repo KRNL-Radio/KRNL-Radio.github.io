@@ -20,7 +20,7 @@ const members = await getCollection("members");
             title={member.data.name}
             subtitle={member.data.splash_text}
             href={`/members/${member.data.name.toLowerCase()}`}
-            background=""
+            background={`members/${member.data.name.toLowerCase()}`}
           />
         ))
       }

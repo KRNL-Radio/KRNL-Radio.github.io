@@ -5,10 +5,12 @@ import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 
 // const build = await $`git rev-parse --short HEAD`.text();
-const build = (await (promisify(exec)("git rev-parse --short HEAD"))).stdout.trim();
+const build = (
+  await promisify(exec)("git rev-parse --short HEAD")
+).stdout.trim();
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Contact">
   <Header />
   <main class="flex flex-col items-center justify-center p-4">
     <h1 class="text-4xl font-bold">Contact</h1>

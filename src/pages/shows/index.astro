@@ -1,20 +1,27 @@
 ---
+import { getCollection } from "astro:content";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+
+const shows = await getCollection("shows");
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Members">
   <Header />
   <main class="flex flex-col items-center justify-center p-4">
     <h1 class="text-4xl font-bold">Shows</h1>
-    <div class="p-8">
-      <p class="text-xl">Placeholder!</p>
-      <p class="text-xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        incidunt aperiam libero impedit exercitationem perferendis deserunt,
-        veritatis quibusdam eligendi provident, optio quo temporibus. Culpa quo
-        ratione architecto deleniti iusto nemo!
-      </p>
+    <div class="text-lg">{shows.length} members (and counting!)</div>
+    <div class="flex flex-wrap justify-center p-4 w-full">
+      {
+        shows.map((member) => (
+          <Card
+            title={member.data.name}
+            subtitle={"--Placeholder--"}
+            href={`/shows/${member.data.name.toLowerCase()}`}
+          />
+        ))
+      }
     </div>
   </main>
 </Layout>

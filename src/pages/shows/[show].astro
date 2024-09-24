@@ -1,8 +1,8 @@
 ---
-import { Picture } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { marked } from "marked";
 
 export async function getStaticPaths() {
   return (await getCollection("shows")).map((show) => ({
@@ -12,10 +12,17 @@ export async function getStaticPaths() {
 }
 
 const { show } = Astro.props;
+const description = await marked(show.description);
 ---
 
 <Layout title={show.name}>
   <Header />
-  <main class="flex flex-col items-center justify-center p-4"></main>
+  <main class="flex flex-col items-center justify-center p-4">
+    <h1 class="text-2xl">{show.name}</h1>
+    <h2>placeholder :3</h2>
+    <div class="prose !prose-invert">
+      <p set:html={description} />
+    </div>
+  </main>
   <a href="/shows" class="flex justify-center">Back to Shows</a>
 </Layout>
