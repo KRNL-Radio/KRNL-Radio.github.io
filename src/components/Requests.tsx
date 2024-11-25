@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { getRequestableTracks, type RequestableTrack } from "../util/radioco";
+import Image from "astro/components/Image.astro";
 
 export default function RequestsComponent() {
-  const [tracks, setTracks] = useState([]);
+  const [tracks, setTracks] = useState([] as RequestableTrack[]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([] as RequestableTrack[]);
 
   useEffect(() => {
     if (searchText === "") {
@@ -19,6 +21,13 @@ export default function RequestsComponent() {
       ),
     );
   }, [searchText, tracks]);
+
+  useEffect(() => {
+    getRequestableTracks().then((tracks) => {
+      setTracks(tracks);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <div className="flex flex-col w-full">
@@ -40,10 +49,11 @@ export default function RequestsComponent() {
                 key={track.id}
               >
                 <img
-                  src={track.artwork.url}
+                  src={track.artwork.url!}
                   alt="album art"
-                  className="w-16 h-16"
+                  className="w-16 h-16 rounded"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="flex flex-col px-4">
                   <div className="text-white">{track.title}</div>
