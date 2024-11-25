@@ -21,12 +21,22 @@ import Layout from "../layouts/Layout.astro";
       <ul class="list-disc list-inside">
         <li>Encourage and broadcast a diverse selection of music</li>
         <li>Provide a platform for students to learn about radio</li>
-        <li>Promote personal experimentation and growth of broadcasting and managerial techniques within all persons associated with KRNL</li>
+        <li>
+          Promote personal experimentation and growth of broadcasting and
+          managerial techniques within all persons associated with KRNL
+        </li>
         <li>Be a valuable resource for people within the community</li>
       </ul>
       <h3 class="text-2xl font-bold">What We Do</h3>
-      <p>In no particular order, we broadcast a variety of music, host live events (including sponsoring the Big Event), and provide a platform for students to learn about radio, and to be themselves!</p>
-      <p>We have meetings every Thursday from 4:30 - 5:00 in our studio, come say hi!</p>
+      <p>
+        In no particular order, we broadcast a variety of music, host live
+        events (including sponsoring the Big Event), and provide a platform for
+        students to learn about radio, and to be themselves!
+      </p>
+      <p>
+        We have meetings every Thursday from 4:30 - 5:00 in our studio, come say
+        hi!
+      </p>
     </div>
   </main>
 </Layout>
@@ -36,7 +46,7 @@ import Layout from "../layouts/Layout.astro";
   if (Math.random() < 0.05) {
     const subtitle = document.getElementById("subtitle")!;
     subtitle.textContent = "Unoffical Weezer Fan Club";
-    subtitle.style.color = "#189bcc"
+    subtitle.style.color = "#189bcc";
   }
 </script>
 
@@ -50,7 +60,7 @@ import Layout from "../layouts/Layout.astro";
   } else {
     console.log("Migration script active!");
     // check url local params
-    const hash = window.location.hash
+    const hash = window.location.hash;
     if (hash === "#/") {
       window.location.hash = "";
     } else if (hash === "#/player") {
@@ -72,7 +82,7 @@ import Layout from "../layouts/Layout.astro";
       const show = hash.replace("#/schedule/shows/", "").replaceAll("-", " ");
       window.location.hash = "";
       window.location.href = `/shows/${show}`;
-    } else if (hash.includes("#/members/",)) {
+    } else if (hash.includes("#/members/")) {
       const member = hash.replace("#/members/", "");
       window.location.hash = "";
       window.location.href = `/members/${member}`;

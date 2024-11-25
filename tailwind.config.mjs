@@ -3,6 +3,9 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      width: {
+        "1/7": "14.2857143%",
+      },
       screens: {
         print: { raw: "print" },
         screen: { raw: "screen" },
