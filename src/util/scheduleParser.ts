@@ -1,5 +1,6 @@
 import type { CronExpression, ParserOptions } from "cron-parser";
-import { parseExpression } from "cron-parser";
+import cronParser from "cron-parser";
+const { parseExpression } = cronParser;
 
 const PARSER_OPTIONS: ParserOptions = {
   tz: "America/Chicago",

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
+import { Schedule } from "../../util/scheduleParser";
 
 const shows = await getCollection("shows");
 ---
@@ -17,7 +18,7 @@ const shows = await getCollection("shows");
         shows.map((member) => (
           <Card
             title={member.data.name}
-            subtitle={"--Placeholder--"}
+            subtitle={(new Schedule(member.data.schedule)).toLongString()}
             href={`/shows/${member.data.name.toLowerCase()}`}
           />
         ))
