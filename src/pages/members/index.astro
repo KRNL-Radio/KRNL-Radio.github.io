@@ -5,6 +5,20 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 
 const members = await getCollection("members");
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    `/src/assets/members/*.{jpg,png}`,
+  );
+
+// member images: dict of member name to image
+const memberImages = Object.fromEntries(
+  members.map((member) => {
+    const name = member.data.name;
+    const imagePath = Object.keys(images).find((path) =>
+      path.includes(name.toLowerCase())
+    ) || "/src/assets/members/default.jpg";
+    return [name, images[imagePath]];
+  }),
+);
 ---
 
 <Layout title="Members">
@@ -20,7 +34,7 @@ const members = await getCollection("members");
             title={member.data.name}
             subtitle={member.data.splash_text}
             href={`/members/${member.data.name.toLowerCase()}`}
-            background={`members/${member.data.name.toLowerCase()}`}
+            background={memberImages[member.data.name]}
           />
         ))
       }

@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   return (await getCollection("members")).map((member) => {
     const image_path = Object.keys(images).find((path) =>
       path.includes(member.data.name.toLowerCase()),
-    );
+    ) || "/src/assets/members/default.jpg";
     return {
       params: { name: member.data.name.toLowerCase() },
       props: { member: member.data, image: images[image_path!] },
