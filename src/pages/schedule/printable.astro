@@ -9,15 +9,19 @@ const shows = await getCollection("shows");
 // sort shows by day
 const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-const showsDict = {
-  "Sunday": [{ name: "Replay", hosts: "Vale", time: "3:00p - 4:00p" }, { name: "The Vibe", hosts: "Grayson", time: "4:00p - 5:00p" }, { name: "Melatonin", hosts: "Luna", time: "11:00p - 1:00a" }],
-  "Monday": [{ name: "CCPR", hosts: "Sophie & Adrien", time: "8:05a - 8:23a" }, { name: "Craft Time", hosts: "Ronnie & Ori", time: "4:00p - 5:00p" }, { name: "Melatonin", hosts: "Luna", time: "11:00p - 1:00a" }],
-  "Tuesday": [{ name: "The Dorm Room Debrief", hosts: "Vale", time: "3:00p - 4:00p" }, { name: "The Vibe", hosts: "Grayson", time: "4:00p - 5:00p" }, { name: "Melatonin", hosts: "Luna", time: "11:00p - 1:00a" }, { name: "Melatonin", hosts: "Luna", time: "11:00p - 1:00a" }],
-  "Wednesday": [{ name: "Replay", hosts: "Vale", time: "3:00p - 4:00p" }],
-  "Thursday": [{ name: "Replay", hosts: "Vale", time: "3:00p - 4:00p" }, { name: "The Vibe", hosts: "Grayson", time: "4:00p - 5:00p" }, { name: "Melatonin", hosts: "Luna", time: "11:00p - 1:00a" }],
-  "Friday": [{ name: "Replay", hosts: "Vale", time: "3:00p - 4:00p" }],
-  "Saturday": [{ name: "Replay", hosts: "Vale", time: "3:00p - 4:00p" }],
-};
+const showsDict: { [key: string]: { name: string; hosts: string[]; time: string }[] } = Object.fromEntries(daysOfWeek.map(day => [day, []]));
+
+shows.forEach(show => {
+  const sched = new Schedule(show.data.schedule)
+  const nextOccurance = sched.getStartOfNextOccurance()
+  if (!nextOccurance) return;
+  const day = nextOccurance.toLocaleDateString("en-US", { weekday: "long" });
+  showsDict[day].push({
+    name: show.data.name,
+    hosts: show.data.hosts,
+    time: sched.toTimeString(),
+  });
+});
 
 // Function to generate HTML table with days of week as columns
 function generateScheduleTable(schedule: typeof showsDict  ) {
@@ -32,7 +36,7 @@ function generateScheduleTable(schedule: typeof showsDict  ) {
     daysOfWeek.forEach(day => {
       if (schedule[day] && schedule[day][i]) {
         const show = schedule[day][i];
-        tableHTML += `<td class="border p-2">${show.name}<br>(${show.hosts})<br><br>${show.time}</td>`;
+        tableHTML += `<td class="border p-2">${show.name}<br>(${show.hosts.join(", ")})<br><br>${show.time}</td>`;
       } else {
         tableHTML += '<td class="border p-2"></td>'; // Empty cell if no show for this day at this index
       }

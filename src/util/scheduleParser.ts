@@ -126,6 +126,18 @@ export class Schedule {
         start,
     )} to ${time_formatter.format(end)}`;
   }
+
+  toTimeString() {
+    // FIXME: this will break and break horribly once shows happen more than once a week
+    // yay
+    const time_formatter = getTimeFormatter();
+    if (this.getStartOfNextOccurance() === null) {
+      return "No upcoming shows";
+    }
+    const start = this.getStartOfNextOccurance()!;
+    const end = this.getEndOfNextOccurance()!;
+    return `${time_formatter.format(start)} - ${time_formatter.format(end)}`;
+  }
 }
 
 function parseSchedule(schedule: ScheduleType) {
