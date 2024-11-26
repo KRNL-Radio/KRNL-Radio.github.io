@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaList, FaPause, FaPlay, FaVolumeHigh, FaGear } from "react-icons/fa6";
-import { AiOutlineLoading } from "react-icons/ai";
+import { AiOutlineLoading, AiOutlineHistory } from "react-icons/ai";
 import { useInterval } from "../util/useInterval";
 import { getStationMetadata } from "../util/radioco";
 
@@ -151,7 +151,31 @@ export default function PlayerComponent() {
         >
           <FaGear />
         </label>
+        <label
+          className="text-4xl p-2 cursor-pointer"
+          id="settings-modal-icon"
+          // @ts-ignore
+          onClick={() => document.getElementById("history-modal").showModal()}
+        >
+          <AiOutlineHistory />
+        </label>
       </div>
+      <dialog id="volume-modal" className="modal">
+        <div className="modal-box">
+          <p>uwu</p>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+      <dialog id="settings-modal" className="modal">
+        <div className="modal-box">
+          <p>owo</p>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 }

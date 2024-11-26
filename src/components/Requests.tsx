@@ -8,7 +8,6 @@ import { AiOutlineLoading } from "react-icons/ai";
 
 export default function RequestsComponent() {
   const [tracks, setTracks] = useState([] as RequestableTrack[]);
-  const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([] as RequestableTrack[]);
 
@@ -29,7 +28,6 @@ export default function RequestsComponent() {
   useEffect(() => {
     getRequestableTracks().then((tracks) => {
       setTracks(tracks);
-      setLoading(false);
     });
   }, []);
 

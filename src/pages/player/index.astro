@@ -1,5 +1,6 @@
 ---
 import Header from "../../components/Header.astro";
+import HistoryComponent from "../../components/History";
 import PlayerComponent from "../../components/Player";
 import RequestsComponent from "../../components/Requests";
 import Layout from "../../layouts/Layout.astro";
@@ -19,17 +20,9 @@ import Layout from "../../layouts/Layout.astro";
             <button>close</button>
           </form>
         </dialog>
-        <dialog id="volume-modal" class="modal">
+        <dialog id="history-modal" class="modal">
           <div class="modal-box">
-            <p>uwu</p>
-          </div>
-          <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-          </form>
-        </dialog>
-        <dialog id="settings-modal" class="modal">
-          <div class="modal-box">
-            <p>owo</p>
+            <HistoryComponent client:idle />
           </div>
           <form method="dialog" class="modal-backdrop">
             <button>close</button>
