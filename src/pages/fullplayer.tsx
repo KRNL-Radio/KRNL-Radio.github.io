@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   LazyLoadComponent,
   LazyLoadImage,
@@ -19,99 +19,247 @@ import Countdown from "../components/Countdown";
 import type { StreamFormat } from "../player/core";
 import { getAllThemes } from "../themes/core";
 import { BrowserThemeWrapper } from "../themes/wrapper";
-// import Stats from "stats.js";
+
+const STATION_ID = "s209f09ff1";
+
+export function useInterval(
+  callback: () => void | Promise<void>,
+  delay: number,
+  runImmediately = false,
+) {
+  const savedCallback = useRef<() => void | Promise<void>>();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+    if (runImmediately && typeof callback === "function") {
+      callback();
+    }
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      if (typeof savedCallback.current === "function") {
+        savedCallback.current();
+      }
+    }
+
+    if (delay !== null) {
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
+
+export type StationMetadata = {
+  status: "online" | "offline";
+  source: StationSource;
+  collaborators: Collaborator[];
+  relays: Relay[];
+  current_track: CurrentTrack;
+  history: MetadataHistoryTrack[];
+  logo_url: string;
+  streaming_hostname: string;
+  outputs: Output[];
+};
+
+type StationSource = {
+  type: "automated" | "live";
+  collaborator: Collaborator | null;
+  relay: Relay | null;
+};
+
+type Collaborator = {
+  id: string;
+  name: string;
+  status: "streaming" | "pending";
+};
+
+type Relay = {
+  id: string;
+  url: string;
+  status: "connected";
+};
+
+type CurrentTrack = {
+  title: string;
+  start_time: string;
+  artwork_url: string | null;
+  artwork_url_large: string | null;
+};
+
+type MetadataHistoryTrack = {
+  title: string;
+};
+
+type Output = {
+  name: string;
+  format: "MP3" | "AAC";
+  bitrate: 16 | 32 | 48 | 64 | 96 | 128 | 192 | 256 | 320;
+};
+
+type Artwork = {
+  url: string | null;
+  large_url: string | null;
+};
+
+async function getStationMetadata(): Promise<StationMetadata> {
+  const res = await fetch(
+    `https://public.radio.co/stations/${STATION_ID}/status`,
+  );
+  const json = await res.json();
+  return json;
+}
+
+const AUTOMATED_HOST_NAME = "Max Jr.";
+
+// PORTED FROM WEBSITE V3
+function PlayerComponent() {
+  // Metadata
+  const [title, setTitle] = useState("Buddy Holly - Weezer");
+  const [host, setHost] = useState("Luna");
+  const [albumArt, setAlbumArt] = useState("https://picsum.photos/512");
+  const stream_url = "https://streaming.radio.co/s209f09ff1/listen";
+
+  // Controls
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(100); // ?
+
+  // Ref
+  const playCheckboxRef = useRef<HTMLInputElement | null>(null);
+
+  // Logic
+
+  // Refresh title, host, albumArt from API every 30 seconds
+  useInterval(
+    async () => {
+      const data = await getStationMetadata();
+      setTitle(data.current_track.title);
+      setHost(
+        data.source.type === "automated"
+          ? AUTOMATED_HOST_NAME
+          : data.source.collaborator!.name,
+      ); // krnl's not gonna be using the relays
+      setAlbumArt(
+        data.current_track.artwork_url_large ??
+          data.current_track.artwork_url ??
+          data.logo_url,
+      );
+
+      // also set browser metadata
+      if (audioRef.current && navigator.mediaSession) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: data.current_track.title,
+          artist:
+            data.source.type === "automated"
+              ? AUTOMATED_HOST_NAME
+              : data.source.collaborator!.name,
+          artwork: [
+            {
+              src:
+                data.current_track.artwork_url_large ??
+                data.current_track.artwork_url ??
+                data.logo_url,
+            },
+          ],
+        });
+      }
+    },
+    30000,
+    true,
+  );
+
+  // Play / Pause
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current?.play();
+    } else {
+      audioRef.current?.pause();
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume]);
+
+  // set indeterminate state if the audio is loading
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.onwaiting = () => {
+        if (playCheckboxRef.current) {
+          playCheckboxRef.current.indeterminate = true;
+        }
+      };
+      audioRef.current.onplaying = () => {
+        if (playCheckboxRef.current) {
+          playCheckboxRef.current.indeterminate = false;
+        }
+      };
+
+      // also set browser metadata
+      if (navigator.mediaSession) {
+        navigator.mediaSession.setActionHandler("play", () => {
+          setIsPlaying(true);
+        });
+        navigator.mediaSession.setActionHandler("pause", () => {
+          setIsPlaying(false);
+        });
+      }
+    }
+  }, [audioRef.current]);
+
+  return (
+    <div className="flex flex-col text-center bg-indigo-900 bg-opacity-40 w-1/2 h-1/2 absolute top-1/4 left-1/4 rounded-lg p-4 backdrop-blur-sm">
+      <audio ref={audioRef} src={stream_url} />
+      <img
+        src={albumArt}
+        alt="Album Art"
+        className="rounded-lg object-cover place-self-center max-w-[75%] max-h-[75%] min-h-[25%] min-w-[25%] select-none pointer-events-none"
+      />
+      <div className="text-xl text-white">{title}</div>
+      <div className="text-xl text-white">{host}</div>
+      {/* <!-- buttons --> */}
+      <label className="swap text-4xl text-white">
+        <input
+          type="checkbox"
+          checked={isPlaying}
+          onChange={() => setIsPlaying(!isPlaying)}
+          ref={playCheckboxRef}
+        />
+        <FontAwesomeIcon icon={solid("pause")} className="swap-on" />
+        <FontAwesomeIcon icon={solid("play")} className="swap-off" />
+      </label>
+      <div className="flex place-self-center">
+        <label
+          htmlFor="requests-modal"
+          className="text-4xl p-2 cursor-pointer"
+          id="requests-modal-icon"
+        >
+          <FontAwesomeIcon icon={solid("list")} className="text-white" />
+        </label>
+        <label
+          htmlFor="volume-modal"
+          className="text-4xl p-2 cursor-pointer"
+          id="volume-modal-icon"
+        >
+          <FontAwesomeIcon icon={solid("volume-up")} className="text-white" />
+        </label>
+        <label
+          htmlFor="settings-modal"
+          className="text-4xl p-2 cursor-pointer"
+          id="settings-modal-icon"
+        >
+          <FontAwesomeIcon icon={solid("gear")} className="text-white" />
+        </label>
+      </div>
+    </div>
+  );
+}
 
 function FullPlayer() {
-  const [title, setTitle] = React.useState("Loading...");
-  const [host, setHost] = React.useState("Loading...");
-  const [albumArt, setAlbumArt] = React.useState(PlaceholderImage);
-  // const [fpsCounter, setFpsCounter] = React.useState(false);
-
-  // useEffect(() => {
-  //     if (fpsCounter) {
-  //         let stats = new Stats();
-  //         stats.showPanel(0);
-  //         document.body.appendChild(stats.dom);
-  //         requestAnimationFrame(function loop() {
-  //             if (!fpsCounter) {
-  //                 return;
-  //             }
-  //             stats.begin();
-  //             stats.end();
-  //             requestAnimationFrame(loop);
-  //         })
-  //     } else {
-  //         let stats = document.getElementById("stats");
-  //         if (stats != null) {
-  //             stats.remove();
-  //         }
-  //     }
-  //     return function cleanup() {
-  //         let stats = document.getElementById("stats");
-  //         if (stats != null) {
-  //             stats.remove();
-  //         }
-  //     }
-  // }, [fpsCounter])
-
-  const hostRef = React.useRef(null);
-
-  useEffect(() => {
-    window.player.start_fast_refresh();
-    let metadataCb = (data: any) => {
-      setTitle(data.current_track.title);
-      setAlbumArt(data.current_track.album_art);
-      setHost(data.host_string);
-    };
-    window.player.on("metadata", metadataCb);
-    let trackCb = (data: any) => {
-      setTitle(data.title);
-      setAlbumArt(data.album_art);
-    };
-    window.player.on("current_track", trackCb);
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      window.player.stop_refreshing();
-      window.player.unbind("metadata", metadataCb);
-      window.player.unbind("current_track", trackCb);
-    };
-  });
-
-  useEffect(() => {
-    if (window.player.player_data != null) {
-      setTitle(window.player.player_data.current_track.title);
-      setHost(window.player.player_data.host_string);
-      setAlbumArt(window.player.player_data.current_track.album_art);
-    }
-    return function cleanup() {
-      window.player.unload();
-    };
-  }, []);
-
-  let isSafari =
-    navigator.vendor &&
-    navigator.vendor.indexOf("Apple") > -1 &&
-    navigator.userAgent &&
-    navigator.userAgent.indexOf("CriOS") === -1 &&
-    navigator.userAgent.indexOf("FxiOS") === -1;
-
-  let playPauseClick = () => {
-    console.log("Play/pause clicked");
-    console.log(window.player.is_playing);
-    if (window.player.is_playing) {
-      console.log("Pausing");
-      // this doesn't work on safari, and we shouldn't use this on mobile
-      if (!isSafari && window.player.get_platform() !== "mobile") {
-        window.player.pause();
-      } else {
-        window.player.unload();
-      }
-    } else {
-      window.player.play();
-      // setFpsCounter(true)
-    }
-  };
-
   return (
     <div className="flex h-screen flex-col">
       <div className="flex-none">
@@ -122,55 +270,7 @@ function FullPlayer() {
           <BrowserThemeWrapper>
             <div></div>
           </BrowserThemeWrapper>
-          <div className="flex flex-col text-center bg-indigo-800 bg-opacity-40 w-1/2 h-1/2 absolute top-1/4 left-1/4 rounded-lg p-4 backdrop-blur-sm">
-            {/* <img src={albumArt} className="rounded-lg object-scale-down" /> */}
-            {/* ensure centered image fits in parent div */}
-            <img
-              src={albumArt}
-              alt="Album Art"
-              className="rounded-lg object-cover place-self-center max-w-[75%] max-h-[75%] min-h-[25%] min-w-[25%] select-none pointer-events-none"
-              // style={{ maxHeight: '75%', maxWidth: '75%' }}
-            />
-            <div className="text-xl text-white">{title}</div>
-            <div className="text-xl text-white" ref={hostRef}>
-              {host}
-            </div>
-            {/* <button onClick={() => {
-                                window.player.volume(.05)
-                                window.player.play()
-                            }}>Play!</button> */}
-            <label className="swap text-4xl text-white">
-              <input type="checkbox" onClick={playPauseClick} />
-              <FontAwesomeIcon icon={solid("pause")} className="swap-on" />
-              <FontAwesomeIcon icon={solid("play")} className="swap-off" />
-            </label>
-            <div>
-              <label
-                htmlFor="requests-modal"
-                className="text-4xl p-2 cursor-pointer"
-                id="requests-modal-icon"
-              >
-                <FontAwesomeIcon icon={solid("list")} className="text-white" />
-              </label>
-              <label
-                htmlFor="volume-modal"
-                className="text-4xl p-2 cursor-pointer"
-                id="volume-modal-icon"
-              >
-                <FontAwesomeIcon
-                  icon={solid("volume-up")}
-                  className="text-white"
-                />
-              </label>
-              <label
-                htmlFor="settings-modal"
-                className="text-4xl p-2 cursor-pointer"
-                id="settings-modal-icon"
-              >
-                <FontAwesomeIcon icon={solid("gear")} className="text-white" />
-              </label>
-            </div>
-          </div>
+          <PlayerComponent />
         </Suspense>
       </div>
       <div>
@@ -183,26 +283,30 @@ function FullPlayer() {
         />
         <div className="modal modal-middle" data-theme="luxury">
           <div className="modal-box">
-            <div className="flex flex-row items-center">
-              <FontAwesomeIcon
-                icon={solid("volume-down")}
-                className="text-white p-2"
-              />
-              <input
-                className="range p-2"
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                defaultValue={window.player.get_volume}
-                onChange={(e) => {
-                  window.player.volume(parseFloat(e.target.value));
-                }}
-              />
-              <FontAwesomeIcon
-                icon={solid("volume-up")}
-                className="text-white p-2"
-              />
+            <div>
+              <div className="flex flex-row items-center">
+                <FontAwesomeIcon
+                  icon={solid("volume-down")}
+                  className="text-white p-2"
+                />
+                <input
+                  className="range p-2"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  disabled={true}
+                  defaultValue={window.player.get_volume}
+                  onChange={(e) => {
+                    window.player.volume(parseFloat(e.target.value));
+                  }}
+                />
+                <FontAwesomeIcon
+                  icon={solid("volume-up")}
+                  className="text-white p-2"
+                />
+              </div>
+              <p>Not ported to V3 yet! Sorry!</p>
             </div>
             <div className="modal-action">
               <label htmlFor="volume-modal" className="btn">
@@ -309,7 +413,7 @@ function SettingsModal() {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Stream Format</span>
+            <span className="label-text">Stream Format (not working)</span>
           </label>
           <select
             className="select select-bordered text-white"

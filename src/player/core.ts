@@ -208,33 +208,7 @@ export class PlayerCore extends Emitter {
   }
 
   _refresh_browser_metadata() {
-    console.log(this.player_data?.current_track.album_art);
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: this.player_data?.current_track.title,
-      artist: this.player_data?.host_string,
-      // artwork: [
-      //   {
-      //     src:
-      //       this.player_data?.current_track.album_art ??
-      //       "https://placekitten.com/600/600",
-      //     sizes: "600x600",
-      //     type: "image/jpeg",
-      //   },
-      // { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
-      // { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
-      // { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
-      // { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
-      // { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
-      // { src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png' },
-      // { src: 'https://dummyimage.com/64x64', sizes: '64x64', type: 'image/png' },
-      // { src: 'https://dummyimage.com/48x48', sizes: '48x48', type: 'image/png' },
-      // { src: 'https://dummyimage.com/32x32', sizes: '32x32', type: 'image/png' },
-      // { src: 'https://dummyimage.com/24x24', sizes: '24x24', type: 'image/png' },
-      // { src: 'https://dummyimage.com/16x16', sizes: '16x16', type: 'image/png' },
-      // ],
-    });
-    navigator.mediaSession.setActionHandler("play", () => this.play());
-    navigator.mediaSession.setActionHandler("pause", () => this.pause());
+    return; // no-op with player v3
   }
 
   _refresh_track_data() {
