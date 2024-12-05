@@ -48,7 +48,7 @@ export default function HistoryComponent() {
             {tracks.map((track) => {
                 return (
                     <div
-                        className="flex flex-row items-center border-t p-2 w-full"
+                        className="flex flex-row items-center border-t first:border-t-0 p-2 w-full"
                         key={track.start_time}
                     >
                         <img

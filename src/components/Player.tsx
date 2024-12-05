@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FaList, FaPause, FaPlay, FaVolumeHigh, FaGear } from "react-icons/fa6";
+import { FaList, FaPause, FaPlay, FaVolumeLow, FaVolumeHigh, FaGear } from "react-icons/fa6";
 import { AiOutlineLoading, AiOutlineHistory } from "react-icons/ai";
 import { useInterval } from "../util/useInterval";
 import { getStationMetadata } from "../util/radioco";
@@ -162,7 +162,24 @@ export default function PlayerComponent() {
       </div>
       <dialog id="volume-modal" className="modal">
         <div className="modal-box">
-          <p>uwu</p>
+          {/* low -------bar------ high */}
+          <label htmlFor="volume-slider" className="text-white">
+            Volume
+          </label>
+          <div className="flex flex-row items-center gap-2">
+            <FaVolumeLow className="text-white" />
+            <input
+              type="range"
+              id="volume-slider"
+              name="volume-slider"
+              min="0"
+              max="100"
+              value={volume}
+              onChange={(e) => setVolume(parseInt(e.target.value))}
+              className="w-full range"
+            />
+            <FaVolumeHigh className="text-white" />
+          </div>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
