@@ -50,11 +50,13 @@ if (background) {
     }
   }
 
-  for (const card of Array.from(
-    document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>,
-  )) {
-    card.addEventListener("mousemove", cardMouseMove);
-  }
+  document.addEventListener('astro:page-load', () => {
+    for (const card of Array.from(
+      document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>,
+    )) {
+      card.addEventListener("mousemove", cardMouseMove);
+    }
+  });
 </script>
 
 <style>
