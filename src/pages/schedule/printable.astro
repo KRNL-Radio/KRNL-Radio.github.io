@@ -23,8 +23,20 @@ shows.forEach(show => {
   });
 });
 
+// Sort shows by time
+daysOfWeek.forEach(day => {
+  showsDict[day].sort((a, b) => {
+    const timeA = a.time.split("-")[0]; // e.g. "3:00 PM"
+    const timeB = b.time.split("-")[0]; // e.g. "11:00 AM"
+
+    const dateA = new Date(`01/01/2000 ${timeA}`);
+    const dateB = new Date(`01/01/2000 ${timeB}`);
+    return dateA.getTime() - dateB.getTime();
+  });
+});
+
 // Function to generate HTML table with days of week as columns
-function generateScheduleTable(schedule: typeof showsDict  ) {
+function generateScheduleTable(schedule: typeof showsDict) {
   let tableHTML = '<tr>';
 
   // Find the maximum number of shows for any day to determine the row count
