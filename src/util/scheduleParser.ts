@@ -29,6 +29,7 @@ export class Schedule {
     let next = this.parsed.next().toDate();
     while (true) {
       if (this.schedule.invalidAfter && next >= this.schedule.invalidAfter) {
+        this.parsed.reset();
         return null;
       }
       if (this.schedule.invalidBefore && next < this.schedule.invalidBefore) {
@@ -43,6 +44,7 @@ export class Schedule {
         next = this.parsed.next().toDate();
         continue;
       }
+      this.parsed.reset();
       return next;
     }
   }
@@ -76,6 +78,7 @@ export class Schedule {
       end = endA;
     }
 
+    this.parsed.reset();
     return now >= start && now <= end;
   }
 
@@ -98,6 +101,8 @@ export class Schedule {
     ) {
       start = next;
     }
+    
+    this.parsed.reset();
     return start;
   }
 

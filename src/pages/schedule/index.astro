@@ -1,8 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import Header from "../../components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 
 import { TiPrinter } from "react-icons/ti";
+
+const shows = await getCollection("shows");
 ---
 
 <Layout title="Schedule">
@@ -15,13 +18,109 @@ import { TiPrinter } from "react-icons/ti";
     </a>
     <a href="/shows" class="hover:underline"> View All Shows </a>
   </main>
-  <div class="p-8">
-    <p class="text-xl">Placeholder!</p>
-    <p class="text-xl">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt
-      aperiam libero impedit exercitationem perferendis deserunt, veritatis
-      quibusdam eligendi provident, optio quo temporibus. Culpa quo ratione
-      architecto deleniti iusto nemo!
-    </p>
+  <div class="p-4 pt-0">
+    <!-- lets do this! -->
+    <!-- if we have a show currently happening, show it! -->
+    <!-- also list the next 3 upcoming shows (or, if there's more than 3 on a given day, show ALL on that day.) -->
+    <krnl-schedule shows={JSON.stringify(shows.map(show => show.data))}>
+      <div id="currently-playing" class="bg-green-900 p-4 rounded shadow-md">
+        <h2 class="text-2xl font-semibold text-green-300">Currently Playing</h2>
+        <p class="text-green-400">No show is currently playing.</p>
+      </div>
+      <div id="up-next" class="bg-blue-900 p-4 rounded shadow-md mt-4">
+        <h2 class="text-2xl font-semibold text-blue-300">Up Next</h2>
+        <p class="text-blue-400">No upcoming shows.</p>
+      </div>
+    </krnl-schedule>
   </div>
+  <script>
+    import { Schedule } from "../../util/scheduleParser";
+
+    function timeUntil(date: Date) {
+      const now = new Date();
+      const diff = date.getTime() - now.getTime();
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      if (days === 0) {
+        return `${hours}h ${minutes}m`;
+      }
+      return `${days}d ${hours}h ${minutes}m`;
+    }
+
+    class KRNLSchedule extends HTMLElement {
+      shows: any[] = [];
+      connectedCallback() {
+        this.shows = JSON.parse(this.getAttribute("shows")!);
+        
+        this.updateSchedule();
+        setInterval(() => {
+          this.updateSchedule();
+        }, 1000 * 30);
+      }
+
+      updateSchedule() {
+        const currentShow = this.shows.find(show => {
+          const sched = new Schedule(show.schedule);
+          return sched.isCurrentlyOccuring()
+        });
+
+        const compareDates = (a: Date | null, b: Date | null) => {
+          if (a === null && b === null) return NaN;
+          if (a === null) return 1; // null is considered "greater" than a date
+          if (b === null) return -1; // null is considered "greater" than a date
+          return a.getTime() - b.getTime();
+        }
+
+        // max(3, shows on the same day)
+        const sortedShows = this.shows.sort((a, b) => {
+          const schedA = new Schedule(a.schedule);
+          const schedB = new Schedule(b.schedule);
+          return compareDates(schedA.getStartOfNextOccurance(), schedB.getStartOfNextOccurance());
+        })
+
+        const showsToday = sortedShows.filter(show => {
+          const sched = new Schedule(show.schedule);
+          const nextOccurance = sched.getStartOfNextOccurance();
+          if (nextOccurance === null) return false;
+          return nextOccurance.getDate() === new Date().getDate();
+        });
+
+        const toDisplay = Math.max(3, showsToday.length);
+        const upcomingShows = sortedShows.slice(0, toDisplay);
+
+        console.log(currentShow, upcomingShows);
+
+        const currentlyPlaying = document.getElementById("currently-playing")!;
+        const upNext = document.getElementById("up-next")!;
+
+        if (currentShow) {
+          currentlyPlaying.hidden = false;
+          currentlyPlaying.innerHTML = `
+            <h2 class="text-2xl font-semibold text-green-300">Currently Playing</h2>
+            <p class="text-green-400">${currentShow.name}</p>
+          `;
+        } else {
+          // currentlyPlaying.hidden = true;
+        }
+
+        if (upcomingShows.length > 0) {
+          upNext.hidden = false;
+          upNext.innerHTML = `
+            <h2 class="text-2xl font-semibold text-blue-300">Up Next</h2>
+            <ul class="text-blue-400">
+              ${upcomingShows.map(show => {
+                const sched = new Schedule(show.schedule);
+                return `<li>${sched.toTimeString()} — ${show.name} (in ${timeUntil(sched.getStartOfNextOccurance()!)})</li>`;
+              }).join("")}
+            </ul>
+          `;
+        } else {
+          upNext.hidden = true;
+        }
+      }
+    }
+
+    customElements.define("krnl-schedule", KRNLSchedule);
+  </script>
 </Layout>
