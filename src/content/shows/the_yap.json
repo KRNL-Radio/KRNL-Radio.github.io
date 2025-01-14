@@ -1,9 +1,9 @@
 {
-  "name": "Craft Time",
+  "name": "The Yap",
   "description": "",
-  "hosts": ["Ronnie", "Ori"],
+  "hosts": ["Camille"],
   "schedule": {
-    "start": "15 16 * * 3",
+    "start": "0 17 * * 4",
     "duration": 60,
     "parseType": "cron"
   }

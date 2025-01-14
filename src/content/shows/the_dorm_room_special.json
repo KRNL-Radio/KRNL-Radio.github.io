@@ -1,9 +1,9 @@
 {
-  "name": "Craft Time",
+  "name": "The Dorm Room Special",
   "description": "",
-  "hosts": ["Ronnie", "Ori"],
+  "hosts": ["Morgan"],
   "schedule": {
-    "start": "15 16 * * 3",
+    "start": "30 11 * * 2",
     "duration": 60,
     "parseType": "cron"
   }
