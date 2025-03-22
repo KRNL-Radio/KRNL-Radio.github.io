@@ -25,7 +25,6 @@ export type ScheduleEffect = {
   // hard suppression isn't implemented (yet), i'm not truly checking for that
   is_hard_suppression: boolean;
   message: string;
-  visible: boolean;
 };
 
 // does nothing... yet.
