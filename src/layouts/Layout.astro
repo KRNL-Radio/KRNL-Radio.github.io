@@ -1,5 +1,6 @@
 ---
 import ClientRouter from "astro/components/ClientRouter.astro";
+import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -24,6 +25,7 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
+  @reference "../styles/global.css";
   :root {
     @apply bg-black;
     @apply text-white;
