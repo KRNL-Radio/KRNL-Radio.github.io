@@ -72,26 +72,6 @@ export type Host = {
 
 export const hosts: Host[] = [
   {
-    name: "Adrien",
-    pronouns: ["they", "he"],
-    splash_text: "Driver of the Clown Car",
-    bio: `Hi!! I’m Adrien: alt rock lover, ‘80s music extraordinaire, black lipstick aficionado.
-    
-[*It’s not a phase, mom.*](https://www.youtube.com/watch?v=Kjr7US2Z9aY)`,
-    image: AdrienImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/jellybeanz_3/",
-      },
-      {
-        platform: "Spotify",
-        url: "https://open.spotify.com/user/akaplan1488",
-      },
-    ],
-    badges: ["DJ", "Station Manager", "Executive Board"],
-  },
-  {
     name: "Mark",
     pronouns: ["they", "them"],
     splash_text: getRandomSplash(),
@@ -100,7 +80,7 @@ export const hosts: Host[] = [
 
 I also somehow ended up providing the station with a stuffed Pikachu. Don't ask, I don't know how that happened either.`,
     image: LunaImg,
-    badges: ["DJ", "Station Manager", "Executive Board", "Financial Director"],
+    badges: ["DJ", "Technical Director", "Executive Board"],
   },
   {
     // ... yeah. :c
@@ -110,110 +90,6 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     bio: `hello, world! i'm luna! you might know me as someone else. who knows? i sure don't.`,
     image: LunaImg,
     badges: ["Honorary"],
-  },
-  {
-    name: "Sophie",
-    pronouns: ["they", "them"],
-    splash_text: "The Legend",
-    bio: `Heyo! I'm Sophie and I play music sometimes! come share in the vibes! :)`,
-    image: SophieImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/s_brown_6/",
-      },
-      {
-        platform: "Spotify",
-        url: "https://open.spotify.com/user/caucasian_nugget",
-      },
-    ],
-    badges: ["DJ", "Music Director", "Executive Board"],
-  },
-  {
-    name: "Grayson",
-    pronouns: ["he", "him"],
-    splash_text: "Defender of the World from Nickelback",
-    bio: `It's so hard being a single mom when you have no kids and are a male teenager.`,
-    image: GraysonImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/son_ofgray/",
-      },
-    ],
-    badges: ["DJ", "Sports Director", "Executive Board"],
-  },
-  {
-    name: "Zoe",
-    pronouns: ["they", "she"],
-    splash_text: "Resident Bookwarm",
-    bio: `Hey, I’m Zoe! [Waiting Room by Phoebe Bridgers](https://www.youtube.com/watch?v=cgJLXrOtASc) was my #1 song this year, interpret that how you will.`,
-    image: ZoeImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/zothevirg.o/",
-      },
-    ],
-    badges: ["DJ"],
-  },
-  {
-    name: "Trey",
-    pronouns: ["he", "him"],
-    splash_text: "Enjoyer of Things, Listener of Music",
-    bio: "Yo, I’m Trey, lover of all things art, media, and entertainment? ...Honestly, I’d enjoy almost anything",
-    image: TreyImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/ssvfw/",
-      },
-    ],
-    badges: ["DJ"],
-  },
-  {
-    name: "Solace",
-    pronouns: ["she", "they"],
-    splash_text: "Arch-Bishop of the Church of the Bards",
-    bio: "*Missing bio!*",
-    image: SolaceImg,
-    badges: ["DJ"],
-  },
-  {
-    name: "Jake",
-    pronouns: ["he", "him"],
-    splash_text: "Season Ticket Holder to the Boonta Eve Classic",
-    bio: "Hi! I'm Jake. It wasn't until I worked at a wedding venue that I realized my playlist was mostly millennial reception music.",
-    image: JakeImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/jakethsnowflaketh",
-      },
-    ],
-    badges: ["DJ"],
-  },
-  {
-    name: "Sami",
-    pronouns: ["they", "them"],
-    splash_text: "Certified Dog Photo Shower",
-    bio: `Hi I’m Sami! I have a very wide range of music taste but Florence + the machine, the crane wives, Marika Hackman, and vocaloid (PAFL) are my go-to! Peace and love Hatsune Miku!`,
-    image: SamiImg,
-    socials: [
-      {
-        platform: "Instagram",
-        url: "https://www.instagram.com/still.want.a.ferret/",
-      },
-    ],
-    badges: ["DJ"],
-  },
-  {
-    name: "Orion",
-    pronouns: OrionPronouns(),
-    splash_text: "resident door artist",
-    bio: "ex-blonde and sad about it",
-    image: OrionImg,
-    badges: ["DJ", "Event and Marketing Director", "Executive Board"],
   },
   {
     name: "Eva",
@@ -229,7 +105,7 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     splash_text: "Forklift Certified",
     bio: `just your run of the mill music loving book loving theater kid`,
     image: BeanImg,
-    badges: ["DJ", "Technical Director", "Executive Board"],
+    badges: ["DJ", "Station Manager", "Executive Board"],
   },
   {
     name: "Bruce",
@@ -264,12 +140,52 @@ I also somehow ended up providing the station with a stuffed Pikachu. Don't ask,
     badges: ["DJ", "Program Director", "Executive Board"],
   },
   {
-    name: "Eli",
-    pronouns: ["he", "him"],
-    splash_text: "",
-    bio: "HELP I FORGOT ELI I'M SO SORRY ~Luna",
-    image: "",
+    name: "Frankie",
+    pronouns: [],
+    splash_text: "<Placeholder>",
+    bio: "<Placeholder>",
+    image: LunaImg,
     badges: ["DJ"],
+  },
+  {
+    name: "Andrew",
+    pronouns: [],
+    splash_text: "<Placeholder>",
+    bio: "<Placeholder>",
+    image: LunaImg,
+    badges: ["DJ"],
+  },
+  {
+    name: "Camille",
+    pronouns: [],
+    splash_text: "<Placeholder>",
+    bio: "<Placeholder>",
+    image: LunaImg,
+    badges: ["DJ"],
+  },
+  {
+    name: "Kira",
+    pronouns: [],
+    splash_text: "<Placeholder>",
+    bio: "<Placeholder>",
+    image: LunaImg,
+    badges: ["DJ"],
+  },
+  {
+    name: "Chrysalis",
+    pronouns: [],
+    splash_text: "<Placeholder>",
+    bio: "<Placeholder>",
+    image: LunaImg,
+    badges: ["DJ"],
+  },
+  {
+    name: "Kapua",
+    pronouns: [],
+    splash_text: "<Placeholder>",
+    bio: "<Placeholder>",
+    image: LunaImg,
+    badges: ["DJ", "Financial Director", "Executive Board"],
   },
   // {
   //   name: "Matt",
